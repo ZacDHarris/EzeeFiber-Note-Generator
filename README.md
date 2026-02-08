@@ -14,46 +14,65 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background-color: #2d2d2d;
-            padding: 2rem 1rem;
+            padding: 0;
             line-height: 1.6;
             color: #e5e7eb;
+        }
+
+        .header-wrapper {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 2rem 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            border-bottom: 3px solid #FB612F;
+        }
+
+        .header-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .logo-container {
+            flex-shrink: 0;
+        }
+
+        .logo-container img {
+            max-width: 250px;
+            height: auto;
+            filter: drop-shadow(0 2px 8px rgba(251, 97, 47, 0.3));
+        }
+
+        .header-text {
+            text-align: center;
+        }
+
+        .header-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #f9fafb;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .header-subtitle {
+            font-size: 1rem;
+            color: #FB612F;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .container {
             max-width: 1000px;
             margin: 0 auto;
             background: #3a3a3a;
-            border-radius: 8px;
+            border-radius: 0;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
             padding: 2rem;
-        }
-
-        .logo-container {
-            text-align: center;
-            margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 2px solid #4b5563;
-        }
-
-        .logo-container img {
-            max-width: 300px;
-            height: auto;
-        }
-
-        h1 {
-            font-size: 2rem;
-            color: #f9fafb;
-            text-align: center;
-            margin-bottom: 0.5rem;
-        }
-
-        h2 {
-            font-size: 1.25rem;
-            color: #d1d5db;
-            text-align: center;
-            padding-bottom: 1.5rem;
-            border-bottom: 2px solid #4b5563;
-            margin-bottom: 2rem;
         }
 
         .form-grid {
@@ -93,8 +112,8 @@
         input[type="text"]:focus,
         textarea:focus {
             outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+            border-color: #FB612F;
+            box-shadow: 0 0 0 3px rgba(251, 97, 47, 0.2);
         }
 
         input[type="text"]::placeholder,
@@ -131,6 +150,7 @@
         .yes-no-buttons button.active-yes {
             background-color: #FB612F;
             color: white;
+            box-shadow: 0 2px 8px rgba(251, 97, 47, 0.4);
         }
 
         .yes-no-buttons button.active-no {
@@ -164,9 +184,10 @@
         }
 
         .troubleshooting-item.selected {
-            background-color: #1e40af;
-            border-color: #3b82f6;
-            color: #dbeafe;
+            background-color: #FB612F;
+            border-color: #FB612F;
+            color: white;
+            box-shadow: 0 2px 8px rgba(251, 97, 47, 0.3);
         }
 
         .action-buttons {
@@ -191,12 +212,14 @@
         }
 
         .btn-primary {
-            background-color: #2563eb;
+            background-color: #FB612F;
             color: white;
         }
 
         .btn-primary:hover {
-            background-color: #1d4ed8;
+            background-color: #e5511a;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(251, 97, 47, 0.4);
         }
 
         .btn-secondary {
@@ -218,6 +241,8 @@
 
         .btn-success:hover {
             background-color: #15803d;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(22, 163, 74, 0.4);
         }
 
         .output-section {
@@ -266,15 +291,41 @@
             display: inline-block;
             vertical-align: middle;
         }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .logo-container img {
+                max-width: 200px;
+            }
+
+            .header-title {
+                font-size: 1.5rem;
+            }
+
+            .header-subtitle {
+                font-size: 0.875rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="logo-container">
-            <img src="EzeeFiberLogo.png" alt="Ezee Fiber Logo">
+    <div class="header-wrapper">
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="EzeeFiberLogo.png" alt="Ezee Fiber Logo">
+            </div>
+            <div class="header-text">
+                <div class="header-title">Technical Support</div>
+                <div class="header-subtitle">Note Generator</div>
+            </div>
         </div>
-        <h2>Technical Support Note Generator</h2>
+    </div>
 
+    <div class="container">
         <form id="supportForm">
             <div class="form-grid">
                 <div class="form-group">
