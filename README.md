@@ -271,7 +271,7 @@
 <body>
     <div class="container">
         <div class="logo-container">
-            <img src="/mnt/user-data/uploads/EzeeFiberLogo.png" alt="Ezee Fiber Logo">
+            <img src="EzeeFiberLogo.png" alt="Ezee Fiber Logo">
         </div>
         <h2>Technical Support Note Generator</h2>
 
