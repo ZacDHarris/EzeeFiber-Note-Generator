@@ -280,7 +280,7 @@
         .output-box pre {
             font-family: 'Courier New', monospace;
             font-size: 0.875rem;
-            color: #f9fafb;
+            color: #4b5563;
             white-space: pre-wrap;
             word-wrap: break-word;
         }
