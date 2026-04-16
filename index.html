@@ -298,8 +298,8 @@
             line-height: 1.6;
         }
 
-        /* ── EZEEFIBER BLANK PAGE ── */
-        .ezeefiber-page {
+        /* ── ACCOUNT NOTES BLANK PAGE ── */
+        .accountnotes-page {
             min-height: 80vh;
             display: flex;
             flex-direction: column;
@@ -311,7 +311,7 @@
             letter-spacing: 0.5px;
         }
 
-        .ezeefiber-page .brand-mark {
+        .accountnotes-page .brand-mark {
             font-size: 2.5rem;
             font-weight: 800;
             color: #FB612F;
@@ -319,7 +319,42 @@
             margin-bottom: 0.5rem;
         }
 
-        .ezeefiber-page .brand-sub {
+        .accountnotes-page .brand-sub {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #6b7280;
+        }
+
+        @media (max-width: 768px) {
+            .header-container { flex-direction: column; gap: 1rem; }
+            .logo-container img { max-width: 200px; }
+            .header-title { font-size: 1.5rem; }
+            .header-subtitle { font-size: 0.875rem; }
+        }
+
+     /* ── EMAIL TEMPLATES BLANK PAGE ── */
+        .email-page {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #2d2d2d;
+            color: #9ca3af;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .email-page .brand-mark {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #FB612F;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .email-page .brand-sub {
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 3px;
@@ -500,10 +535,10 @@
         </div>
     </div>
 
-        <!-- ── PAGE: EZEEFIBER (BLANK) ── -->
-    <div id="page-ezeefiber" class="page">
-        <div class="ezeefiber-page">
-            <div class="brand-mark">EzeeFiber</div>
+        <!-- ── PAGE: EMAIL TEMPLATES (BLANK) ── -->
+    <div id="page-email" class="page">
+        <div class="email-page">
+            <div class="brand-mark">Email Templates</div>
             <div class="brand-sub">Coming Soon</div>
         </div>
     </div>
