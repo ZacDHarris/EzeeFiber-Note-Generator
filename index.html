@@ -623,7 +623,19 @@
                 troubleshootingSection = '\nTroubleshooting Steps:\n' + Array.from(selectedTroubleshooting).join('\n');
             }
 
-            const yesNoSection = `Device Connectivity Issues: ${yesNoData.devicesDisconnecting === null ? '' : yesNoData.devicesDisconnecting ? 'Yes' : 'No'}
+            const yesNoSection = `
+Phone: ${formData.phone}
+Account #: ${formData.accountNumber}
+Name: ${formData.name}
+Address: ${formData.address}
+Sales Area: ${formData.salesArea}
+Package: ${formData.package}
+
+Customer Statement: ${formData.customerStatement}
+
+Agent Statement: ${formData.agentStatement}
+
+Device Connectivity Issues: ${yesNoData.devicesDisconnecting === null ? '' : yesNoData.devicesDisconnecting ? 'Yes' : 'No'}
 Is Network Online: ${yesNoData.networkStable === null ? '' : yesNoData.networkStable ? 'Yes' : 'No'}
 Is there Wi-Fi Channel Interference: ${yesNoData.wifiInterference === null ? '' : yesNoData.wifiInterference ? 'Yes' : 'No'}
 Was Equipment Rebooted: ${yesNoData.equipmentRebooted === null ? '' : yesNoData.equipmentRebooted ? 'Yes' : 'No'}
@@ -632,7 +644,6 @@ Are All Connections Verified: ${yesNoData.connectionsVerified === null ? '' : ye
             const note = `${yesNoSection}
 
 Phone: ${formData.phone}
-Agent Initials: ${formData.agentInitials}
 Account #: ${formData.accountNumber}
 Name: ${formData.name}
 Address: ${formData.address}
@@ -648,7 +659,8 @@ ONT Stats: ${formData.ont}
 
 Speed Test (Down/Up): ${formData.speedTest}
 L2-User Aligned (if applicable): ${formData.l2UserAligned}
-Timeframe When Issues Started: ${formData.timeframeIssues}`;
+Timeframe When Issues Started: ${formData.timeframeIssues}
+Agent Initials: ${formData.agentInitials}`;
 
             document.getElementById('generatedNote').value = note;
             document.getElementById('outputSection').classList.add('show');
