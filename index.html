@@ -568,7 +568,7 @@
             "•No Construction Confirmed","•Construction Confirmed","•Factory Reset Modem",
             "•Cleared Counters","•Checked Cx Power","•Power Cycled Router","•Firmware Update",
             "•Swapped gateway router","•Temporarily Disable 5GHz","•Enabled Guest SSID",
-            "•Disabled IPv6","•Factory Reset Routers","•Optimization on Network"
+            "•Disabled IPv6","•Factory Reset Routers","•Optimization on Network", "•Changed DNS Server to:"
         ];
 
         const selectedTroubleshooting = new Set();
@@ -643,16 +643,6 @@ Are All Connections Verified: ${yesNoData.connectionsVerified === null ? '' : ye
 
             const note = `${yesNoSection}
 
-Phone: ${formData.phone}
-Account #: ${formData.accountNumber}
-Name: ${formData.name}
-Address: ${formData.address}
-Sales Area: ${formData.salesArea}
-Package: ${formData.package}
-
-Customer Statement: ${formData.customerStatement}
-
-Agent Statement: ${formData.agentStatement}
 ${troubleshootingSection}
 
 ONT Stats: ${formData.ont}
