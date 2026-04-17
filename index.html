@@ -334,6 +334,45 @@
         .note-sub-page { display: none; }
         .note-sub-page.active { display: block; }
 
+        /* ── CECR PRIORITY BUTTONS ── */
+        .priority-row {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            margin-top: 0.25rem;
+        }
+
+        .priority-btn {
+            width: 2.75rem;
+            height: 2.75rem;
+            border: 2px solid #6b7280;
+            border-radius: 0.375rem;
+            background: #4b5563;
+            color: #d1d5db;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .priority-btn:hover { background: #6b7280; color: #f9fafb; }
+
+        .priority-btn.active {
+            background: #FB612F;
+            border-color: #FB612F;
+            color: white;
+            box-shadow: 0 2px 8px rgba(251, 97, 47, 0.4);
+        }
+
+        .cecr-priority-display {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #FB612F;
+            margin-left: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+
         /* ── DISPATCH BRAND SELECTOR ── */
         .dispatch-brand-row {
             display: flex;
@@ -905,9 +944,67 @@
 
         <!-- ── NOTE SUB-PAGE: CECR ── -->
         <div id="note-sub-cecr" class="note-sub-page">
-            <div class="coming-soon-placeholder">
-                <div class="placeholder-mark">CECR</div>
-                <div class="placeholder-sub">Coming Soon</div>
+            <div class="container">
+                <form id="cecrForm">
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="cecr-phone">Phone</label>
+                            <input type="text" id="cecr-phone" placeholder="Enter phone" style="max-width: 220px;">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cecr-address">Address</label>
+                            <input type="text" id="cecr-address" placeholder="Enter address">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cecr-ticketId">Ticket ID</label>
+                            <input type="text" id="cecr-ticketId" placeholder="Enter ticket ID">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cecr-customerName">Customer Name</label>
+                            <input type="text" id="cecr-customerName" placeholder="Enter customer name">
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label>Priority Level</label>
+                            <div class="priority-row">
+                                <button type="button" class="priority-btn" id="priority-btn-1" onclick="setCecrPriority(1)">1</button>
+                                <button type="button" class="priority-btn" id="priority-btn-2" onclick="setCecrPriority(2)">2</button>
+                                <button type="button" class="priority-btn" id="priority-btn-3" onclick="setCecrPriority(3)">3</button>
+                                <button type="button" class="priority-btn" id="priority-btn-4" onclick="setCecrPriority(4)">4</button>
+                                <span id="cecr-priority-display" class="cecr-priority-display"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="cecr-customerReport">Customer Report</label>
+                            <textarea id="cecr-customerReport" placeholder="Enter customer report" style="min-height: 140px;"></textarea>
+                        </div>
+
+                    </div>
+                </form>
+
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="generateCecr()">Generate Note</button>
+                    <button class="btn btn-secondary" onclick="resetCecr()">Reset Form</button>
+                </div>
+
+                <div id="cecrOutputSection" class="output-section">
+                    <div class="output-header">
+                        <h3>Generated Note</h3>
+                        <button class="btn btn-success" onclick="copyCecr()">
+                            <span id="cecrCopyIcon">&#128203;</span>
+                            <span id="cecrCopyText">Copy to Dashboard</span>
+                        </button>
+                    </div>
+                    <div class="output-box">
+                        <textarea id="cecrGeneratedNote" spellcheck="false"></textarea>
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -1237,6 +1334,50 @@ Customer Reporting: ${document.getElementById('dp-customerReporting').value}`;
             display.textContent = '';
             display.className = 'dispatch-brand-display';
             document.getElementById('dpOutputSection').classList.remove('show');
+        }
+
+        // ── CECR ──
+        let cecrPriority = null;
+
+        function setCecrPriority(level) {
+            cecrPriority = level;
+            document.querySelectorAll('.priority-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('priority-btn-' + level).classList.add('active');
+            document.getElementById('cecr-priority-display').textContent = 'Priority ' + level;
+        }
+
+        function generateCecr() {
+            const note =
+`Phone: ${document.getElementById('cecr-phone').value}
+Address: ${document.getElementById('cecr-address').value}
+Ticket ID: ${document.getElementById('cecr-ticketId').value}
+Customer Name: ${document.getElementById('cecr-customerName').value}
+Priority Level: ${cecrPriority ? 'Priority ' + cecrPriority : ''}
+
+Customer Report: ${document.getElementById('cecr-customerReport').value}`;
+
+            document.getElementById('cecrGeneratedNote').value = note;
+            document.getElementById('cecrOutputSection').classList.add('show');
+            document.getElementById('cecrOutputSection').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function copyCecr() {
+            navigator.clipboard.writeText(document.getElementById('cecrGeneratedNote').value).then(() => {
+                document.getElementById('cecrCopyIcon').textContent = '✓';
+                document.getElementById('cecrCopyText').textContent = 'Copied!';
+                setTimeout(() => {
+                    document.getElementById('cecrCopyIcon').textContent = '📋';
+                    document.getElementById('cecrCopyText').textContent = 'Copy to Dashboard';
+                }, 2000);
+            });
+        }
+
+        function resetCecr() {
+            document.getElementById('cecrForm').reset();
+            cecrPriority = null;
+            document.querySelectorAll('.priority-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('cecr-priority-display').textContent = '';
+            document.getElementById('cecrOutputSection').classList.remove('show');
         }
 
         initTroubleshootingGrid();
