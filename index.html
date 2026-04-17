@@ -959,9 +959,11 @@
         <div class="login-card" id="login-card">
             <div class="login-logo">EZEEFIBER</div>
             <div class="login-subtitle">Internal Tools</div>
-            <label class="login-label" for="login-password">Password</label>
-            <input class="login-input" type="password" id="login-password" placeholder="Enter password" onkeydown="if(event.key==='Enter') checkLogin()">
-            <button class="login-btn" onclick="checkLogin()">Sign In</button>
+            <form id="login-form" onsubmit="checkLogin(); return false;" autocomplete="on">
+                <label class="login-label" for="login-password">Password</label>
+                <input class="login-input" type="password" id="login-password" name="password" autocomplete="current-password" placeholder="Enter password">
+                <button type="submit" class="login-btn">Sign In</button>
+            </form>
             <div class="login-error" id="login-error"></div>
         </div>
     </div>
