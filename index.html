@@ -356,6 +356,76 @@
             margin-top: 0.5rem;
         }
 
+        /* ── UPS LABEL SECTION ── */
+        .ups-label-section {
+            margin-top: 1rem;
+            border: 2px solid #4b5563;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+
+        .ups-label-header {
+            background: #1a1a1a;
+            padding: 0.6rem 1rem;
+            border-bottom: 2px solid #FB612F;
+        }
+
+        .ups-label-title {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #f9fafb;
+            letter-spacing: 0.3px;
+        }
+
+        .ups-label-fields {
+            padding: 1rem;
+            background: #3a3a3a;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: flex-end;
+        }
+
+        .ups-field-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+            flex: 1;
+            min-width: 160px;
+        }
+
+        .ups-field-group label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #d1d5db;
+            margin: 0;
+        }
+
+        .ups-field-group input {
+            padding: 0.5rem 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .ups-download-btn {
+            background: #1a5276;
+            color: white;
+            padding: 0.55rem 1.2rem;
+            font-size: 0.875rem;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .ups-download-btn:hover {
+            background: #154360;
+            transform: translateY(-1px);
+            box-shadow: 0 3px 8px rgba(26,82,118,0.5);
+        }
+
+        /* UPS label print page */
+        #ups-print-frame {
+            display: none;
+        }
+
         /* ── RETURN LABEL NOTICE ── */
         .return-label-notice {
             margin-top: 0.75rem;
@@ -763,8 +833,145 @@
             .email-sub-btn { padding: 0.65rem 1rem; font-size: 0.8rem; }
         }
     </style>
+    <style>
+        /* ── LOGIN PAGE ── */
+        #login-overlay {
+            position: fixed;
+            inset: 0;
+            background: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        .login-card {
+            background: #2d2d2d;
+            border: 2px solid #FB612F;
+            border-radius: 12px;
+            padding: 2.5rem 3rem;
+            width: 100%;
+            max-width: 380px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+            text-align: center;
+        }
+
+        .login-logo {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: #FB612F;
+            letter-spacing: 2px;
+            margin-bottom: 0.25rem;
+        }
+
+        .login-subtitle {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #6b7280;
+            margin-bottom: 2rem;
+        }
+
+        .login-label {
+            display: block;
+            text-align: left;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #d1d5db;
+            margin-bottom: 0.4rem;
+        }
+
+        .login-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: #3a3a3a;
+            border: 1px solid #6b7280;
+            border-radius: 0.375rem;
+            color: #f9fafb;
+            font-size: 1rem;
+            margin-bottom: 1.25rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .login-input:focus {
+            outline: none;
+            border-color: #FB612F;
+            box-shadow: 0 0 0 3px rgba(251,97,47,0.2);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background: #FB612F;
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            letter-spacing: 0.5px;
+        }
+
+        .login-btn:hover {
+            background: #e5511a;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(251,97,47,0.4);
+        }
+
+        .login-error {
+            margin-top: 1rem;
+            color: #f87171;
+            font-size: 0.85rem;
+            font-weight: 600;
+            min-height: 1.2rem;
+        }
+
+        /* shake animation on wrong password */
+        @keyframes shake {
+            0%,100% { transform: translateX(0); }
+            20%      { transform: translateX(-8px); }
+            40%      { transform: translateX(8px); }
+            60%      { transform: translateX(-6px); }
+            80%      { transform: translateX(6px); }
+        }
+        .login-card.shake { animation: shake 0.4s ease; }
+
+        /* sign out button */
+        .signout-btn {
+            position: fixed;
+            top: 0.6rem;
+            right: 1rem;
+            background: transparent;
+            border: 1px solid #6b7280;
+            color: #9ca3af;
+            padding: 0.3rem 0.85rem;
+            border-radius: 0.375rem;
+            font-size: 0.78rem;
+            font-weight: 600;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.2s;
+        }
+        .signout-btn:hover { border-color: #FB612F; color: #FB612F; }
+    </style>
 </head>
 <body>
+
+    <!-- ── LOGIN OVERLAY ── -->
+    <div id="login-overlay">
+        <div class="login-card" id="login-card">
+            <div class="login-logo">EZEEFIBER</div>
+            <div class="login-subtitle">Internal Tools</div>
+            <label class="login-label" for="login-password">Password</label>
+            <input class="login-input" type="password" id="login-password" placeholder="Enter password" onkeydown="if(event.key==='Enter') checkLogin()">
+            <button class="login-btn" onclick="checkLogin()">Sign In</button>
+            <div class="login-error" id="login-error"></div>
+        </div>
+    </div>
+
+    <!-- ── SIGN OUT BUTTON ── -->
+    <button class="signout-btn" id="signout-btn" style="display:none;" onclick="signOut()">Sign Out</button>
 
     <!-- ── TAB NAVIGATION ── -->
     <nav class="tab-nav">
@@ -1272,12 +1479,26 @@
                                     <span id="ter-t-copy-icon">&#128203;</span>
                                     <span id="ter-t-copy-text">Copy</span>
                                 </button>
+                                <button class="btn btn-secondary" onclick="resetEmailTemplate('ter-t-output', ['ter-t-name','ter-t-modem','ter-t-router-sn'], 'ter-t')" style="padding:0.5rem 1rem;font-size:0.85rem;">↺ Reset</button>
                             </div>
                             <div class="output-box">
                                 <textarea id="ter-t-output" spellcheck="false" placeholder="Fill in the fields and click Generate Email..."></textarea>
                             </div>
-                            <div class="return-label-notice">
-                                🔧 Return Label PDF Generator — Coming Soon!
+                            <div class="ups-label-section">
+                                <div class="ups-label-header">
+                                    <span class="ups-label-title">📦 UPS Return Label Generator</span>
+                                </div>
+                                <div class="ups-label-fields">
+                                    <div class="ups-field-group">
+                                        <label for="ter-t-acct">Customer Account Number</label>
+                                        <input type="text" id="ter-t-acct" placeholder="Enter account number">
+                                    </div>
+                                    <div class="ups-field-group">
+                                        <label for="ter-t-wo">Work Order Number</label>
+                                        <input type="text" id="ter-t-wo" placeholder="Enter work order number">
+                                    </div>
+                                    <button class="btn ups-download-btn" onclick="printUPSLabel('tachus')">🖨️ Download / Print Return Label PDF</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1302,6 +1523,7 @@
                                     <span id="traf-copy-icon">&#128203;</span>
                                     <span id="traf-copy-text">Copy</span>
                                 </button>
+                                <button class="btn btn-secondary" onclick="resetEmailTemplate('traf-output', ['traf-name','traf-link'], null)" style="padding:0.5rem 1rem;font-size:0.85rem;">↺ Reset</button>
                             </div>
                             <img src="RAF1.png" class="raf-img-preview" alt="Refer a Friend header">
                             <div class="output-box">
@@ -1331,6 +1553,7 @@
                                     <span id="trp-copy-icon">&#128203;</span>
                                     <span id="trp-copy-text">Copy</span>
                                 </button>
+                                <button class="btn btn-secondary" onclick="resetEmailTemplate('trp-output', ['trp-name','trp-ticket'], null)" style="padding:0.5rem 1rem;font-size:0.85rem;">↺ Reset</button>
                             </div>
                             <div class="output-box">
                                 <textarea id="trp-output" spellcheck="false" placeholder="Fill in the fields and click Generate Email..."></textarea>
@@ -1354,6 +1577,7 @@
                                     <span id="twsk-copy-icon">&#128203;</span>
                                     <span id="twsk-copy-text">Copy</span>
                                 </button>
+                                <button class="btn btn-secondary" onclick="resetEmailTemplate('twsk-output', ['twsk-name'], null)" style="padding:0.5rem 1rem;font-size:0.85rem;">↺ Reset</button>
                             </div>
                             <div class="output-box">
                                 <textarea id="twsk-output" spellcheck="false" placeholder="Fill in the fields and click Generate Email..."></textarea>
@@ -1445,12 +1669,26 @@
                                     <span id="ter-e-copy-icon">&#128203;</span>
                                     <span id="ter-e-copy-text">Copy</span>
                                 </button>
+                                <button class="btn btn-secondary" onclick="resetEmailTemplate('ter-e-output', ['ter-e-name','ter-e-modem','ter-e-router-sn'], 'ter-e')" style="padding:0.5rem 1rem;font-size:0.85rem;">↺ Reset</button>
                             </div>
                             <div class="output-box">
                                 <textarea id="ter-e-output" spellcheck="false" placeholder="Fill in the fields and click Generate Email..."></textarea>
                             </div>
-                            <div class="return-label-notice">
-                                🔧 Return Label PDF Generator — Coming Soon!
+                            <div class="ups-label-section">
+                                <div class="ups-label-header">
+                                    <span class="ups-label-title">📦 UPS Return Label Generator</span>
+                                </div>
+                                <div class="ups-label-fields">
+                                    <div class="ups-field-group">
+                                        <label for="ter-e-acct">Customer Account Number</label>
+                                        <input type="text" id="ter-e-acct" placeholder="Enter account number">
+                                    </div>
+                                    <div class="ups-field-group">
+                                        <label for="ter-e-wo">Work Order Number</label>
+                                        <input type="text" id="ter-e-wo" placeholder="Enter work order number">
+                                    </div>
+                                    <button class="btn ups-download-btn" onclick="printUPSLabel('ezee')">🖨️ Download / Print Return Label PDF</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1475,6 +1713,7 @@
                                     <span id="eraf-copy-icon">&#128203;</span>
                                     <span id="eraf-copy-text">Copy</span>
                                 </button>
+                                <button class="btn btn-secondary" onclick="resetEmailTemplate('eraf-output', ['eraf-name','eraf-link'], null)" style="padding:0.5rem 1rem;font-size:0.85rem;">↺ Reset</button>
                             </div>
                             <img src="RAF1.png" class="raf-img-preview" alt="Refer a Friend header">
                             <div class="output-box">
@@ -1504,6 +1743,7 @@
                                     <span id="erp-copy-icon">&#128203;</span>
                                     <span id="erp-copy-text">Copy</span>
                                 </button>
+                                <button class="btn btn-secondary" onclick="resetEmailTemplate('erp-output', ['erp-name','erp-ticket'], null)" style="padding:0.5rem 1rem;font-size:0.85rem;">↺ Reset</button>
                             </div>
                             <div class="output-box">
                                 <textarea id="erp-output" spellcheck="false" placeholder="Fill in the fields and click Generate Email..."></textarea>
@@ -1527,6 +1767,7 @@
                                     <span id="ewsk-copy-icon">&#128203;</span>
                                     <span id="ewsk-copy-text">Copy</span>
                                 </button>
+                                <button class="btn btn-secondary" onclick="resetEmailTemplate('ewsk-output', ['ewsk-name'], null)" style="padding:0.5rem 1rem;font-size:0.85rem;">↺ Reset</button>
                             </div>
                             <div class="output-box">
                                 <textarea id="ewsk-output" spellcheck="false" placeholder="Fill in the fields and click Generate Email..."></textarea>
@@ -1572,7 +1813,182 @@
         </div>
     </div>
 
+    <!-- ── UPS PRINT FRAME ── -->
+    <iframe id="ups-print-frame"></iframe>
+
     <script>
+        // ── LOGIN ──
+        const SITE_PASSWORD = 'Ezeefiber#1';
+
+        function checkLogin() {
+            const input = document.getElementById('login-password').value;
+            const card  = document.getElementById('login-card');
+            if (input === SITE_PASSWORD) {
+                sessionStorage.setItem('ef_auth', '1');
+                document.getElementById('login-overlay').style.display = 'none';
+                document.getElementById('signout-btn').style.display = 'block';
+            } else {
+                document.getElementById('login-error').textContent = 'Incorrect password. Please try again.';
+                card.classList.remove('shake');
+                void card.offsetWidth; // reflow to restart animation
+                card.classList.add('shake');
+                document.getElementById('login-password').value = '';
+                setTimeout(() => card.classList.remove('shake'), 400);
+            }
+        }
+
+        function signOut() {
+            sessionStorage.removeItem('ef_auth');
+            document.getElementById('login-overlay').style.display = 'flex';
+            document.getElementById('signout-btn').style.display = 'none';
+            document.getElementById('login-password').value = '';
+            document.getElementById('login-error').textContent = '';
+        }
+
+        // Check if already authenticated this session
+        if (sessionStorage.getItem('ef_auth') === '1') {
+            document.getElementById('login-overlay').style.display = 'none';
+            document.getElementById('signout-btn').style.display = 'block';
+        }
+
+        // ── UPS RETURN LABEL PRINT ──
+        function printUPSLabel(brand) {
+            const isTachus = brand === 'tachus';
+            const acct = document.getElementById(isTachus ? 'ter-t-acct' : 'ter-e-acct').value || '';
+            const wo   = document.getElementById(isTachus ? 'ter-t-wo'   : 'ter-e-wo').value   || '';
+
+            const html = `<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ezee Fiber UPS Return Label</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: Arial, sans-serif; font-size: 13px; color: #000; background: #fff; padding: 30px; }
+  .page { max-width: 680px; margin: 0 auto; }
+
+  /* Header */
+  .header { background: #00b2c8; color: #fff; text-align: center; padding: 22px 20px; margin-bottom: 24px; border-radius: 4px; }
+  .header h1 { font-size: 22px; font-weight: 800; line-height: 1.3; }
+
+  /* Section title */
+  .section-title { font-size: 16px; font-weight: 800; margin-bottom: 14px; }
+
+  /* Numbered steps */
+  .step { display: flex; gap: 14px; margin-bottom: 16px; align-items: flex-start; }
+  .step-num { width: 28px; height: 28px; border-radius: 50%; background: #00b2c8; color: #fff; font-weight: 800; font-size: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .step-text { flex: 1; line-height: 1.5; }
+  .step-text strong { font-weight: 700; }
+
+  /* CAMS table */
+  .cams-table { border-collapse: collapse; width: 100%; margin: 10px 0 0 42px; font-size: 12px; }
+  .cams-table th { background: #00b2c8; color: #fff; padding: 6px 10px; text-align: left; font-weight: 700; border: 1px solid #00b2c8; }
+  .cams-table td { padding: 6px 10px; border: 1px solid #ccc; }
+  .cams-table .company-cell { display: flex; align-items: center; gap: 8px; }
+
+  /* Input boxes */
+  .input-row { display: flex; gap: 40px; margin: 10px 0 0 42px; }
+  .input-group { flex: 1; }
+  .input-group label { display: block; font-weight: 800; font-size: 12px; margin-bottom: 4px; }
+  .input-box { border: 1px solid #aaa; min-height: 28px; padding: 4px 8px; font-size: 13px; font-weight: 600; }
+
+  /* Divider */
+  .divider { border: none; border-top: 1px solid #ccc; margin: 22px 0; }
+
+  /* Footer */
+  .footer { font-size: 9px; color: #555; margin-top: 20px; line-height: 1.5; }
+  .ups-logo { text-align: right; margin-top: 16px; }
+  .ups-logo-box { display: inline-block; background: #351c15; color: #fab80a; font-weight: 900; font-size: 18px; padding: 6px 14px; border-radius: 4px; letter-spacing: 1px; }
+
+  @media print {
+    body { padding: 15px; }
+    @page { margin: 10mm; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <h1>Corporate Retail Solutions Program for<br>Ezee Fiber</h1>
+  </div>
+
+  <div class="section-title">Customer Instructions</div>
+
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-text">
+      Locate the nearest participating location by either of the following two options:<br>
+      Go to <strong>theupsstore.com/locations</strong>, enter address information and choose the most convenient location.<br>
+      Or call <strong>800.789.4623</strong> and request the nearest The UPS Store® location.
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-text">
+      Please take this document to The UPS Store location and tell the center associate you are part of the Corporate Retail Solutions program for <strong>Ezee Fiber</strong>.
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-text">This program has been designed to provide customer return services.</div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="section-title">Instructions for The UPS Store location:</div>
+  <p style="margin-bottom:14px;">Follow the instructions listed below to process this transaction.</p>
+
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-text">Access the appropriate CAMS workflow. Search for "Ezee Fiber" on the CAMS homepage.
+      <table class="cams-table" style="margin-left:0;margin-top:8px;">
+        <tr><th>Company</th><th>Workflow</th></tr>
+        <tr><td><div class="company-cell">Ezee Fiber</div></td><td>Customer Returns</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-text">
+      This customer has modems to be packed and shipped. You will need the <strong><u>Return Code:EZFBRT</u></strong> and the below in order to process the workflow.<br><br>
+      <div class="input-row">
+        <div class="input-group">
+          <label>Customer Account Number</label>
+          <div class="input-box">${acct}</div>
+        </div>
+        <div class="input-group">
+          <label>Customer Work Order Number</label>
+          <div class="input-box">${wo}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-text">Enter the required information into the workflow and press "Next" to complete the transaction.</div>
+  </div>
+
+  <p class="footer">The UPS Store® locations are independently owned and operated by franchisees of The UPS Store, Inc. in the USA and by its master licensee and its franchisees in Canada. Products, services, pricing and hours of operation may vary by location. Copyright® 2019 The UPS Store, Inc. All rights reserved MS330_27960519</p>
+
+  <div class="ups-logo"><div class="ups-logo-box">The UPS Store® <span style="font-size:22px;">🟤</span></div></div>
+
+</div>
+</body>
+</html>`;
+
+            const frame = document.getElementById('ups-print-frame');
+            frame.srcdoc = html;
+            frame.onload = () => {
+                frame.contentWindow.focus();
+                frame.contentWindow.print();
+            };
+        }
+
         // ── NOTE SUB-TAB SWITCHING ──
         function switchNoteTab(tab, btnEl) {
             document.querySelectorAll('.note-sub-page').forEach(p => p.classList.remove('active'));
@@ -1916,6 +2332,22 @@ Customer Report: ${document.getElementById('cecr-customerReport').value}`;
             document.querySelectorAll('.priority-btn').forEach(btn => btn.classList.remove('active'));
             document.getElementById('cecr-priority-display').textContent = '';
             document.getElementById('cecrOutputSection').classList.remove('show');
+        }
+
+        // ── EMAIL TEMPLATE RESET ──
+        function resetEmailTemplate(outputId, fieldIds, routerPrefix) {
+            document.getElementById(outputId).value = '';
+            fieldIds.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.value = '';
+            });
+            if (routerPrefix) {
+                // Clear router type buttons
+                document.querySelectorAll(`#${routerPrefix}-router-display`).forEach(el => el.textContent = '');
+                document.querySelectorAll('.router-type-btn').forEach(btn => btn.classList.remove('active'));
+                if (routerPrefix === 'ter-t') routerTypeSelected['tachus'] = '';
+                if (routerPrefix === 'ter-e') routerTypeSelected['ezee'] = '';
+            }
         }
 
         // ── REFER A FRIEND ──
