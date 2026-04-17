@@ -334,6 +334,44 @@
         .note-sub-page { display: none; }
         .note-sub-page.active { display: block; }
 
+        /* ── ROUTER TYPE BUTTONS ── */
+        .router-type-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 0.25rem;
+        }
+
+        .router-type-btn {
+            padding: 0.4rem 0.75rem;
+            border: 2px solid #6b7280;
+            border-radius: 0.375rem;
+            background: #4b5563;
+            color: #d1d5db;
+            font-size: 0.78rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .router-type-btn:hover { background: #6b7280; color: #f9fafb; }
+
+        .router-type-btn.active {
+            background: #FB612F;
+            border-color: #FB612F;
+            color: white;
+            box-shadow: 0 2px 6px rgba(251,97,47,0.35);
+        }
+
+        .router-type-display {
+            display: block;
+            margin-top: 0.4rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #FB612F;
+        }
+
         /* ── CECR PRIORITY BUTTONS ── */
         .priority-row {
             display: flex;
@@ -477,6 +515,123 @@
             color: #6b7280;
         }
 
+        /* ── EMAIL TEMPLATE FORM LAYOUT ── */
+        .email-template-form {
+            display: flex;
+            gap: 2rem;
+            padding: 1.5rem;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .etf-fields {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            min-width: 220px;
+            flex: 0 0 240px;
+        }
+
+        .etf-generate-btn { margin-top: 0.5rem; }
+
+        .etf-output-wrap {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .etf-output-wrap .output-box textarea {
+            min-height: 220px;
+        }
+
+        /* ── EMAIL TEMPLATE FORM LAYOUT ── */
+        .email-template-form {
+            display: flex;
+            gap: 2rem;
+            padding: 1.5rem;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .etf-fields {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            min-width: 220px;
+            flex: 0 0 260px;
+        }
+
+        .etf-generate-btn {
+            margin-top: 0.5rem;
+            background: #61bb46;
+        }
+
+        .etf-output-wrap {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .etf-output-wrap .output-box textarea {
+            min-height: 220px;
+        }
+
+        /* ── EMAIL MINI TABS ── */
+        .email-mini-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            padding: 1rem 1.5rem 0 1.5rem;
+            background: #252525;
+            border-bottom: 2px solid #3a3a3a;
+        }
+
+        .email-mini-btn {
+            padding: 0.45rem 1rem;
+            border: 2px solid #4b5563;
+            border-radius: 2rem;
+            background: transparent;
+            color: #9ca3af;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.18s;
+            margin-bottom: 0.6rem;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+        }
+
+        .email-mini-btn:hover { color: #f9fafb; border-color: #6b7280; }
+
+        .email-mini-nav-tachus .email-mini-btn-active {
+            background: #61bb46;
+            border-color: #61bb46;
+            color: white;
+            box-shadow: 0 2px 8px rgba(97,187,70,0.35);
+        }
+
+        .email-mini-nav-ezee .email-mini-btn-active {
+            background: #FB612F;
+            border-color: #FB612F;
+            color: white;
+            box-shadow: 0 2px 8px rgba(251,97,47,0.35);
+        }
+
+        .email-mini-content { flex: 1; }
+
+        .email-mini-page { display: none; }
+        .email-mini-page.active {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            min-height: 55vh;
+            padding-top: 0.5rem;
+        }
+
+        .email-template-placeholder { width: 100%; text-align: center; }
+
         /* ── EMAIL TEMPLATES PAGE ── */
         .email-page {
             min-height: 80vh;
@@ -524,7 +679,7 @@
 
         /* ── EMAIL SUB-PAGES ── */
         .email-sub-page { display: none; }
-        .email-sub-page.active { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 70vh; }
+        .email-sub-page.active { display: flex; flex-direction: column; min-height: 70vh; }
 
         /* ── TACHUS brand ── */
         .tachus-mark {
@@ -1022,7 +1177,7 @@
     <div id="page-email" class="page">
         <div class="email-page">
 
-            <!-- Email Sub-Tab Nav -->
+            <!-- Email Brand Nav -->
             <nav class="email-sub-nav">
                 <button class="email-sub-btn active-tachus" id="sub-btn-tachus" onclick="switchEmailTab('tachus')">
                     <span class="sub-indicator dot-tachus"></span>Tachus Email Templates
@@ -1034,14 +1189,282 @@
 
             <!-- Tachus Sub-Page -->
             <div id="email-sub-tachus" class="email-sub-page active">
-                <div class="tachus-mark">Tachus Email Templates</div>
-                <div class="brand-sub">Coming Soon</div>
+                <nav class="email-mini-nav email-mini-nav-tachus">
+                <button class="email-mini-btn email-mini-btn-active" id="email-tachus-btn-cancellation" onclick="switchEmailMiniTab('tachus', 'cancellation', this)" style="--mini-accent:#61bb46">Equipment Return</button>
+                <button class="email-mini-btn" id="email-tachus-btn-requesting-pictures" onclick="switchEmailMiniTab('tachus', 'requesting-pictures', this)" style="--mini-accent:#61bb46">Requesting Pictures</button>
+                <button class="email-mini-btn" id="email-tachus-btn-wifi-security-key" onclick="switchEmailMiniTab('tachus', 'wifi-security-key', this)" style="--mini-accent:#61bb46">WiFi Security Key</button>
+                                                <button class="email-mini-btn" id="email-tachus-btn-portal-password-reset" onclick="switchEmailMiniTab('tachus', 'portal-password-reset', this)" style="--mini-accent:#61bb46">Customer Portal Password Reset</button>
+                <button class="email-mini-btn" id="email-tachus-btn-lifetime-pricing" onclick="switchEmailMiniTab('tachus', 'lifetime-pricing', this)" style="--mini-accent:#61bb46">Lifetime Pricing Declaration</button>
+                <button class="email-mini-btn" id="email-tachus-btn-construction-case" onclick="switchEmailMiniTab('tachus', 'construction-case', this)" style="--mini-accent:#61bb46">Construction Case</button>
+                <button class="email-mini-btn" id="email-tachus-btn-outage" onclick="switchEmailMiniTab('tachus', 'outage', this)" style="--mini-accent:#61bb46">Outage</button>
+                </nav>
+                <div class="email-mini-content">
+                                <div id="email-tachus-cancellation" class="email-mini-page active">
+                    <div class="email-template-form">
+                        <div class="etf-fields">
+                            <div class="form-group">
+                                <label for="ter-t-name">Customer Name</label>
+                                <input type="text" id="ter-t-name" placeholder="Enter customer name">
+                            </div>
+                            <div class="form-group">
+                                <label for="ter-t-modem">Modem SN</label>
+                                <input type="text" id="ter-t-modem" placeholder="Enter modem serial number">
+                            </div>
+                            <div class="form-group">
+                                <label>Router Type</label>
+                                <div class="router-type-grid">
+                                    <button type="button" class="router-type-btn" id="ter-t-router-EERO-PRO6E" onclick="setRouterType('ter-t', 'EERO PRO6E', this)">EERO PRO6E</button>
+                                    <button type="button" class="router-type-btn" id="ter-t-router-EERO-MAX7" onclick="setRouterType('ter-t', 'EERO MAX7', this)">EERO MAX7</button>
+                                    <button type="button" class="router-type-btn" id="ter-t-router-EVO-AP6700" onclick="setRouterType('ter-t', 'EVO AP6700', this)">EVO AP6700</button>
+                                    <button type="button" class="router-type-btn" id="ter-t-router-TP-LINK-P50" onclick="setRouterType('ter-t', 'TP-LINK P50', this)">TP-LINK P50</button>
+                                    <button type="button" class="router-type-btn" id="ter-t-router-TP-LINK-PB70" onclick="setRouterType('ter-t', 'TP-LINK PB70', this)">TP-LINK PB70</button>
+                                    <button type="button" class="router-type-btn" id="ter-t-router-TP-LINK-P110" onclick="setRouterType('ter-t', 'TP-LINK P110', this)">TP-LINK P110</button>
+                                </div>
+                                <span id="ter-t-router-display" class="router-type-display"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="ter-t-router-sn">Router SN</label>
+                                <input type="text" id="ter-t-router-sn" placeholder="Enter router serial number">
+                            </div>
+                            <button class="btn btn-primary etf-generate-btn" onclick="generateEquipReturn('tachus')">Generate Email</button>
+                        </div>
+                        <div class="etf-output-wrap">
+                            <div class="output-header">
+                                <h3>Email Output</h3>
+                                <button class="btn btn-success" onclick="copyEquipReturn('tachus')">
+                                    <span id="ter-t-copy-icon">&#128203;</span>
+                                    <span id="ter-t-copy-text">Copy</span>
+                                </button>
+                            </div>
+                            <div class="output-box">
+                                <textarea id="ter-t-output" spellcheck="false" placeholder="Fill in the fields and click Generate Email..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="email-tachus-requesting-pictures" class="email-mini-page">
+                    <div class="email-template-form">
+                        <div class="etf-fields">
+                            <div class="form-group">
+                                <label for="trp-name">Customer Name</label>
+                                <input type="text" id="trp-name" placeholder="Enter customer name">
+                            </div>
+                            <div class="form-group">
+                                <label for="trp-ticket">Ticket ID</label>
+                                <input type="text" id="trp-ticket" placeholder="Enter ticket ID">
+                            </div>
+                            <button class="btn btn-primary etf-generate-btn" onclick="generateReqPic('tachus')">Generate Email</button>
+                        </div>
+                        <div class="etf-output-wrap">
+                            <div class="output-header">
+                                <h3>Email Output</h3>
+                                <button class="btn btn-success" onclick="copyReqPic('tachus')">
+                                    <span id="trp-copy-icon">&#128203;</span>
+                                    <span id="trp-copy-text">Copy</span>
+                                </button>
+                            </div>
+                            <div class="output-box">
+                                <textarea id="trp-output" spellcheck="false" placeholder="Fill in the fields and click Generate Email..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="email-tachus-wifi-security-key" class="email-mini-page">
+                    <div class="email-template-form">
+                        <div class="etf-fields">
+                            <div class="form-group">
+                                <label for="twsk-name">Customer First Name</label>
+                                <input type="text" id="twsk-name" placeholder="Enter first name">
+                            </div>
+                            <button class="btn btn-primary etf-generate-btn" onclick="generateWifiKey('tachus')">Generate Email</button>
+                        </div>
+                        <div class="etf-output-wrap">
+                            <div class="output-header">
+                                <h3>Email Output</h3>
+                                <button class="btn btn-success" onclick="copyWifiKey('tachus')">
+                                    <span id="twsk-copy-icon">&#128203;</span>
+                                    <span id="twsk-copy-text">Copy</span>
+                                </button>
+                            </div>
+                            <div class="output-box">
+                                <textarea id="twsk-output" spellcheck="false" placeholder="Fill in the fields and click Generate Email..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="email-tachus-portal-password-reset" class="email-mini-page">
+                    <div class="email-template-placeholder">
+                        <div class="coming-soon-placeholder">
+                            <div class="placeholder-mark" style="color:#61bb46;">Customer Portal Password Reset</div>
+                            <div class="placeholder-sub">Coming Soon</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="email-tachus-lifetime-pricing" class="email-mini-page">
+                    <div class="email-template-placeholder">
+                        <div class="coming-soon-placeholder">
+                            <div class="placeholder-mark" style="color:#61bb46;">Lifetime Pricing Declaration</div>
+                            <div class="placeholder-sub">Coming Soon</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="email-tachus-construction-case" class="email-mini-page">
+                    <div class="email-template-placeholder">
+                        <div class="coming-soon-placeholder">
+                            <div class="placeholder-mark" style="color:#61bb46;">Construction Case</div>
+                            <div class="placeholder-sub">Coming Soon</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="email-tachus-outage" class="email-mini-page">
+                    <div class="email-template-placeholder">
+                        <div class="coming-soon-placeholder">
+                            <div class="placeholder-mark" style="color:#61bb46;">Outage</div>
+                            <div class="placeholder-sub">Coming Soon</div>
+                        </div>
+                    </div>
+                </div>
+                </div>
             </div>
 
             <!-- EzeeFiber Sub-Page -->
             <div id="email-sub-ezee" class="email-sub-page">
-                <div class="ezee-mark">EzeeFiber Email Templates</div>
-                <div class="brand-sub">Coming Soon</div>
+                <nav class="email-mini-nav email-mini-nav-ezee">
+                <button class="email-mini-btn email-mini-btn-active" id="email-ezee-btn-cancellation" onclick="switchEmailMiniTab('ezee', 'cancellation', this)" style="--mini-accent:#FB612F">Equipment Return</button>
+                <button class="email-mini-btn" id="email-ezee-btn-requesting-pictures" onclick="switchEmailMiniTab('ezee', 'requesting-pictures', this)" style="--mini-accent:#FB612F">Requesting Pictures</button>
+                <button class="email-mini-btn" id="email-ezee-btn-wifi-security-key" onclick="switchEmailMiniTab('ezee', 'wifi-security-key', this)" style="--mini-accent:#FB612F">WiFi Security Key</button>
+                                                <button class="email-mini-btn" id="email-ezee-btn-portal-password-reset" onclick="switchEmailMiniTab('ezee', 'portal-password-reset', this)" style="--mini-accent:#FB612F">Customer Portal Password Reset</button>
+                <button class="email-mini-btn" id="email-ezee-btn-lifetime-pricing" onclick="switchEmailMiniTab('ezee', 'lifetime-pricing', this)" style="--mini-accent:#FB612F">Lifetime Pricing Declaration</button>
+                <button class="email-mini-btn" id="email-ezee-btn-construction-case" onclick="switchEmailMiniTab('ezee', 'construction-case', this)" style="--mini-accent:#FB612F">Construction Case</button>
+                <button class="email-mini-btn" id="email-ezee-btn-outage" onclick="switchEmailMiniTab('ezee', 'outage', this)" style="--mini-accent:#FB612F">Outage</button>
+                </nav>
+                <div class="email-mini-content">
+                                <div id="email-ezee-cancellation" class="email-mini-page active">
+                    <div class="email-template-form">
+                        <div class="etf-fields">
+                            <div class="form-group">
+                                <label for="ter-e-name">Customer Name</label>
+                                <input type="text" id="ter-e-name" placeholder="Enter customer name">
+                            </div>
+                            <div class="form-group">
+                                <label for="ter-e-modem">Modem SN</label>
+                                <input type="text" id="ter-e-modem" placeholder="Enter modem serial number">
+                            </div>
+                            <div class="form-group">
+                                <label>Router Type</label>
+                                <div class="router-type-grid">
+                                    <button type="button" class="router-type-btn" id="ter-e-router-EERO-PRO6E" onclick="setRouterType('ter-e', 'EERO PRO6E', this)">EERO PRO6E</button>
+                                    <button type="button" class="router-type-btn" id="ter-e-router-EERO-MAX7" onclick="setRouterType('ter-e', 'EERO MAX7', this)">EERO MAX7</button>
+                                    <button type="button" class="router-type-btn" id="ter-e-router-EVO-AP6700" onclick="setRouterType('ter-e', 'EVO AP6700', this)">EVO AP6700</button>
+                                    <button type="button" class="router-type-btn" id="ter-e-router-TP-LINK-P50" onclick="setRouterType('ter-e', 'TP-LINK P50', this)">TP-LINK P50</button>
+                                    <button type="button" class="router-type-btn" id="ter-e-router-TP-LINK-PB70" onclick="setRouterType('ter-e', 'TP-LINK PB70', this)">TP-LINK PB70</button>
+                                    <button type="button" class="router-type-btn" id="ter-e-router-TP-LINK-P110" onclick="setRouterType('ter-e', 'TP-LINK P110', this)">TP-LINK P110</button>
+                                </div>
+                                <span id="ter-e-router-display" class="router-type-display"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="ter-e-router-sn">Router SN</label>
+                                <input type="text" id="ter-e-router-sn" placeholder="Enter router serial number">
+                            </div>
+                            <button class="btn btn-primary etf-generate-btn" style="background:#FB612F;" onclick="generateEquipReturn('ezee')">Generate Email</button>
+                        </div>
+                        <div class="etf-output-wrap">
+                            <div class="output-header">
+                                <h3>Email Output</h3>
+                                <button class="btn btn-success" onclick="copyEquipReturn('ezee')">
+                                    <span id="ter-e-copy-icon">&#128203;</span>
+                                    <span id="ter-e-copy-text">Copy</span>
+                                </button>
+                            </div>
+                            <div class="output-box">
+                                <textarea id="ter-e-output" spellcheck="false" placeholder="Fill in the fields and click Generate Email..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="email-ezee-requesting-pictures" class="email-mini-page">
+                    <div class="email-template-form">
+                        <div class="etf-fields">
+                            <div class="form-group">
+                                <label for="erp-name">Customer Name</label>
+                                <input type="text" id="erp-name" placeholder="Enter customer name">
+                            </div>
+                            <div class="form-group">
+                                <label for="erp-ticket">Ticket ID</label>
+                                <input type="text" id="erp-ticket" placeholder="Enter ticket ID">
+                            </div>
+                            <button class="btn btn-primary etf-generate-btn" style="background:#FB612F;" onclick="generateReqPic('ezee')">Generate Email</button>
+                        </div>
+                        <div class="etf-output-wrap">
+                            <div class="output-header">
+                                <h3>Email Output</h3>
+                                <button class="btn btn-success" onclick="copyReqPic('ezee')">
+                                    <span id="erp-copy-icon">&#128203;</span>
+                                    <span id="erp-copy-text">Copy</span>
+                                </button>
+                            </div>
+                            <div class="output-box">
+                                <textarea id="erp-output" spellcheck="false" placeholder="Fill in the fields and click Generate Email..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="email-ezee-wifi-security-key" class="email-mini-page">
+                    <div class="email-template-form">
+                        <div class="etf-fields">
+                            <div class="form-group">
+                                <label for="ewsk-name">Customer First Name</label>
+                                <input type="text" id="ewsk-name" placeholder="Enter first name">
+                            </div>
+                            <button class="btn btn-primary etf-generate-btn" style="background:#FB612F;" onclick="generateWifiKey('ezee')">Generate Email</button>
+                        </div>
+                        <div class="etf-output-wrap">
+                            <div class="output-header">
+                                <h3>Email Output</h3>
+                                <button class="btn btn-success" onclick="copyWifiKey('ezee')">
+                                    <span id="ewsk-copy-icon">&#128203;</span>
+                                    <span id="ewsk-copy-text">Copy</span>
+                                </button>
+                            </div>
+                            <div class="output-box">
+                                <textarea id="ewsk-output" spellcheck="false" placeholder="Fill in the fields and click Generate Email..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="email-ezee-portal-password-reset" class="email-mini-page">
+                    <div class="email-template-placeholder">
+                        <div class="coming-soon-placeholder">
+                            <div class="placeholder-mark" style="color:#FB612F;">Customer Portal Password Reset</div>
+                            <div class="placeholder-sub">Coming Soon</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="email-ezee-lifetime-pricing" class="email-mini-page">
+                    <div class="email-template-placeholder">
+                        <div class="coming-soon-placeholder">
+                            <div class="placeholder-mark" style="color:#FB612F;">Lifetime Pricing Declaration</div>
+                            <div class="placeholder-sub">Coming Soon</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="email-ezee-construction-case" class="email-mini-page">
+                    <div class="email-template-placeholder">
+                        <div class="coming-soon-placeholder">
+                            <div class="placeholder-mark" style="color:#FB612F;">Construction Case</div>
+                            <div class="placeholder-sub">Coming Soon</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="email-ezee-outage" class="email-mini-page">
+                    <div class="email-template-placeholder">
+                        <div class="coming-soon-placeholder">
+                            <div class="placeholder-mark" style="color:#FB612F;">Outage</div>
+                            <div class="placeholder-sub">Coming Soon</div>
+                        </div>
+                    </div>
+                </div>
+                </div>
             </div>
 
         </div>
@@ -1069,13 +1492,26 @@
             document.querySelectorAll('.email-sub-page').forEach(p => p.classList.remove('active'));
             document.getElementById('sub-btn-tachus').classList.remove('active-tachus');
             document.getElementById('sub-btn-ezee').classList.remove('active-ezee');
-
             document.getElementById('email-sub-' + tab).classList.add('active');
             if (tab === 'tachus') {
                 document.getElementById('sub-btn-tachus').classList.add('active-tachus');
+                // Default to cancellation tab
+                switchEmailMiniTab('tachus', 'cancellation', document.getElementById('email-tachus-btn-cancellation'));
             } else {
                 document.getElementById('sub-btn-ezee').classList.add('active-ezee');
+                switchEmailMiniTab('ezee', 'cancellation', document.getElementById('email-ezee-btn-cancellation'));
             }
+        }
+
+        // ── EMAIL MINI TAB SWITCHING ──
+        function switchEmailMiniTab(brand, slug, btnEl) {
+            // hide all mini pages for this brand
+            document.querySelectorAll(`#email-sub-${brand} .email-mini-page`).forEach(p => p.classList.remove('active'));
+            // deactivate all mini buttons for this brand
+            document.querySelectorAll(`#email-sub-${brand} .email-mini-btn`).forEach(b => b.classList.remove('email-mini-btn-active'));
+            // activate selected
+            document.getElementById(`email-${brand}-${slug}`).classList.add('active');
+            btnEl.classList.add('email-mini-btn-active');
         }
 
         // ── YES/NO ──
@@ -1378,6 +1814,196 @@ Customer Report: ${document.getElementById('cecr-customerReport').value}`;
             document.querySelectorAll('.priority-btn').forEach(btn => btn.classList.remove('active'));
             document.getElementById('cecr-priority-display').textContent = '';
             document.getElementById('cecrOutputSection').classList.remove('show');
+        }
+
+        // ── EQUIPMENT RETURN ──
+        const routerTypeSelected = { tachus: '', ezee: '' };
+
+        function setRouterType(prefix, value, btnEl) {
+            const brand = prefix.includes('-t') ? 'tachus' : 'ezee';
+            routerTypeSelected[brand] = value;
+            // deactivate all router buttons in this form
+            btnEl.closest('.router-type-grid').querySelectorAll('.router-type-btn').forEach(b => b.classList.remove('active'));
+            btnEl.classList.add('active');
+            const dispId = prefix.replace('ter-t', 'ter-t').replace('ter-e', 'ter-e') + '-router-display';
+            document.getElementById(dispId).textContent = value;
+        }
+
+        function generateEquipReturn(brand) {
+            const isTachus = brand === 'tachus';
+            const p        = isTachus ? 'ter-t' : 'ter-e';
+            const name     = document.getElementById(`${p}-name`).value || '[Customer Name]';
+            const modem    = document.getElementById(`${p}-modem`).value || '[Modem SN]';
+            const router   = routerTypeSelected[brand] || '[Router Type]';
+            const routerSN = document.getElementById(`${p}-router-sn`).value || '[Router SN]';
+
+            document.getElementById(`${p}-output`).value =
+`Dear ${name}
+
+Thank you for choosing Ezee Fiber as your service Provider.  We strive to make the return process as convenient as possible for our customers.
+
+To facilitate the return process, we kindly request that you return the Ezee Fiber equipment to the nearest UPS store at your earliest convenience.
+This will ensure a smooth and efficient return process for you. Please follow the instructions below to initiate the return:
+
+
+1. Take the Ezee Fiber equipment, ethernet cable and plugs to your nearest UPS store.
+2. Present the attached PDF or have it available to show the UPS Store employee.
+
+  MODEM: ${modem}
+  ROUTER: ${router}  : ${routerSN}
+
+Once the equipment has been received and inspected, we will promptly process the disconnection of your account.
+
+Please keep a copy of the return provided to you by the UPS Store associate for your records.
+If you have any questions or need assistance with the return process, please do not hesitate to contact our customer service team at 713-255-7500 or reply to this email. We are here to help and ensure that your return experience is hassle-free.
+
+Thank you for choosing Ezee Fiber. We appreciate your business and look forward to serving you again in the future.`;
+        }
+
+        function copyEquipReturn(brand) {
+            const p      = brand === 'tachus' ? 'ter-t' : 'ter-e';
+            const output = document.getElementById(`${p}-output`).value;
+            navigator.clipboard.writeText(output).then(() => {
+                document.getElementById(`${p}-copy-icon`).textContent = '✓';
+                document.getElementById(`${p}-copy-text`).textContent = 'Copied!';
+                setTimeout(() => {
+                    document.getElementById(`${p}-copy-icon`).textContent = '📋';
+                    document.getElementById(`${p}-copy-text`).textContent = 'Copy';
+                }, 2000);
+            });
+        }
+
+        // ── CANCELLATION (renamed functions kept for JS compat) ──
+        function generateCancellation(brand) {
+            const isTachus = brand === 'tachus';
+            const nameId   = isTachus ? 'tcan-name'   : 'ecan-name';
+            const ticketId = isTachus ? 'tcan-ticket'  : 'ecan-ticket';
+            const outputId = isTachus ? 'tcan-output'  : 'ecan-output';
+            const phone    = isTachus ? '832.791.1100' : '833-920-5400';
+            const support  = isTachus ? 'Tachus Customer Support' : 'EzeeFiber Customer Support';
+            const name     = document.getElementById(nameId).value || '[Customer Name]';
+            const ticket   = document.getElementById(ticketId).value || '[Ticket ID]';
+
+            document.getElementById(outputId).value =
+`Hello ${name},
+
+Your cancellation request (Ticket ${ticket}) has been received and is being processed.
+
+If you have any questions or would like to discuss your options, please don't hesitate to reach out to us at ${phone}.
+
+Thank you for being a valued customer. We hope to have the opportunity to serve you again in the future.
+
+ 
+Best regards,
+${support}
+ ${phone}`;
+        }
+
+        function copyCancellation(brand) {
+            const outputId = brand === 'tachus' ? 'tcan-output'    : 'ecan-output';
+            const iconId   = brand === 'tachus' ? 'tcan-copy-icon' : 'ecan-copy-icon';
+            const textId   = brand === 'tachus' ? 'tcan-copy-text' : 'ecan-copy-text';
+            navigator.clipboard.writeText(document.getElementById(outputId).value).then(() => {
+                document.getElementById(iconId).textContent = '✓';
+                document.getElementById(textId).textContent = 'Copied!';
+                setTimeout(() => {
+                    document.getElementById(iconId).textContent = '📋';
+                    document.getElementById(textId).textContent = 'Copy';
+                }, 2000);
+            });
+        }
+
+        // ── REQUESTING PICTURES ──
+        function generateReqPic(brand) {
+            if (brand === 'tachus') {
+                const name   = document.getElementById('trp-name').value || '[Customer Name]';
+                const ticket = document.getElementById('trp-ticket').value || '[Ticket ID]';
+                document.getElementById('trp-output').value =
+`Hello ${name},
+
+Your ticket ${ticket} is being processed.   Please attach any pictures and additional details related to this case to this email.  Please feel free to keep in touch if you need any further assistance.
+
+ 
+Best regards, 
+Tachus Customer Support
+ 832.791.1100`;
+            } else {
+                const name   = document.getElementById('erp-name').value || '[Customer Name]';
+                const ticket = document.getElementById('erp-ticket').value || '[Ticket ID]';
+                document.getElementById('erp-output').value =
+`Hello ${name},
+
+Your ticket ${ticket} is being processed.   Please attach any pictures and additional details related to this case to this email.  Please feel free to keep in touch if you need any further assistance.
+
+ 
+Best regards, 
+EzeeFiber Customer Support
+ 833-920-5400`;
+            }
+        }
+
+        function copyReqPic(brand) {
+            const outputId  = brand === 'tachus' ? 'trp-output'    : 'erp-output';
+            const iconId    = brand === 'tachus' ? 'trp-copy-icon' : 'erp-copy-icon';
+            const textId    = brand === 'tachus' ? 'trp-copy-text' : 'erp-copy-text';
+            navigator.clipboard.writeText(document.getElementById(outputId).value).then(() => {
+                document.getElementById(iconId).textContent = '✓';
+                document.getElementById(textId).textContent = 'Copied!';
+                setTimeout(() => {
+                    document.getElementById(iconId).textContent = '📋';
+                    document.getElementById(textId).textContent = 'Copy';
+                }, 2000);
+            });
+        }
+
+        // ── WIFI SECURITY KEY ──
+        function generateWifiKey(brand) {
+            const isTachus = brand === 'tachus';
+            const nameId   = isTachus ? 'twsk-name'   : 'ewsk-name';
+            const outputId = isTachus ? 'twsk-output'  : 'ewsk-output';
+            const phone    = isTachus ? '832.791.1100' : '833-920-5400';
+            const support  = isTachus ? 'Tachus Customer Service' : 'EzeeFiber Customer Service';
+            const name     = document.getElementById(nameId).value || '{{{Recipient.FirstName}}}';
+
+            document.getElementById(outputId).value =
+`Subject: Assistance with Wi-Fi Connection Issue
+
+
+Hello ${name},
+
+
+Thank you for reaching out!
+
+
+It appears that your computer is prompting you to enter a PIN to connect to your Wi-Fi network. This screen may look similar to the one below:
+To resolve this issue, please select the option labeled "Connect using a security key instead" (highlighted in the image above). Once you select this option, you will be prompted to enter your regular Wi-Fi password instead of a PIN.
+
+
+If you continue to experience issues or need further assistance, please don't hesitate to contact our Technical Support team at ${phone}, option 3.
+
+
+Thank you for your cooperation. We're here to help if you need additional support!
+
+
+Kind Regards,
+
+${support}
+
+${phone}`;
+        }
+
+        function copyWifiKey(brand) {
+            const outputId = brand === 'tachus' ? 'twsk-output'  : 'ewsk-output';
+            const iconId   = brand === 'tachus' ? 'twsk-copy-icon' : 'ewsk-copy-icon';
+            const textId   = brand === 'tachus' ? 'twsk-copy-text' : 'ewsk-copy-text';
+            navigator.clipboard.writeText(document.getElementById(outputId).value).then(() => {
+                document.getElementById(iconId).textContent = '✓';
+                document.getElementById(textId).textContent = 'Copied!';
+                setTimeout(() => {
+                    document.getElementById(iconId).textContent = '📋';
+                    document.getElementById(textId).textContent = 'Copy';
+                }, 2000);
+            });
         }
 
         initTroubleshootingGrid();
