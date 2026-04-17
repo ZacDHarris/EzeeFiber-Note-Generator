@@ -334,6 +334,59 @@
         .note-sub-page { display: none; }
         .note-sub-page.active { display: block; }
 
+        /* ── DISPATCH BRAND SELECTOR ── */
+        .dispatch-brand-row {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.25rem 0 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .dispatch-brand-label {
+            font-weight: 600;
+            color: #d1d5db;
+            font-size: 0.95rem;
+        }
+
+        .dispatch-brand-btn {
+            padding: 0.5rem 1.5rem;
+            border: 2px solid #6b7280;
+            border-radius: 0.375rem;
+            background: #4b5563;
+            color: #d1d5db;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .dispatch-brand-btn:hover { background: #6b7280; color: #f9fafb; }
+
+        .dispatch-brand-btn.active-tachus {
+            background: #61bb46;
+            border-color: #61bb46;
+            color: white;
+            box-shadow: 0 2px 8px rgba(97, 187, 70, 0.4);
+        }
+
+        .dispatch-brand-btn.active-ezee {
+            background: #FB612F;
+            border-color: #FB612F;
+            color: white;
+            box-shadow: 0 2px 8px rgba(251, 97, 47, 0.4);
+        }
+
+        .dispatch-brand-display {
+            font-size: 1.3rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-left: 0.5rem;
+        }
+
+        .dispatch-brand-display.brand-tachus { color: #61bb46; }
+        .dispatch-brand-display.brand-ezee   { color: #FB612F; }
+
         /* ── COMING SOON PLACEHOLDER ── */
         .coming-soon-placeholder {
             min-height: 50vh;
@@ -788,9 +841,65 @@
 
         <!-- ── NOTE SUB-PAGE: Dispatch ── -->
         <div id="note-sub-dispatch" class="note-sub-page">
-            <div class="coming-soon-placeholder">
-                <div class="placeholder-mark">Dispatch</div>
-                <div class="placeholder-sub">Coming Soon</div>
+            <div class="container">
+
+                <!-- Brand selector -->
+                <div class="dispatch-brand-row">
+                    <span class="dispatch-brand-label">Customer Type:</span>
+                    <button type="button" class="dispatch-brand-btn" id="dispatch-btn-tachus" onclick="setDispatchBrand('Tachus')">Tachus</button>
+                    <button type="button" class="dispatch-brand-btn" id="dispatch-btn-ezee" onclick="setDispatchBrand('Ezee')">EzeeFiber</button>
+                    <span id="dispatch-brand-display" class="dispatch-brand-display"></span>
+                </div>
+
+                <form id="dispatchForm">
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="dp-customerName">Customer Name</label>
+                            <input type="text" id="dp-customerName" placeholder="Enter customer name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dp-address">Address</label>
+                            <input type="text" id="dp-address" placeholder="Enter address">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dp-accountNumber">Account #</label>
+                            <input type="text" id="dp-accountNumber" placeholder="Enter account #" style="max-width: 220px;">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dp-woNumber">WO #</label>
+                            <input type="text" id="dp-woNumber" placeholder="Enter WO #" style="max-width: 220px;">
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="dp-customerReporting">Customer Reporting</label>
+                            <textarea id="dp-customerReporting" placeholder="Enter customer report"></textarea>
+                        </div>
+
+                    </div>
+                </form>
+
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="generateDispatch()">Generate Note</button>
+                    <button class="btn btn-secondary" onclick="resetDispatch()">Reset Form</button>
+                </div>
+
+                <div id="dpOutputSection" class="output-section">
+                    <div class="output-header">
+                        <h3>Generated Note</h3>
+                        <button class="btn btn-success" onclick="copyDispatch()">
+                            <span id="dpCopyIcon">📋</span>
+                            <span id="dpCopyText">Copy to Dashboard</span>
+                        </button>
+                    </div>
+                    <div class="output-box">
+                        <textarea id="dpGeneratedNote" spellcheck="false"></textarea>
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -1068,6 +1177,66 @@ Are Other Customers Affected: ${yn(hdYesNoData.hd_otherCustomers)}`;
                 btn.classList.remove('active-yes', 'active-no');
             });
             document.getElementById('hdOutputSection').classList.remove('show');
+        }
+
+        // ── DISPATCH ──
+        let dispatchBrand = '';
+
+        function setDispatchBrand(brand) {
+            dispatchBrand = brand;
+            const display = document.getElementById('dispatch-brand-display');
+            const tBtn = document.getElementById('dispatch-btn-tachus');
+            const eBtn = document.getElementById('dispatch-btn-ezee');
+            tBtn.classList.remove('active-tachus');
+            eBtn.classList.remove('active-ezee');
+            if (brand === 'Tachus') {
+                tBtn.classList.add('active-tachus');
+                display.textContent = 'Tachus';
+                display.className = 'dispatch-brand-display brand-tachus';
+            } else {
+                eBtn.classList.add('active-ezee');
+                display.textContent = 'EzeeFiber';
+                display.className = 'dispatch-brand-display brand-ezee';
+            }
+        }
+
+        function generateDispatch() {
+            const brandLine = dispatchBrand ? (dispatchBrand === 'Tachus' ? 'Tachus' : 'EzeeFiber') : '';
+            const note =
+`${brandLine}
+
+Customer Name: ${document.getElementById('dp-customerName').value}
+Address: ${document.getElementById('dp-address').value}
+Account #: ${document.getElementById('dp-accountNumber').value}
+WO #: ${document.getElementById('dp-woNumber').value}
+
+Customer Reporting: ${document.getElementById('dp-customerReporting').value}`;
+
+            document.getElementById('dpGeneratedNote').value = note;
+            document.getElementById('dpOutputSection').classList.add('show');
+            document.getElementById('dpOutputSection').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function copyDispatch() {
+            navigator.clipboard.writeText(document.getElementById('dpGeneratedNote').value).then(() => {
+                document.getElementById('dpCopyIcon').textContent = '✓';
+                document.getElementById('dpCopyText').textContent = 'Copied!';
+                setTimeout(() => {
+                    document.getElementById('dpCopyIcon').textContent = '📋';
+                    document.getElementById('dpCopyText').textContent = 'Copy to Dashboard';
+                }, 2000);
+            });
+        }
+
+        function resetDispatch() {
+            document.getElementById('dispatchForm').reset();
+            dispatchBrand = '';
+            document.getElementById('dispatch-btn-tachus').classList.remove('active-tachus');
+            document.getElementById('dispatch-btn-ezee').classList.remove('active-ezee');
+            const display = document.getElementById('dispatch-brand-display');
+            display.textContent = '';
+            display.className = 'dispatch-brand-display';
+            document.getElementById('dpOutputSection').classList.remove('show');
         }
 
         initTroubleshootingGrid();
