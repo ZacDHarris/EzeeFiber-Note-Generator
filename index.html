@@ -334,6 +334,42 @@
         .note-sub-page { display: none; }
         .note-sub-page.active { display: block; }
 
+        /* ── REFER A FRIEND ── */
+        .raf-form .etf-output-wrap {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .raf-img-preview {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 0.375rem;
+            display: block;
+            opacity: 0.85;
+        }
+
+        .raf-img-preview:first-of-type {
+            margin-bottom: 0.5rem;
+        }
+
+        .raf-img-preview:last-of-type {
+            margin-top: 0.5rem;
+        }
+
+        /* ── RETURN LABEL NOTICE ── */
+        .return-label-notice {
+            margin-top: 0.75rem;
+            padding: 0.6rem 1rem;
+            background: #2d2d2d;
+            border: 2px dashed #FB612F;
+            border-radius: 0.5rem;
+            color: #FB612F;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            text-align: center;
+        }
+
         /* ── ROUTER TYPE BUTTONS ── */
         .router-type-grid {
             display: flex;
@@ -1191,6 +1227,7 @@
             <div id="email-sub-tachus" class="email-sub-page active">
                 <nav class="email-mini-nav email-mini-nav-tachus">
                 <button class="email-mini-btn email-mini-btn-active" id="email-tachus-btn-cancellation" onclick="switchEmailMiniTab('tachus', 'cancellation', this)" style="--mini-accent:#61bb46">Equipment Return</button>
+                <button class="email-mini-btn" id="email-tachus-btn-raf" onclick="switchEmailMiniTab('tachus', 'raf', this)" style="--mini-accent:#61bb46">Refer a Friend</button>
                 <button class="email-mini-btn" id="email-tachus-btn-requesting-pictures" onclick="switchEmailMiniTab('tachus', 'requesting-pictures', this)" style="--mini-accent:#61bb46">Requesting Pictures</button>
                 <button class="email-mini-btn" id="email-tachus-btn-wifi-security-key" onclick="switchEmailMiniTab('tachus', 'wifi-security-key', this)" style="--mini-accent:#61bb46">WiFi Security Key</button>
                                                 <button class="email-mini-btn" id="email-tachus-btn-portal-password-reset" onclick="switchEmailMiniTab('tachus', 'portal-password-reset', this)" style="--mini-accent:#61bb46">Customer Portal Password Reset</button>
@@ -1239,6 +1276,38 @@
                             <div class="output-box">
                                 <textarea id="ter-t-output" spellcheck="false" placeholder="Fill in the fields and click Generate Email..."></textarea>
                             </div>
+                            <div class="return-label-notice">
+                                🔧 Return Label PDF Generator — Coming Soon!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                <div id="email-tachus-raf" class="email-mini-page">
+                    <div class="email-template-form raf-form">
+                        <div class="etf-fields">
+                            <div class="form-group">
+                                <label for="traf-name">Customer Name</label>
+                                <input type="text" id="traf-name" placeholder="Enter customer name">
+                            </div>
+                            <div class="form-group">
+                                <label for="traf-link">RAF Link</label>
+                                <input type="text" id="traf-link" placeholder="Enter referral link" style="width:100%;">
+                            </div>
+                            <button class="btn btn-primary etf-generate-btn" style="background:#61bb46;" onclick="generateRAF('tachus')">Generate Email</button>
+                        </div>
+                        <div class="etf-output-wrap">
+                            <div class="output-header">
+                                <h3>Email Output</h3>
+                                <button class="btn btn-success" onclick="copyRAF('tachus')">
+                                    <span id="traf-copy-icon">&#128203;</span>
+                                    <span id="traf-copy-text">Copy</span>
+                                </button>
+                            </div>
+                            <img src="RAF1.png" class="raf-img-preview" alt="Refer a Friend header">
+                            <div class="output-box">
+                                <textarea id="traf-output" spellcheck="false" placeholder="Fill in the fields and click Generate Email..."></textarea>
+                            </div>
+                            <img src="RAF2.png" class="raf-img-preview" alt="Refer a Friend footer">
                         </div>
                     </div>
                 </div>
@@ -1331,6 +1400,7 @@
             <div id="email-sub-ezee" class="email-sub-page">
                 <nav class="email-mini-nav email-mini-nav-ezee">
                 <button class="email-mini-btn email-mini-btn-active" id="email-ezee-btn-cancellation" onclick="switchEmailMiniTab('ezee', 'cancellation', this)" style="--mini-accent:#FB612F">Equipment Return</button>
+                <button class="email-mini-btn" id="email-ezee-btn-raf" onclick="switchEmailMiniTab('ezee', 'raf', this)" style="--mini-accent:#FB612F">Refer a Friend</button>
                 <button class="email-mini-btn" id="email-ezee-btn-requesting-pictures" onclick="switchEmailMiniTab('ezee', 'requesting-pictures', this)" style="--mini-accent:#FB612F">Requesting Pictures</button>
                 <button class="email-mini-btn" id="email-ezee-btn-wifi-security-key" onclick="switchEmailMiniTab('ezee', 'wifi-security-key', this)" style="--mini-accent:#FB612F">WiFi Security Key</button>
                                                 <button class="email-mini-btn" id="email-ezee-btn-portal-password-reset" onclick="switchEmailMiniTab('ezee', 'portal-password-reset', this)" style="--mini-accent:#FB612F">Customer Portal Password Reset</button>
@@ -1379,6 +1449,38 @@
                             <div class="output-box">
                                 <textarea id="ter-e-output" spellcheck="false" placeholder="Fill in the fields and click Generate Email..."></textarea>
                             </div>
+                            <div class="return-label-notice">
+                                🔧 Return Label PDF Generator — Coming Soon!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                <div id="email-ezee-raf" class="email-mini-page">
+                    <div class="email-template-form raf-form">
+                        <div class="etf-fields">
+                            <div class="form-group">
+                                <label for="eraf-name">Customer Name</label>
+                                <input type="text" id="eraf-name" placeholder="Enter customer name">
+                            </div>
+                            <div class="form-group">
+                                <label for="eraf-link">RAF Link</label>
+                                <input type="text" id="eraf-link" placeholder="Enter referral link" style="width:100%;">
+                            </div>
+                            <button class="btn btn-primary etf-generate-btn" style="background:#FB612F;" onclick="generateRAF('ezee')">Generate Email</button>
+                        </div>
+                        <div class="etf-output-wrap">
+                            <div class="output-header">
+                                <h3>Email Output</h3>
+                                <button class="btn btn-success" onclick="copyRAF('ezee')">
+                                    <span id="eraf-copy-icon">&#128203;</span>
+                                    <span id="eraf-copy-text">Copy</span>
+                                </button>
+                            </div>
+                            <img src="RAF1.png" class="raf-img-preview" alt="Refer a Friend header">
+                            <div class="output-box">
+                                <textarea id="eraf-output" spellcheck="false" placeholder="Fill in the fields and click Generate Email..."></textarea>
+                            </div>
+                            <img src="RAF2.png" class="raf-img-preview" alt="Refer a Friend footer">
                         </div>
                     </div>
                 </div>
@@ -1816,6 +1918,57 @@ Customer Report: ${document.getElementById('cecr-customerReport').value}`;
             document.getElementById('cecrOutputSection').classList.remove('show');
         }
 
+        // ── REFER A FRIEND ──
+        function generateRAF(brand) {
+            const p      = brand === 'tachus' ? 'traf' : 'eraf';
+            const name   = document.getElementById(`${p}-name`).value || '[Customer Name]';
+            const link   = document.getElementById(`${p}-link`).value || '[RAF Link]';
+
+            document.getElementById(`${p}-output`).value =
+`Greetings, ${name}
+
+Here is your referral link. Share it far and wide and watch the savings roll in!
+
+${link}
+
+__How it works__
+
+If you received a referral link:
+
+1. Click the link your friend shared.
+1. Enter your address in the above search bar to check availability.
+1. Sign up for Ezee Fiber.
+1. Enjoy fiber internet with unmatched reliability — and get a $100 credit on your bill once eligible.
+
+If you're sharing your referral link:
+
+1. Share your link (sent to you via email) with friends, family, neighbors, coworkers — anyone who wants better internet.
+1. When someone signs up using your link, you earn a $100 credit towards your Ezee Fiber bill once eligible.
+1. Share again! There's no limit to how many friends you can refer.
+
+A few things to know
+
+* Your friend must be new to Ezee Fiber (existing customers aren't eligible).
+* Your friend must sign up through the referral link shared with them before installation of service.
+* Referrers must have already signed up for Ezee Fiber, with no outstanding balance.
+* The new customer must keep their service active for at least 30 days.
+* Once those requirements are met, both $100 credits will be applied to each account within 7 days.`;
+        }
+
+        function copyRAF(brand) {
+            const p    = brand === 'tachus' ? 'traf' : 'eraf';
+            const icon = `${p}-copy-icon`;
+            const txt  = `${p}-copy-text`;
+            navigator.clipboard.writeText(document.getElementById(`${p}-output`).value).then(() => {
+                document.getElementById(icon).textContent = '✓';
+                document.getElementById(txt).textContent  = 'Copied!';
+                setTimeout(() => {
+                    document.getElementById(icon).textContent = '📋';
+                    document.getElementById(txt).textContent  = 'Copy';
+                }, 2000);
+            });
+        }
+
         // ── EQUIPMENT RETURN ──
         const routerTypeSelected = { tachus: '', ezee: '' };
 
@@ -1838,7 +1991,9 @@ Customer Report: ${document.getElementById('cecr-customerReport').value}`;
             const routerSN = document.getElementById(`${p}-router-sn`).value || '[Router SN]';
 
             document.getElementById(`${p}-output`).value =
-`Dear ${name}
+`Subject: Ezee Fiber Equipment Return | xxx-xxxxx | Return Code: EZFBRT
+
+Dear ${name}
 
 Thank you for choosing Ezee Fiber as your service Provider.  We strive to make the return process as convenient as possible for our customers.
 
