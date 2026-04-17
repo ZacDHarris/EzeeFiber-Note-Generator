@@ -28,11 +28,11 @@
         }
 
         .tab-btn {
-            padding: 0.75rem 1.5rem;
+            padding: 1rem 2rem;
             border: none;
             background: transparent;
             color: #9ca3af;
-            font-size: 0.95rem;
+            font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
             border-bottom: 3px solid transparent;
@@ -298,7 +298,66 @@
             line-height: 1.6;
         }
 
-        /* ── ACCOUNT NOTES BLANK PAGE ── */
+        /* ── NOTE SUB-TAB NAV ── */
+        .note-sub-nav {
+            background-color: #222222;
+            border-bottom: 2px solid #3a3a3a;
+            display: flex;
+            padding: 0 1rem;
+            gap: 0.25rem;
+            flex-wrap: wrap;
+        }
+
+        .note-sub-btn {
+            padding: 0.6rem 1.25rem;
+            border: none;
+            background: transparent;
+            color: #9ca3af;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+            transition: color 0.2s, border-color 0.2s;
+            letter-spacing: 0.4px;
+            white-space: nowrap;
+        }
+
+        .note-sub-btn:hover { color: #f9fafb; }
+
+        .note-sub-btn.active {
+            color: #FB612F;
+            border-bottom-color: #FB612F;
+        }
+
+        /* ── NOTE SUB-PAGES ── */
+        .note-sub-page { display: none; }
+        .note-sub-page.active { display: block; }
+
+        /* ── COMING SOON PLACEHOLDER ── */
+        .coming-soon-placeholder {
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #9ca3af;
+        }
+
+        .coming-soon-placeholder .placeholder-mark {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #FB612F;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .coming-soon-placeholder .placeholder-sub {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #6b7280;
+        }
         .accountnotes-page {
             min-height: 80vh;
             display: flex;
@@ -326,27 +385,66 @@
             color: #6b7280;
         }
 
-        @media (max-width: 768px) {
-            .header-container { flex-direction: column; gap: 1rem; }
-            .logo-container img { max-width: 200px; }
-            .header-title { font-size: 1.5rem; }
-            .header-subtitle { font-size: 0.875rem; }
-        }
-
-     /* ── EMAIL TEMPLATES BLANK PAGE ── */
+        /* ── EMAIL TEMPLATES PAGE ── */
         .email-page {
             min-height: 80vh;
+            background: #2d2d2d;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: #2d2d2d;
-            color: #9ca3af;
-            font-size: 1rem;
-            letter-spacing: 0.5px;
         }
 
-        .email-page .brand-mark {
+        /* ── EMAIL SUB-TAB NAV ── */
+        .email-sub-nav {
+            background-color: #222222;
+            border-bottom: 2px solid #3a3a3a;
+            display: flex;
+            padding: 0 1rem;
+            gap: 0.25rem;
+        }
+
+        .email-sub-btn {
+            padding: 0.65rem 1.4rem;
+            border: none;
+            background: transparent;
+            color: #9ca3af;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+            transition: color 0.2s, border-color 0.2s;
+            letter-spacing: 0.4px;
+        }
+
+        .email-sub-btn:hover {
+            color: #f9fafb;
+        }
+
+        .email-sub-btn.active-tachus {
+            color: #61bb46;
+            border-bottom-color: #61bb46;
+        }
+
+        .email-sub-btn.active-ezee {
+            color: #FB612F;
+            border-bottom-color: #FB612F;
+        }
+
+        /* ── EMAIL SUB-PAGES ── */
+        .email-sub-page { display: none; }
+        .email-sub-page.active { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 70vh; }
+
+        /* ── TACHUS brand ── */
+        .tachus-mark {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #61bb46;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ── EZEEFIBER brand ── */
+        .ezee-mark {
             font-size: 2.5rem;
             font-weight: 800;
             color: #FB612F;
@@ -354,18 +452,32 @@
             margin-bottom: 0.5rem;
         }
 
-        .email-page .brand-sub {
+        .brand-sub {
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 3px;
             color: #6b7280;
         }
 
+        /* ── INDICATOR DOT ── */
+        .sub-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 6px;
+            vertical-align: middle;
+        }
+
+        .dot-tachus { background-color: #61bb46; }
+        .dot-ezee   { background-color: #FB612F; }
+
         @media (max-width: 768px) {
             .header-container { flex-direction: column; gap: 1rem; }
             .logo-container img { max-width: 200px; }
             .header-title { font-size: 1.5rem; }
             .header-subtitle { font-size: 0.875rem; }
+            .email-sub-btn { padding: 0.65rem 1rem; font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -373,9 +485,9 @@
 
     <!-- ── TAB NAVIGATION ── -->
     <nav class="tab-nav">
-        <button class="tab-btn active" onclick="switchTab('support')">Truck Roll Approval</button>
-        <button class="tab-btn" onclick="switchTab('accountnotes')">BH Account Notes</button>
-        <button class="tab-btn" onclick="switchTab('email')">Email Templates</button>
+        <button class="tab-btn active" onclick="switchTab('support', this)">Note Generator</button>
+        <button class="tab-btn" onclick="switchTab('accountnotes', this)">BH Account Notes</button>
+        <button class="tab-btn" onclick="switchTab('email', this)">Email Templates</button>
     </nav>
 
     <!-- ── PAGE: TECH SUPPORT ── -->
@@ -392,6 +504,20 @@
             </div>
         </div>
 
+        <div class="container">
+
+        <!-- ── NOTE SUB-TAB NAVIGATION ── -->
+        </div>
+        <nav class="note-sub-nav">
+            <button class="note-sub-btn active" id="note-btn-truckroll" onclick="switchNoteTab('truckroll', this)">Truck Roll Approval</button>
+            <button class="note-sub-btn" id="note-btn-harddown" onclick="switchNoteTab('harddown', this)">Hard Down</button>
+            <button class="note-sub-btn" id="note-btn-cancellation" onclick="switchNoteTab('cancellation', this)">Cancellation</button>
+            <button class="note-sub-btn" id="note-btn-dispatch" onclick="switchNoteTab('dispatch', this)">Dispatch</button>
+            <button class="note-sub-btn" id="note-btn-cecr" onclick="switchNoteTab('cecr', this)">CECR</button>
+        </nav>
+
+        <!-- ── NOTE SUB-PAGE: Truck Roll Approval ── -->
+        <div id="note-sub-truckroll" class="note-sub-page active">
         <div class="container">
             <form id="supportForm">
                 <div class="form-grid">
@@ -527,6 +653,40 @@
         </div>
     </div>
 
+        <!-- ── NOTE SUB-PAGE: Hard Down ── -->
+        <div id="note-sub-harddown" class="note-sub-page">
+            <div class="coming-soon-placeholder">
+                <div class="placeholder-mark">Hard Down</div>
+                <div class="placeholder-sub">Coming Soon</div>
+            </div>
+        </div>
+
+        <!-- ── NOTE SUB-PAGE: Cancellation ── -->
+        <div id="note-sub-cancellation" class="note-sub-page">
+            <div class="coming-soon-placeholder">
+                <div class="placeholder-mark">Cancellation</div>
+                <div class="placeholder-sub">Coming Soon</div>
+            </div>
+        </div>
+
+        <!-- ── NOTE SUB-PAGE: Dispatch ── -->
+        <div id="note-sub-dispatch" class="note-sub-page">
+            <div class="coming-soon-placeholder">
+                <div class="placeholder-mark">Dispatch</div>
+                <div class="placeholder-sub">Coming Soon</div>
+            </div>
+        </div>
+
+        <!-- ── NOTE SUB-PAGE: CECR ── -->
+        <div id="note-sub-cecr" class="note-sub-page">
+            <div class="coming-soon-placeholder">
+                <div class="placeholder-mark">CECR</div>
+                <div class="placeholder-sub">Coming Soon</div>
+            </div>
+        </div>
+
+    </div>
+
     <!-- ── PAGE: Account Notes (BLANK) ── -->
     <div id="page-accountnotes" class="page">
         <div class="accountnotes-page">
@@ -535,21 +695,64 @@
         </div>
     </div>
 
-        <!-- ── PAGE: EMAIL TEMPLATES (BLANK) ── -->
+    <!-- ── PAGE: EMAIL TEMPLATES ── -->
     <div id="page-email" class="page">
         <div class="email-page">
-            <div class="brand-mark">Email Templates</div>
-            <div class="brand-sub">Coming Soon</div>
+
+            <!-- Email Sub-Tab Nav -->
+            <nav class="email-sub-nav">
+                <button class="email-sub-btn active-tachus" id="sub-btn-tachus" onclick="switchEmailTab('tachus')">
+                    <span class="sub-indicator dot-tachus"></span>Tachus Email Templates
+                </button>
+                <button class="email-sub-btn" id="sub-btn-ezee" onclick="switchEmailTab('ezee')">
+                    <span class="sub-indicator dot-ezee"></span>EzeeFiber Email Templates
+                </button>
+            </nav>
+
+            <!-- Tachus Sub-Page -->
+            <div id="email-sub-tachus" class="email-sub-page active">
+                <div class="tachus-mark">Tachus Email Templates</div>
+                <div class="brand-sub">Coming Soon</div>
+            </div>
+
+            <!-- EzeeFiber Sub-Page -->
+            <div id="email-sub-ezee" class="email-sub-page">
+                <div class="ezee-mark">EzeeFiber Email Templates</div>
+                <div class="brand-sub">Coming Soon</div>
+            </div>
+
         </div>
     </div>
 
     <script>
-        // ── TAB SWITCHING ──
-        function switchTab(tab) {
+        // ── NOTE SUB-TAB SWITCHING ──
+        function switchNoteTab(tab, btnEl) {
+            document.querySelectorAll('.note-sub-page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.note-sub-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('note-sub-' + tab).classList.add('active');
+            btnEl.classList.add('active');
+        }
+
+        // ── MAIN TAB SWITCHING ──
+        function switchTab(tab, btnEl) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             document.getElementById('page-' + tab).classList.add('active');
-            event.target.classList.add('active');
+            btnEl.classList.add('active');
+        }
+
+        // ── EMAIL SUB-TAB SWITCHING ──
+        function switchEmailTab(tab) {
+            document.querySelectorAll('.email-sub-page').forEach(p => p.classList.remove('active'));
+            document.getElementById('sub-btn-tachus').classList.remove('active-tachus');
+            document.getElementById('sub-btn-ezee').classList.remove('active-ezee');
+
+            document.getElementById('email-sub-' + tab).classList.add('active');
+            if (tab === 'tachus') {
+                document.getElementById('sub-btn-tachus').classList.add('active-tachus');
+            } else {
+                document.getElementById('sub-btn-ezee').classList.add('active-ezee');
+            }
         }
 
         // ── YES/NO ──
