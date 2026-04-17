@@ -1864,70 +1864,223 @@
 <title>Ezee Fiber UPS Return Label</title>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family: Arial, sans-serif; font-size: 13px; color: #000; background: #fff; padding: 30px; }
-  .page { max-width: 680px; margin: 0 auto; }
+  body { font-family: Arial, sans-serif; font-size: 12.5px; color: #000; background: #fff; padding: 28px 32px; }
+  .page { max-width: 660px; margin: 0 auto; }
 
-  /* Header */
-  .header { background: #00b2c8; color: #fff; text-align: center; padding: 22px 20px; margin-bottom: 24px; border-radius: 4px; }
-  .header h1 { font-size: 22px; font-weight: 800; line-height: 1.3; }
+  /* ── HEADER ── */
+  .header {
+    background: #28b4c8;
+    color: #fff;
+    text-align: center;
+    padding: 28px 24px 24px;
+    margin-bottom: 28px;
+  }
+  .header h1 {
+    font-size: 26px;
+    font-weight: 900;
+    line-height: 1.35;
+    letter-spacing: 0.2px;
+  }
 
-  /* Section title */
-  .section-title { font-size: 16px; font-weight: 800; margin-bottom: 14px; }
+  /* ── SECTION HEADINGS ── */
+  .section-title {
+    font-size: 15px;
+    font-weight: 900;
+    margin-bottom: 16px;
+    margin-top: 4px;
+    text-decoration: underline;
+  }
 
-  /* Numbered steps */
-  .step { display: flex; gap: 14px; margin-bottom: 16px; align-items: flex-start; }
-  .step-num { width: 28px; height: 28px; border-radius: 50%; background: #00b2c8; color: #fff; font-weight: 800; font-size: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
-  .step-text { flex: 1; line-height: 1.5; }
+  /* ── STEPS ── */
+  .step {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 14px;
+    align-items: flex-start;
+  }
+  .step-num {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #28b4c8;
+    color: #fff;
+    font-weight: 900;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .step-text { flex: 1; line-height: 1.55; }
   .step-text strong { font-weight: 700; }
 
-  /* CAMS table */
-  .cams-table { border-collapse: collapse; width: 100%; margin: 10px 0 0 42px; font-size: 12px; }
-  .cams-table th { background: #00b2c8; color: #fff; padding: 6px 10px; text-align: left; font-weight: 700; border: 1px solid #00b2c8; }
-  .cams-table td { padding: 6px 10px; border: 1px solid #ccc; }
-  .cams-table .company-cell { display: flex; align-items: center; gap: 8px; }
+  /* ── DIVIDER ── */
+  .divider { border: none; border-top: 1.5px solid #ccc; margin: 20px 0 18px; }
 
-  /* Input boxes */
-  .input-row { display: flex; gap: 40px; margin: 10px 0 0 42px; }
-  .input-group { flex: 1; }
-  .input-group label { display: block; font-weight: 800; font-size: 12px; margin-bottom: 4px; }
-  .input-box { border: 1px solid #aaa; min-height: 28px; padding: 4px 8px; font-size: 13px; font-weight: 600; }
+  /* ── CAMS WORKFLOW UI MOCKUP ── */
+  .cams-wrap {
+    margin: 10px 0 0 38px;
+    border: 1px solid #bbb;
+    font-size: 11.5px;
+  }
+  .cams-topbar {
+    background: #3a3a3a;
+    display: flex;
+    gap: 0;
+  }
+  .cams-topbar-item {
+    color: #fff;
+    padding: 6px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    border-right: 1px solid #555;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .cams-topbar-item.has-arrow::after { content: ' ▾'; font-size: 9px; }
+  .cams-body { padding: 10px 12px; background: #fff; }
+  .cams-row { display: flex; gap: 20px; margin-bottom: 8px; align-items: flex-end; }
+  .cams-col { display: flex; flex-direction: column; gap: 3px; }
+  .cams-col label { font-weight: 700; font-size: 11px; }
+  .cams-col select, .cams-col input[type=text] {
+    border: 1px solid #aaa;
+    padding: 3px 6px;
+    font-size: 11px;
+    min-width: 120px;
+    background: #fff;
+  }
+  .cams-search-input { min-width: 160px !important; }
+  .cams-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 6px;
+    font-size: 11px;
+  }
+  .cams-table th {
+    background: #28b4c8;
+    color: #fff;
+    padding: 5px 10px;
+    text-align: left;
+    font-weight: 700;
+    border: 1px solid #28b4c8;
+  }
+  .cams-table td {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    background: #fff;
+  }
+  .cams-icon {
+    display: inline-block;
+    width: 18px;
+    height: 14px;
+    background: #28b4c8;
+    border-radius: 2px;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
 
-  /* Divider */
-  .divider { border: none; border-top: 1px solid #ccc; margin: 22px 0; }
+  /* ── ACCOUNT INPUT BOXES ── */
+  .input-row {
+    display: flex;
+    gap: 50px;
+    margin: 10px 0 4px 38px;
+  }
+  .input-group { flex: 1; max-width: 230px; }
+  .input-group label {
+    display: block;
+    font-weight: 900;
+    font-size: 11.5px;
+    margin-bottom: 5px;
+    text-decoration: underline;
+  }
+  .input-box {
+    border: 1px solid #888;
+    min-height: 32px;
+    padding: 5px 8px;
+    font-size: 12px;
+    font-weight: 600;
+    width: 100%;
+    background: #fff;
+  }
 
-  /* Footer */
-  .footer { font-size: 9px; color: #555; margin-top: 20px; line-height: 1.5; }
-  .ups-logo { text-align: right; margin-top: 16px; }
-  .ups-logo-box { display: inline-block; background: #351c15; color: #fab80a; font-weight: 900; font-size: 18px; padding: 6px 14px; border-radius: 4px; letter-spacing: 1px; }
+  /* ── FOOTER ── */
+  .footer-text {
+    font-size: 8.5px;
+    color: #444;
+    margin-top: 22px;
+    line-height: 1.5;
+  }
+  .ups-logo-row {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 14px;
+    gap: 10px;
+  }
+  .ups-logo-text {
+    font-size: 17px;
+    font-weight: 900;
+    color: #351c15;
+    font-style: italic;
+    letter-spacing: -0.3px;
+  }
+  .ups-shield {
+    width: 38px;
+    height: 46px;
+    background: #351c15;
+    border-radius: 50% 50% 45% 45% / 40% 40% 60% 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 4px;
+  }
+  .ups-shield-inner {
+    width: 22px;
+    height: 22px;
+    background: #fab80a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 900;
+    color: #351c15;
+  }
 
   @media print {
-    body { padding: 15px; }
-    @page { margin: 10mm; }
+    body { padding: 10px 14px; }
+    @page { size: letter; margin: 12mm 14mm; }
   }
 </style>
 </head>
 <body>
 <div class="page">
 
+  <!-- HEADER -->
   <div class="header">
     <h1>Corporate Retail Solutions Program for<br>Ezee Fiber</h1>
   </div>
 
+  <!-- CUSTOMER INSTRUCTIONS -->
   <div class="section-title">Customer Instructions</div>
 
   <div class="step">
     <div class="step-num">1</div>
     <div class="step-text">
       Locate the nearest participating location by either of the following two options:<br>
-      Go to <strong>theupsstore.com/locations</strong>, enter address information and choose the most convenient location.<br>
-      Or call <strong>800.789.4623</strong> and request the nearest The UPS Store® location.
+      &nbsp;&nbsp;&nbsp;Go to <strong>theupsstore.com/locations</strong>, enter address information and choose the most<br>
+      &nbsp;&nbsp;&nbsp;convenient location.<br>
+      Or call <strong>800.789.4623</strong> and request the nearest The UPS Store&#174; location.
     </div>
   </div>
 
   <div class="step">
     <div class="step-num">2</div>
     <div class="step-text">
-      Please take this document to The UPS Store location and tell the center associate you are part of the Corporate Retail Solutions program for <strong>Ezee Fiber</strong>.
+      Please take this document to The UPS Store location and tell the center associate you are
+      part of the Corporate Retail Solutions program for <strong>Ezee Fiber</strong>.
     </div>
   </div>
 
@@ -1938,24 +2091,54 @@
 
   <hr class="divider">
 
+  <!-- UPS STORE INSTRUCTIONS -->
   <div class="section-title">Instructions for The UPS Store location:</div>
-  <p style="margin-bottom:14px;">Follow the instructions listed below to process this transaction.</p>
+  <p style="margin-bottom:14px;line-height:1.5;">Follow the instructions listed below to process this transaction.</p>
 
+  <!-- STEP 1 — CAMS -->
   <div class="step">
     <div class="step-num">1</div>
-    <div class="step-text">Access the appropriate CAMS workflow. Search for "Ezee Fiber" on the CAMS homepage.
-      <table class="cams-table" style="margin-left:0;margin-top:8px;">
-        <tr><th>Company</th><th>Workflow</th></tr>
-        <tr><td><div class="company-cell">Ezee Fiber</div></td><td>Customer Returns</td></tr>
-      </table>
+    <div class="step-text">
+      Access the appropriate CAMS workflow. Search for &ldquo;Ezee Fiber&rdquo; on the CAMS homepage.
+      <!-- CAMS UI mockup -->
+      <div class="cams-wrap">
+        <div class="cams-topbar">
+          <div class="cams-topbar-item has-arrow">Workflows</div>
+          <div class="cams-topbar-item">Transactions</div>
+          <div class="cams-topbar-item">Reports</div>
+          <div class="cams-topbar-item">Help</div>
+          <div class="cams-topbar-item">About</div>
+        </div>
+        <div class="cams-body">
+          <div class="cams-row">
+            <div class="cams-col">
+              <label>Select Company</label>
+              <select><option></option></select>
+            </div>
+            <div class="cams-col">
+              <label>Workflow Search</label>
+              <input type="text" class="cams-search-input" value="Ezee Fiber">
+            </div>
+          </div>
+          <table class="cams-table">
+            <tr><th>Company</th><th>Workflow</th></tr>
+            <tr>
+              <td><span class="cams-icon"></span>Ezee Fiber</td>
+              <td>Customer Returns</td>
+            </tr>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 
+  <!-- STEP 2 — ACCOUNT BOXES -->
   <div class="step">
     <div class="step-num">2</div>
     <div class="step-text">
-      This customer has modems to be packed and shipped. You will need the <strong><u>Return Code:EZFBRT</u></strong> and the below in order to process the workflow.<br><br>
-      <div class="input-row">
+      This customer has modems to be packed and shipped. You will need the <strong><u>Return
+      Code:EZFBRT</u></strong> and the below in order to process the workflow.
+      <div class="input-row" style="margin-left:0;">
         <div class="input-group">
           <label>Customer Account Number</label>
           <div class="input-box">${acct}</div>
@@ -1968,14 +2151,22 @@
     </div>
   </div>
 
+  <!-- STEP 3 -->
   <div class="step">
     <div class="step-num">3</div>
-    <div class="step-text">Enter the required information into the workflow and press "Next" to complete the transaction.</div>
+    <div class="step-text">
+      Enter the required information into the workflow and press &ldquo;Next&rdquo; to complete the
+      transaction.
+    </div>
   </div>
 
-  <p class="footer">The UPS Store® locations are independently owned and operated by franchisees of The UPS Store, Inc. in the USA and by its master licensee and its franchisees in Canada. Products, services, pricing and hours of operation may vary by location. Copyright® 2019 The UPS Store, Inc. All rights reserved MS330_27960519</p>
+  <!-- FOOTER -->
+  <p class="footer-text">The UPS Store&#174; locations are independently owned and operated by franchisees of The UPS Store, Inc. in the USA and by its master licensee and its franchisees in Canada. Products, services, pricing and hours of operation may vary by location. Copyright&#174; 2019 The UPS Store, Inc. All rights reserved MS330_27960519</p>
 
-  <div class="ups-logo"><div class="ups-logo-box">The UPS Store® <span style="font-size:22px;">🟤</span></div></div>
+  <div class="ups-logo-row">
+    <div class="ups-logo-text">The UPS Store<sup style="font-size:10px;">&#174;</sup></div>
+    <div class="ups-shield"><div class="ups-shield-inner">UPS</div></div>
+  </div>
 
 </div>
 </body>
@@ -1989,7 +2180,7 @@
             };
         }
 
-        // ── NOTE SUB-TAB SWITCHING ──
+                // ── NOTE SUB-TAB SWITCHING ──
         function switchNoteTab(tab, btnEl) {
             document.querySelectorAll('.note-sub-page').forEach(p => p.classList.remove('active'));
             document.querySelectorAll('.note-sub-btn').forEach(b => b.classList.remove('active'));
