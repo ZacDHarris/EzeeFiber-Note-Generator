@@ -504,10 +504,7 @@
             </div>
         </div>
 
-        <div class="container">
-
         <!-- ── NOTE SUB-TAB NAVIGATION ── -->
-        </div>
         <nav class="note-sub-nav">
             <button class="note-sub-btn active" id="note-btn-truckroll" onclick="switchNoteTab('truckroll', this)">Truck Roll Approval</button>
             <button class="note-sub-btn" id="note-btn-harddown" onclick="switchNoteTab('harddown', this)">Hard Down</button>
@@ -655,9 +652,129 @@
 
         <!-- ── NOTE SUB-PAGE: Hard Down ── -->
         <div id="note-sub-harddown" class="note-sub-page">
-            <div class="coming-soon-placeholder">
-                <div class="placeholder-mark">Hard Down</div>
-                <div class="placeholder-sub">Coming Soon</div>
+            <div class="container">
+                <form id="hardDownForm">
+                    <div class="form-grid">
+
+                        <div class="form-group full-width">
+                            <label for="hd-customerReporting">Customer Is Reporting</label>
+                            <textarea id="hd-customerReporting" placeholder="Enter customer report"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="hd-alarmCodes">Alarm Code(s)</label>
+                            <input type="text" id="hd-alarmCodes" placeholder="Enter alarm code(s)">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="hd-speedTest">Speed Test (Down/Up)</label>
+                            <input type="text" id="hd-speedTest" placeholder="Enter speed test">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Are Devices Disconnecting</label>
+                            <div class="yes-no-buttons">
+                                <button type="button" onclick="setHdYesNo('hd_devicesDisconnecting', true, event)">Yes</button>
+                                <button type="button" onclick="setHdYesNo('hd_devicesDisconnecting', false, event)">No</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Is Network Stable</label>
+                            <div class="yes-no-buttons">
+                                <button type="button" onclick="setHdYesNo('hd_networkStable', true, event)">Yes</button>
+                                <button type="button" onclick="setHdYesNo('hd_networkStable', false, event)">No</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="hd-lightLevels">Light Levels (OLT/ONT)</label>
+                            <input type="text" id="hd-lightLevels" placeholder="Enter light levels">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="hd-l2UserAligned">L2-User Aligned (if applicable)</label>
+                            <input type="text" id="hd-l2UserAligned" placeholder="Enter L2-User aligned">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Verified Head End/Hub</label>
+                            <div class="yes-no-buttons">
+                                <button type="button" onclick="setHdYesNo('hd_verifiedHeadEnd', true, event)">Yes</button>
+                                <button type="button" onclick="setHdYesNo('hd_verifiedHeadEnd', false, event)">No</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Is There Wi-Fi Channel Interference</label>
+                            <div class="yes-no-buttons">
+                                <button type="button" onclick="setHdYesNo('hd_wifiInterference', true, event)">Yes</button>
+                                <button type="button" onclick="setHdYesNo('hd_wifiInterference', false, event)">No</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Was Equipment Rebooted</label>
+                            <div class="yes-no-buttons">
+                                <button type="button" onclick="setHdYesNo('hd_equipmentRebooted', true, event)">Yes</button>
+                                <button type="button" onclick="setHdYesNo('hd_equipmentRebooted', false, event)">No</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Are All Connections Verified</label>
+                            <div class="yes-no-buttons">
+                                <button type="button" onclick="setHdYesNo('hd_connectionsVerified', true, event)">Yes</button>
+                                <button type="button" onclick="setHdYesNo('hd_connectionsVerified', false, event)">No</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="hd-timeframe">Timeframe When Issues Started</label>
+                            <input type="text" id="hd-timeframe" placeholder="Enter timeframe">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Was Basic Router Troubleshooting Done</label>
+                            <div class="yes-no-buttons">
+                                <button type="button" onclick="setHdYesNo('hd_routerTroubleshooting', true, event)">Yes</button>
+                                <button type="button" onclick="setHdYesNo('hd_routerTroubleshooting', false, event)">No</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="hd-troubleshootingSteps">Troubleshooting Steps Taken</label>
+                            <textarea id="hd-troubleshootingSteps" placeholder="Enter troubleshooting steps taken"></textarea>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label>Are Other Customers Affected</label>
+                            <div class="yes-no-buttons">
+                                <button type="button" onclick="setHdYesNo('hd_otherCustomers', true, event)">Yes</button>
+                                <button type="button" onclick="setHdYesNo('hd_otherCustomers', false, event)">No</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="generateHardDown()">Generate Note</button>
+                    <button class="btn btn-secondary" onclick="resetHardDown()">Reset Form</button>
+                </div>
+
+                <div id="hdOutputSection" class="output-section">
+                    <div class="output-header">
+                        <h3>Generated Note</h3>
+                        <button class="btn btn-success" onclick="copyHardDown()">
+                            <span id="hdCopyIcon">📋</span>
+                            <span id="hdCopyText">Copy to Dashboard</span>
+                        </button>
+                    </div>
+                    <div class="output-box">
+                        <textarea id="hdGeneratedNote" spellcheck="false"></textarea>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -883,6 +1000,74 @@ Agent Initials: ${formData.agentInitials}`;
                 item.classList.remove('selected');
             });
             document.getElementById('outputSection').classList.remove('show');
+        }
+
+        // ── HARD DOWN YES/NO ──
+        const hdYesNoData = {
+            hd_devicesDisconnecting: null,
+            hd_networkStable: null,
+            hd_verifiedHeadEnd: null,
+            hd_wifiInterference: null,
+            hd_equipmentRebooted: null,
+            hd_connectionsVerified: null,
+            hd_routerTroubleshooting: null,
+            hd_otherCustomers: null
+        };
+
+        function setHdYesNo(field, value, e) {
+            hdYesNoData[field] = value;
+            const buttons = e.target.parentElement.querySelectorAll('button');
+            buttons.forEach(btn => btn.classList.remove('active-yes', 'active-no'));
+            e.target.classList.add(value ? 'active-yes' : 'active-no');
+        }
+
+        function yn(val) {
+            return val === null ? '' : val ? 'Yes' : 'No';
+        }
+
+        function generateHardDown() {
+            const note =
+`HARD DOWN
+
+Customer Is Reporting: ${document.getElementById('hd-customerReporting').value}
+Alarm Code(s): ${document.getElementById('hd-alarmCodes').value}
+Speed Test (Down/Up): ${document.getElementById('hd-speedTest').value}
+Are Devices Disconnecting: ${yn(hdYesNoData.hd_devicesDisconnecting)}
+Is Network Stable: ${yn(hdYesNoData.hd_networkStable)}
+Light Levels (OLT/ONT): ${document.getElementById('hd-lightLevels').value}
+L2-User Aligned (if applicable): ${document.getElementById('hd-l2UserAligned').value}
+Verified Head End/Hub: ${yn(hdYesNoData.hd_verifiedHeadEnd)}
+Is There Wi-Fi Channel Interference: ${yn(hdYesNoData.hd_wifiInterference)}
+Was Equipment Rebooted: ${yn(hdYesNoData.hd_equipmentRebooted)}
+Are All Connections Verified: ${yn(hdYesNoData.hd_connectionsVerified)}
+Timeframe When Issues Started: ${document.getElementById('hd-timeframe').value}
+Was Basic Router Troubleshooting Done: ${yn(hdYesNoData.hd_routerTroubleshooting)}
+Troubleshooting Steps Taken: ${document.getElementById('hd-troubleshootingSteps').value}
+Are Other Customers Affected: ${yn(hdYesNoData.hd_otherCustomers)}`;
+
+            document.getElementById('hdGeneratedNote').value = note;
+            document.getElementById('hdOutputSection').classList.add('show');
+            document.getElementById('hdOutputSection').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function copyHardDown() {
+            navigator.clipboard.writeText(document.getElementById('hdGeneratedNote').value).then(() => {
+                document.getElementById('hdCopyIcon').textContent = '✓';
+                document.getElementById('hdCopyText').textContent = 'Copied!';
+                setTimeout(() => {
+                    document.getElementById('hdCopyIcon').textContent = '📋';
+                    document.getElementById('hdCopyText').textContent = 'Copy to Dashboard';
+                }, 2000);
+            });
+        }
+
+        function resetHardDown() {
+            document.getElementById('hardDownForm').reset();
+            Object.keys(hdYesNoData).forEach(k => { hdYesNoData[k] = null; });
+            document.querySelectorAll('#note-sub-harddown .yes-no-buttons button').forEach(btn => {
+                btn.classList.remove('active-yes', 'active-no');
+            });
+            document.getElementById('hdOutputSection').classList.remove('show');
         }
 
         initTroubleshootingGrid();
