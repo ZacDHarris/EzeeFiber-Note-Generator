@@ -21,6 +21,146 @@
             color: #e5e7eb;
         }
 
+        /* ── STICKY NOTES PANEL ── */
+        .sticky-notes-tab {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 500;
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+        }
+
+        .sticky-notes-toggle {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            background: #FB612F;
+            color: white;
+            border: none;
+            padding: 1rem 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 6px 0 0 6px;
+            box-shadow: -2px 0 12px rgba(0,0,0,0.4);
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            white-space: nowrap;
+        }
+
+        .sticky-notes-toggle:hover { background: #e5511a; }
+
+        .sticky-notes-panel {
+            width: 0;
+            overflow: hidden;
+            background: #1a1a1a;
+            border-left: 3px solid #FB612F;
+            box-shadow: -4px 0 20px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            transition: width 0.3s ease;
+        }
+
+        .sticky-notes-panel.open {
+            width: 300px;
+        }
+
+        .sticky-notes-inner {
+            width: 300px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 0.75rem;
+            gap: 0.5rem;
+            min-height: 400px;
+            max-height: 80vh;
+        }
+
+        .sticky-notes-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #3a3a3a;
+            padding-bottom: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .sticky-notes-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #FB612F;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .sticky-notes-actions {
+            display: flex;
+            gap: 0.4rem;
+        }
+
+        .sticky-notes-clear {
+            background: transparent;
+            border: 1px solid #4b5563;
+            color: #9ca3af;
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .sticky-notes-clear:hover { border-color: #ef4444; color: #ef4444; }
+
+        .sticky-notes-copy {
+            background: transparent;
+            border: 1px solid #4b5563;
+            color: #9ca3af;
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .sticky-notes-copy:hover { border-color: #16a34a; color: #4ade80; }
+
+        .sticky-notes-textarea {
+            flex: 1;
+            width: 100%;
+            background: #2d2d2d;
+            border: 1px solid #3a3a3a;
+            border-radius: 0.375rem;
+            color: #f9fafb;
+            font-size: 0.82rem;
+            line-height: 1.55;
+            padding: 0.65rem;
+            resize: none;
+            min-height: 320px;
+            max-height: calc(80vh - 80px);
+            font-family: 'Courier New', monospace;
+            transition: border-color 0.2s;
+        }
+
+        .sticky-notes-textarea:focus {
+            outline: none;
+            border-color: #FB612F;
+        }
+
+        .sticky-notes-textarea::placeholder { color: #4b5563; }
+
+        .sticky-notes-footer {
+            font-size: 0.65rem;
+            color: #4b5563;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
         /* ── TAB NAV ── */
         .tab-nav {
             background-color: #1a1a1a;
@@ -1453,14 +1593,24 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="tr-lightLevels">Light Levels</label>
-                            <input type="text" id="tr-lightLevels" placeholder="Enter light levels">
+                            <label>Light Levels</label>
+                            <div style="display:flex;gap:0.5rem;">
+                                <input type="text" id="tr-lightLevels-ont" placeholder="ONT" style="flex:1;">
+                                <input type="text" id="tr-lightLevels-olt" placeholder="OLT" style="flex:1;">
+                            </div>
                         </div>
                         <div class="form-group">
                             <label>WiFi Interference?</label>
                             <div class="yes-no-buttons">
                                 <button type="button" onclick="setYesNo('tr_wifiInterference', true, event)">Yes</button>
                                 <button type="button" onclick="setYesNo('tr_wifiInterference', false, event)">No</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Construction in Area?</label>
+                            <div class="yes-no-buttons">
+                                <button type="button" onclick="setYesNo('tr_constructionInArea', true, event)">Yes</button>
+                                <button type="button" onclick="setYesNo('tr_constructionInArea', false, event)">No</button>
                             </div>
                         </div>
 
@@ -1550,8 +1700,11 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="hd-lightLevels">Light Levels (OLT/ONT)</label>
-                            <input type="text" id="hd-lightLevels" placeholder="Enter light levels">
+                            <label>Light Levels</label>
+                            <div style="display:flex;gap:0.5rem;">
+                                <input type="text" id="hd-lightLevels-ont" placeholder="ONT" style="flex:1;">
+                                <input type="text" id="hd-lightLevels-olt" placeholder="OLT" style="flex:1;">
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="hd-l2UserAligned">L2-User Aligned (if applicable)</label>
@@ -2397,7 +2550,8 @@
         const trYesNo = {
             tr_devicesDisconnecting: null,
             tr_networkStable: null,
-            tr_wifiInterference: null
+            tr_wifiInterference: null,
+            tr_constructionInArea: null
         };
         const selectedTroubleshooting = new Set();
         const customTrSteps = [];
@@ -2424,10 +2578,9 @@
         }
 
         const troubleshootingOptions = [
-            "•Power Cycled Modem","•Defaulted Modem","•Reprovisioned Modem","•Reboot Modem",
-            "•Modem mode changed to ROUTED","•Modem mode changed to BRIDGED","•Activated OLT Bridge",
-            "•Flushed Bridge","•Bounce WAN Port","•Checked Fiber Patch Cable","•Ascending Bip8Errors",
-            "•No Construction Confirmed","•Construction Confirmed","•Factory Reset Modem",
+            "•Power Cycled Modem","•Defaulted Modem","•Reboot Modem",
+            "•Activated OLT Bridge","•Flushed Bridge","•Bounce WAN Port",
+            "•Checked Fiber Patch Cable","•Ascending Bip8Errors","•Factory Reset Modem",
             "•Cleared Counters","•Checked Cx Power","•Power Cycled Router","•Firmware Update",
             "•Swapped gateway router","•Temporarily Disable 5GHz","•Enabled Guest SSID",
             "•Disabled IPv6","•Factory Reset Routers","•Optimization on Network","•Changed DNS Server to:"
@@ -2490,50 +2643,7 @@
 
         function yn(val) { return val === null ? '' : val ? 'Yes' : 'No'; }
 
-        function generateNote() {
-            // Resolve Router value (use "Other" text if applicable)
-            const ontVal    = document.getElementById('tr-ont-sn').value;
-            const routerVal = trEquip.router === 'Other' ? (document.getElementById('tr-router-other').value.trim() || 'Other') : trEquip.router;
-            const routerSnVal = document.getElementById('tr-router-sn').value;
-
-            // Combine preset + custom troubleshooting steps
-            const allSteps = [...Array.from(selectedTroubleshooting), ...customTrSteps];
-            const stepsSection = allSteps.length > 0 ? allSteps.join('\n') : '';
-
-            const note =
-`Provider: ${trProvider}
-
-Customer Reporting: ${document.getElementById('tr-customerReporting').value}
-
-Equipment
-  ONT SN: ${ontVal}
-  Router: ${routerVal}
-  Router SN: ${routerSnVal}
-
-Customer Details
-  Name: ${document.getElementById('tr-name').value}
-  Phone: ${document.getElementById('tr-phone').value}
-  Acct #: ${document.getElementById('tr-acct').value}
-  Address: ${document.getElementById('tr-address').value}
-  Node: ${document.getElementById('tr-node').value}
-
-Network & WiFi
-  Alarm Code(s): ${document.getElementById('tr-alarmCodes').value}
-  Speed Test: ${document.getElementById('tr-speedTest').value}
-  Devices Disconnecting?: ${yn(trYesNo.tr_devicesDisconnecting)}
-  Network Stable?: ${yn(trYesNo.tr_networkStable)}
-  Light Levels: ${document.getElementById('tr-lightLevels').value}
-  WiFi Interference?: ${yn(trYesNo.tr_wifiInterference)}
-
-Troubleshooting Steps:
-${stepsSection}
-
-Agent Initials: ${document.getElementById('tr-agentInitials').value}`;
-
-            document.getElementById('generatedNote').value = note;
-            document.getElementById('outputSection').classList.add('show');
-            document.getElementById('outputSection').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
+        function generateNote() { /* overwritten below */ }
 
         function copyToClipboard() {
             navigator.clipboard.writeText(document.getElementById('generatedNote').value).then(() => {
@@ -2560,7 +2670,7 @@ Agent Initials: ${document.getElementById('tr-agentInitials').value}`;
             document.getElementById('tr-router-other').value = '';
             // Text fields
             ['tr-customerReporting','tr-name','tr-phone','tr-acct','tr-address','tr-node',
-             'tr-alarmCodes','tr-speedTest','tr-lightLevels','tr-agentInitials',
+             'tr-alarmCodes','tr-speedTest','tr-lightLevels-ont','tr-lightLevels-olt','tr-agentInitials',
              'tr-ont-sn','tr-router-sn'].forEach(id => {
                 const el = document.getElementById(id);
                 if (el) el.value = '';
@@ -2595,30 +2705,7 @@ Agent Initials: ${document.getElementById('tr-agentInitials').value}`;
             e.target.classList.add(value ? 'active-yes' : 'active-no');
         }
 
-        function generateHardDown() {
-            const note =
-`HARD DOWN
-
-Customer Is Reporting: ${document.getElementById('hd-customerReporting').value}
-Alarm Code(s): ${document.getElementById('hd-alarmCodes').value}
-Speed Test (Down/Up): ${document.getElementById('hd-speedTest').value}
-Are Devices Disconnecting: ${yn(hdYesNoData.hd_devicesDisconnecting)}
-Is Network Stable: ${yn(hdYesNoData.hd_networkStable)}
-Light Levels (OLT/ONT): ${document.getElementById('hd-lightLevels').value}
-L2-User Aligned (if applicable): ${document.getElementById('hd-l2UserAligned').value}
-Verified Head End/Hub: ${yn(hdYesNoData.hd_verifiedHeadEnd)}
-Is There Wi-Fi Channel Interference: ${yn(hdYesNoData.hd_wifiInterference)}
-Was Equipment Rebooted: ${yn(hdYesNoData.hd_equipmentRebooted)}
-Are All Connections Verified: ${yn(hdYesNoData.hd_connectionsVerified)}
-Timeframe When Issues Started: ${document.getElementById('hd-timeframe').value}
-Was Basic Router Troubleshooting Done: ${yn(hdYesNoData.hd_routerTroubleshooting)}
-Troubleshooting Steps Taken: ${document.getElementById('hd-troubleshootingSteps').value}
-Are Other Customers Affected: ${yn(hdYesNoData.hd_otherCustomers)}`;
-
-            document.getElementById('hdGeneratedNote').value = note;
-            document.getElementById('hdOutputSection').classList.add('show');
-            document.getElementById('hdOutputSection').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
+        function generateHardDown() { /* overwritten below */ }
 
         function copyHardDown() {
             navigator.clipboard.writeText(document.getElementById('hdGeneratedNote').value).then(() => {
@@ -2633,6 +2720,8 @@ Are Other Customers Affected: ${yn(hdYesNoData.hd_otherCustomers)}`;
 
         function resetHardDown() {
             document.getElementById('hardDownForm').reset();
+            document.getElementById('hd-lightLevels-ont').value = '';
+            document.getElementById('hd-lightLevels-olt').value = '';
             Object.keys(hdYesNoData).forEach(k => { hdYesNoData[k] = null; });
             document.querySelectorAll('#note-sub-harddown .yes-no-buttons button').forEach(btn => {
                 btn.classList.remove('active-yes','active-no');
@@ -2660,22 +2749,7 @@ Are Other Customers Affected: ${yn(hdYesNoData.hd_otherCustomers)}`;
             }
         }
 
-        function generateDispatch() {
-            const brandLine = dispatchBrand ? (dispatchBrand === 'Tachus' ? 'Tachus' : 'EzeeFiber') : '';
-            const note =
-`${brandLine}
-
-Customer Name: ${document.getElementById('dp-customerName').value}
-Address: ${document.getElementById('dp-address').value}
-Account #: ${document.getElementById('dp-accountNumber').value}
-WO #: ${document.getElementById('dp-woNumber').value}
-
-Customer Reporting: ${document.getElementById('dp-customerReporting').value}`;
-
-            document.getElementById('dpGeneratedNote').value = note;
-            document.getElementById('dpOutputSection').classList.add('show');
-            document.getElementById('dpOutputSection').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
+        function generateDispatch() { /* overwritten below */ }
 
         function copyDispatch() {
             navigator.clipboard.writeText(document.getElementById('dpGeneratedNote').value).then(() => {
@@ -2708,20 +2782,7 @@ Customer Reporting: ${document.getElementById('dp-customerReporting').value}`;
             document.getElementById('cecr-priority-display').textContent = 'Priority ' + level;
         }
 
-        function generateCecr() {
-            const note =
-`Phone: ${document.getElementById('cecr-phone').value}
-Address: ${document.getElementById('cecr-address').value}
-Ticket ID: ${document.getElementById('cecr-ticketId').value}
-Customer Name: ${document.getElementById('cecr-customerName').value}
-Priority Level: ${cecrPriority ? 'Priority ' + cecrPriority : ''}
-
-Customer Report: ${document.getElementById('cecr-customerReport').value}`;
-
-            document.getElementById('cecrGeneratedNote').value = note;
-            document.getElementById('cecrOutputSection').classList.add('show');
-            document.getElementById('cecrOutputSection').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
+        function generateCecr() { /* overwritten below */ }
 
         function copyCecr() {
             navigator.clipboard.writeText(document.getElementById('cecrGeneratedNote').value).then(() => {
@@ -2952,6 +3013,202 @@ ${phone}`;
         }
 
         initTroubleshootingGrid();
+
+        // ── STICKY NOTES PANEL ──
+        function toggleNotesPanel() {
+            const panel = document.getElementById('sticky-notes-panel');
+            panel.classList.toggle('open');
+        }
+
+        function clearNotes() {
+            if (confirm('Clear all notes?')) {
+                document.getElementById('sticky-notes-area').value = '';
+                localStorage.setItem('ef_sticky_notes', '');
+            }
+        }
+
+        function copyNotes() {
+            const txt = document.getElementById('sticky-notes-area').value;
+            if (!txt.trim()) return;
+            navigator.clipboard.writeText(txt).then(() => {
+                const btn = document.getElementById('notes-copy-btn');
+                btn.textContent = '✓ Copied';
+                setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+            });
+        }
+
+        // Persist notes in localStorage
+        const stickyArea = document.getElementById('sticky-notes-area');
+        const saved = localStorage.getItem('ef_sticky_notes');
+        if (saved) stickyArea.value = saved;
+        stickyArea.addEventListener('input', () => {
+            localStorage.setItem('ef_sticky_notes', stickyArea.value);
+        });
+
+        // ── SKIP EMPTY FIELDS HELPERS ──
+        function fv(id) {
+            // Returns "Label: value\n" or "" if empty
+            return null; // used inline below
+        }
+
+        // Returns "  Label: value\n" only if value is non-empty
+        function line(label, value) {
+            const v = (value || '').trim();
+            return v ? `  ${label}: ${v}\n` : '';
+        }
+
+        // Returns "Label: value\n" (no indent) only if value is non-empty
+        function lineFlat(label, value) {
+            const v = (value || '').trim();
+            return v ? `${label}: ${v}\n` : '';
+        }
+
+        // Returns "  Label: Yes/No\n" only if yes/no was set
+        function lineYN(label, val) {
+            return val === null ? '' : `  ${label}: ${val ? 'Yes' : 'No'}\n`;
+        }
+
+        // Returns "Label: Yes/No\n" (flat, no indent) only if set
+        function lineYNFlat(label, val) {
+            return val === null ? '' : `${label}: ${val ? 'Yes' : 'No'}\n`;
+        }
+
+        // Overwrite generateNote with empty-field-skipping version
+        generateNote = function() {
+            const ontSN    = (document.getElementById('tr-ont-sn').value || '').trim();
+            const routerVal = trEquip.router === 'Other'
+                ? (document.getElementById('tr-router-other').value.trim() || 'Other')
+                : trEquip.router;
+            const routerSN = (document.getElementById('tr-router-sn').value || '').trim();
+            const ontLL    = (document.getElementById('tr-lightLevels-ont').value || '').trim();
+            const oltLL    = (document.getElementById('tr-lightLevels-olt').value || '').trim();
+
+            const allSteps = [...Array.from(selectedTroubleshooting), ...customTrSteps];
+
+            let equip = '';
+            if (ontSN)     equip += `  ONT SN: ${ontSN}\n`;
+            if (routerVal) equip += `  Router: ${routerVal}\n`;
+            if (routerSN)  equip += `  Router SN: ${routerSN}\n`;
+
+            let custDetails = '';
+            custDetails += line('Name',    document.getElementById('tr-name').value);
+            custDetails += line('Phone',   document.getElementById('tr-phone').value);
+            custDetails += line('Acct #',  document.getElementById('tr-acct').value);
+            custDetails += line('Address', document.getElementById('tr-address').value);
+            custDetails += line('Node',    document.getElementById('tr-node').value);
+
+            let netWifi = '';
+            netWifi += line('Alarm Code(s)', document.getElementById('tr-alarmCodes').value);
+            netWifi += line('Speed Test',    document.getElementById('tr-speedTest').value);
+            netWifi += lineYN('Devices Disconnecting?', trYesNo.tr_devicesDisconnecting);
+            netWifi += lineYN('Network Stable?',        trYesNo.tr_networkStable);
+            if (ontLL || oltLL) {
+                const llParts = [];
+                if (ontLL) llParts.push(`ONT: ${ontLL}`);
+                if (oltLL) llParts.push(`OLT: ${oltLL}`);
+                netWifi += `  Light Levels — ${llParts.join(' / ')}\n`;
+            }
+            netWifi += lineYN('WiFi Interference?',    trYesNo.tr_wifiInterference);
+            netWifi += lineYN('Construction in Area?', trYesNo.tr_constructionInArea);
+
+            let parts = [];
+            if (trProvider)                      parts.push(`Provider: ${trProvider}`);
+            const cr = (document.getElementById('tr-customerReporting').value || '').trim();
+            if (cr)                              parts.push(`Customer Reporting: ${cr}`);
+            if (equip.trim())                    parts.push(`Equipment\n${equip.trimEnd()}`);
+            if (custDetails.trim())              parts.push(`Customer Details\n${custDetails.trimEnd()}`);
+            if (netWifi.trim())                  parts.push(`Network & WiFi\n${netWifi.trimEnd()}`);
+            if (allSteps.length > 0)             parts.push(`Troubleshooting Steps:\n${allSteps.join('\n')}`);
+            const init = (document.getElementById('tr-agentInitials').value || '').trim();
+            if (init)                            parts.push(`Agent Initials: ${init}`);
+
+            document.getElementById('generatedNote').value = parts.join('\n\n');
+            document.getElementById('outputSection').classList.add('show');
+            document.getElementById('outputSection').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        };
+
+        // Overwrite generateHardDown with empty-field-skipping version
+        generateHardDown = function() {
+            const ontLL = (document.getElementById('hd-lightLevels-ont').value || '').trim();
+            const oltLL = (document.getElementById('hd-lightLevels-olt').value || '').trim();
+
+            let lines = 'HARD DOWN\n\n';
+            lines += lineFlat('Customer Is Reporting', document.getElementById('hd-customerReporting').value);
+            lines += lineFlat('Alarm Code(s)',          document.getElementById('hd-alarmCodes').value);
+            lines += lineFlat('Speed Test (Down/Up)',   document.getElementById('hd-speedTest').value);
+            lines += lineYNFlat('Are Devices Disconnecting', hdYesNoData.hd_devicesDisconnecting);
+            lines += lineYNFlat('Is Network Stable',         hdYesNoData.hd_networkStable);
+            if (ontLL || oltLL) {
+                const llParts = [];
+                if (ontLL) llParts.push(`ONT: ${ontLL}`);
+                if (oltLL) llParts.push(`OLT: ${oltLL}`);
+                lines += `Light Levels — ${llParts.join(' / ')}\n`;
+            }
+            lines += lineFlat('L2-User Aligned',    document.getElementById('hd-l2UserAligned').value);
+            lines += lineYNFlat('Verified Head End/Hub',           hdYesNoData.hd_verifiedHeadEnd);
+            lines += lineYNFlat('Is There Wi-Fi Channel Interference', hdYesNoData.hd_wifiInterference);
+            lines += lineYNFlat('Was Equipment Rebooted',          hdYesNoData.hd_equipmentRebooted);
+            lines += lineYNFlat('Are All Connections Verified',    hdYesNoData.hd_connectionsVerified);
+            lines += lineFlat('Timeframe When Issues Started',     document.getElementById('hd-timeframe').value);
+            lines += lineYNFlat('Was Basic Router Troubleshooting Done', hdYesNoData.hd_routerTroubleshooting);
+            lines += lineFlat('Troubleshooting Steps Taken',       document.getElementById('hd-troubleshootingSteps').value);
+            lines += lineYNFlat('Are Other Customers Affected',    hdYesNoData.hd_otherCustomers);
+
+            document.getElementById('hdGeneratedNote').value = lines.trimEnd();
+            document.getElementById('hdOutputSection').classList.add('show');
+            document.getElementById('hdOutputSection').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        };
+
+        // Overwrite generateDispatch with empty-field-skipping version
+        generateDispatch = function() {
+            let parts = [];
+            if (dispatchBrand) parts.push(dispatchBrand === 'Tachus' ? 'Tachus' : 'EzeeFiber');
+            let details = '';
+            details += lineFlat('Customer Name', document.getElementById('dp-customerName').value);
+            details += lineFlat('Address',       document.getElementById('dp-address').value);
+            details += lineFlat('Account #',     document.getElementById('dp-accountNumber').value);
+            details += lineFlat('WO #',          document.getElementById('dp-woNumber').value);
+            if (details.trim()) parts.push(details.trimEnd());
+            const cr = (document.getElementById('dp-customerReporting').value || '').trim();
+            if (cr) parts.push(`Customer Reporting: ${cr}`);
+            document.getElementById('dpGeneratedNote').value = parts.join('\n\n');
+            document.getElementById('dpOutputSection').classList.add('show');
+            document.getElementById('dpOutputSection').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        };
+
+        // Overwrite generateCecr with empty-field-skipping version
+        generateCecr = function() {
+            let lines = '';
+            lines += lineFlat('Phone',         document.getElementById('cecr-phone').value);
+            lines += lineFlat('Address',       document.getElementById('cecr-address').value);
+            lines += lineFlat('Ticket ID',     document.getElementById('cecr-ticketId').value);
+            lines += lineFlat('Customer Name', document.getElementById('cecr-customerName').value);
+            if (cecrPriority) lines += `Priority Level: Priority ${cecrPriority}\n`;
+            const cr = (document.getElementById('cecr-customerReport').value || '').trim();
+            if (cr) lines += `\nCustomer Report: ${cr}`;
+            document.getElementById('cecrGeneratedNote').value = lines.trimEnd();
+            document.getElementById('cecrOutputSection').classList.add('show');
+            document.getElementById('cecrOutputSection').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        };
+
     </script>
-</body>
-</html>
+
+    <!-- ── STICKY NOTES PANEL ── -->
+    <div class="sticky-notes-tab" id="sticky-notes-tab">
+        <button class="sticky-notes-toggle" onclick="toggleNotesPanel()" title="Toggle Notes">
+            📝 Notes
+        </button>
+        <div class="sticky-notes-panel" id="sticky-notes-panel">
+            <div class="sticky-notes-inner">
+                <div class="sticky-notes-header">
+                    <span class="sticky-notes-title">📝 My Notes</span>
+                    <div class="sticky-notes-actions">
+                        <button class="sticky-notes-copy" id="notes-copy-btn" onclick="copyNotes()">Copy</button>
+                        <button class="sticky-notes-clear" onclick="clearNotes()">Clear</button>
+                    </div>
+                </div>
+                <textarea class="sticky-notes-textarea" id="sticky-notes-area" placeholder="Type notes here... They'll be saved automatically."></textarea>
+                <div class="sticky-notes-footer">Auto-saved to this browser</div>
+            </div>
+        </div>
+    </div>
