@@ -2643,7 +2643,74 @@
 
         function yn(val) { return val === null ? '' : val ? 'Yes' : 'No'; }
 
-        function generateNote() { /* overwritten below */ }
+
+        // ── SKIP EMPTY FIELDS HELPERS ──
+        function line(label, value) {
+            const v = (value || "").trim();
+            return v ? "  " + label + ": " + v + "\n" : "";
+        }
+        function lineFlat(label, value) {
+            const v = (value || "").trim();
+            return v ? label + ": " + v + "\n" : "";
+        }
+        function lineYN(label, val) {
+            return val === null ? "" : "  " + label + ": " + (val ? "Yes" : "No") + "\n";
+        }
+        function lineYNFlat(label, val) {
+            return val === null ? "" : label + ": " + (val ? "Yes" : "No") + "\n";
+        }
+
+        function generateNote() {
+            const ontSN     = (document.getElementById('tr-ont-sn').value || '').trim();
+            const routerVal = trEquip.router === 'Other'
+                ? (document.getElementById('tr-router-other').value.trim() || 'Other')
+                : trEquip.router;
+            const routerSN  = (document.getElementById('tr-router-sn').value || '').trim();
+            const ontLL     = (document.getElementById('tr-lightLevels-ont').value || '').trim();
+            const oltLL     = (document.getElementById('tr-lightLevels-olt').value || '').trim();
+            const allSteps  = [...Array.from(selectedTroubleshooting), ...customTrSteps];
+
+            let equip = '';
+            if (ontSN)     equip += `  ONT SN: ${ontSN}\n`;
+            if (routerVal) equip += `  Router: ${routerVal}\n`;
+            if (routerSN)  equip += `  Router SN: ${routerSN}\n`;
+
+            let custDetails = '';
+            custDetails += line('Name',    document.getElementById('tr-name').value);
+            custDetails += line('Phone',   document.getElementById('tr-phone').value);
+            custDetails += line('Acct #',  document.getElementById('tr-acct').value);
+            custDetails += line('Address', document.getElementById('tr-address').value);
+            custDetails += line('Node',    document.getElementById('tr-node').value);
+
+            let netWifi = '';
+            netWifi += line('Alarm Code(s)', document.getElementById('tr-alarmCodes').value);
+            netWifi += line('Speed Test',    document.getElementById('tr-speedTest').value);
+            netWifi += lineYN('Devices Disconnecting?', trYesNo.tr_devicesDisconnecting);
+            netWifi += lineYN('Network Stable?',        trYesNo.tr_networkStable);
+            if (ontLL || oltLL) {
+                const llParts = [];
+                if (ontLL) llParts.push(`ONT: ${ontLL}`);
+                if (oltLL) llParts.push(`OLT: ${oltLL}`);
+                netWifi += `  Light Levels — ${llParts.join(' / ')}\n`;
+            }
+            netWifi += lineYN('WiFi Interference?',    trYesNo.tr_wifiInterference);
+            netWifi += lineYN('Construction in Area?', trYesNo.tr_constructionInArea);
+
+            let parts = [];
+            if (trProvider)             parts.push(`Provider: ${trProvider}`);
+            const cr = (document.getElementById('tr-customerReporting').value || '').trim();
+            if (cr)                     parts.push(`Customer Reporting: ${cr}`);
+            if (equip.trim())           parts.push(`Equipment\n${equip.trimEnd()}`);
+            if (custDetails.trim())     parts.push(`Customer Details\n${custDetails.trimEnd()}`);
+            if (netWifi.trim())         parts.push(`Network & WiFi\n${netWifi.trimEnd()}`);
+            if (allSteps.length > 0)    parts.push(`Troubleshooting Steps:\n${allSteps.join('\n')}`);
+            const init = (document.getElementById('tr-agentInitials').value || '').trim();
+            if (init)                   parts.push(`Agent Initials: ${init}`);
+
+            document.getElementById('generatedNote').value = parts.join('\n\n');
+            document.getElementById('outputSection').classList.add('show');
+            document.getElementById('outputSection').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
 
         function copyToClipboard() {
             navigator.clipboard.writeText(document.getElementById('generatedNote').value).then(() => {
@@ -2705,7 +2772,34 @@
             e.target.classList.add(value ? 'active-yes' : 'active-no');
         }
 
-        function generateHardDown() { /* overwritten below */ }
+        function generateHardDown() {
+            const ontLL = (document.getElementById('hd-lightLevels-ont').value || '').trim();
+            const oltLL = (document.getElementById('hd-lightLevels-olt').value || '').trim();
+            let lines = 'HARD DOWN\n\n';
+            lines += lineFlat('Customer Is Reporting', document.getElementById('hd-customerReporting').value);
+            lines += lineFlat('Alarm Code(s)',          document.getElementById('hd-alarmCodes').value);
+            lines += lineFlat('Speed Test (Down/Up)',   document.getElementById('hd-speedTest').value);
+            lines += lineYNFlat('Are Devices Disconnecting',          hdYesNoData.hd_devicesDisconnecting);
+            lines += lineYNFlat('Is Network Stable',                  hdYesNoData.hd_networkStable);
+            if (ontLL || oltLL) {
+                const llParts = [];
+                if (ontLL) llParts.push(`ONT: ${ontLL}`);
+                if (oltLL) llParts.push(`OLT: ${oltLL}`);
+                lines += `Light Levels — ${llParts.join(' / ')}\n`;
+            }
+            lines += lineFlat('L2-User Aligned',                      document.getElementById('hd-l2UserAligned').value);
+            lines += lineYNFlat('Verified Head End/Hub',              hdYesNoData.hd_verifiedHeadEnd);
+            lines += lineYNFlat('Is There Wi-Fi Channel Interference', hdYesNoData.hd_wifiInterference);
+            lines += lineYNFlat('Was Equipment Rebooted',             hdYesNoData.hd_equipmentRebooted);
+            lines += lineYNFlat('Are All Connections Verified',       hdYesNoData.hd_connectionsVerified);
+            lines += lineFlat('Timeframe When Issues Started',         document.getElementById('hd-timeframe').value);
+            lines += lineYNFlat('Was Basic Router Troubleshooting Done', hdYesNoData.hd_routerTroubleshooting);
+            lines += lineFlat('Troubleshooting Steps Taken',           document.getElementById('hd-troubleshootingSteps').value);
+            lines += lineYNFlat('Are Other Customers Affected',       hdYesNoData.hd_otherCustomers);
+            document.getElementById('hdGeneratedNote').value = lines.trimEnd();
+            document.getElementById('hdOutputSection').classList.add('show');
+            document.getElementById('hdOutputSection').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
 
         function copyHardDown() {
             navigator.clipboard.writeText(document.getElementById('hdGeneratedNote').value).then(() => {
@@ -2749,7 +2843,21 @@
             }
         }
 
-        function generateDispatch() { /* overwritten below */ }
+        function generateDispatch() {
+            let parts = [];
+            if (dispatchBrand) parts.push(dispatchBrand === 'Tachus' ? 'Tachus' : 'EzeeFiber');
+            let details = '';
+            details += lineFlat('Customer Name', document.getElementById('dp-customerName').value);
+            details += lineFlat('Address',       document.getElementById('dp-address').value);
+            details += lineFlat('Account #',     document.getElementById('dp-accountNumber').value);
+            details += lineFlat('WO #',          document.getElementById('dp-woNumber').value);
+            if (details.trim()) parts.push(details.trimEnd());
+            const cr = (document.getElementById('dp-customerReporting').value || '').trim();
+            if (cr) parts.push(`Customer Reporting: ${cr}`);
+            document.getElementById('dpGeneratedNote').value = parts.join('\n\n');
+            document.getElementById('dpOutputSection').classList.add('show');
+            document.getElementById('dpOutputSection').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
 
         function copyDispatch() {
             navigator.clipboard.writeText(document.getElementById('dpGeneratedNote').value).then(() => {
@@ -2782,7 +2890,19 @@
             document.getElementById('cecr-priority-display').textContent = 'Priority ' + level;
         }
 
-        function generateCecr() { /* overwritten below */ }
+        function generateCecr() {
+            let lines = '';
+            lines += lineFlat('Phone',         document.getElementById('cecr-phone').value);
+            lines += lineFlat('Address',       document.getElementById('cecr-address').value);
+            lines += lineFlat('Ticket ID',     document.getElementById('cecr-ticketId').value);
+            lines += lineFlat('Customer Name', document.getElementById('cecr-customerName').value);
+            if (cecrPriority) lines += `Priority Level: Priority ${cecrPriority}\n`;
+            const cr = (document.getElementById('cecr-customerReport').value || '').trim();
+            if (cr) lines += `\nCustomer Report: ${cr}`;
+            document.getElementById('cecrGeneratedNote').value = lines.trimEnd();
+            document.getElementById('cecrOutputSection').classList.add('show');
+            document.getElementById('cecrOutputSection').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
 
         function copyCecr() {
             navigator.clipboard.writeText(document.getElementById('cecrGeneratedNote').value).then(() => {
@@ -3014,19 +3134,16 @@ ${phone}`;
 
         initTroubleshootingGrid();
 
-        // ── STICKY NOTES PANEL ──
+        // ── STICKY NOTES ──
         function toggleNotesPanel() {
-            const panel = document.getElementById('sticky-notes-panel');
-            panel.classList.toggle('open');
+            document.getElementById('sticky-notes-panel').classList.toggle('open');
         }
-
         function clearNotes() {
             if (confirm('Clear all notes?')) {
                 document.getElementById('sticky-notes-area').value = '';
                 localStorage.setItem('ef_sticky_notes', '');
             }
         }
-
         function copyNotes() {
             const txt = document.getElementById('sticky-notes-area').value;
             if (!txt.trim()) return;
@@ -3036,160 +3153,12 @@ ${phone}`;
                 setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
             });
         }
-
-        // Persist notes in localStorage
         const stickyArea = document.getElementById('sticky-notes-area');
-        const saved = localStorage.getItem('ef_sticky_notes');
-        if (saved) stickyArea.value = saved;
+        const savedNotes = localStorage.getItem('ef_sticky_notes');
+        if (savedNotes) stickyArea.value = savedNotes;
         stickyArea.addEventListener('input', () => {
             localStorage.setItem('ef_sticky_notes', stickyArea.value);
         });
-
-        // ── SKIP EMPTY FIELDS HELPERS ──
-        function fv(id) {
-            // Returns "Label: value\n" or "" if empty
-            return null; // used inline below
-        }
-
-        // Returns "  Label: value\n" only if value is non-empty
-        function line(label, value) {
-            const v = (value || '').trim();
-            return v ? `  ${label}: ${v}\n` : '';
-        }
-
-        // Returns "Label: value\n" (no indent) only if value is non-empty
-        function lineFlat(label, value) {
-            const v = (value || '').trim();
-            return v ? `${label}: ${v}\n` : '';
-        }
-
-        // Returns "  Label: Yes/No\n" only if yes/no was set
-        function lineYN(label, val) {
-            return val === null ? '' : `  ${label}: ${val ? 'Yes' : 'No'}\n`;
-        }
-
-        // Returns "Label: Yes/No\n" (flat, no indent) only if set
-        function lineYNFlat(label, val) {
-            return val === null ? '' : `${label}: ${val ? 'Yes' : 'No'}\n`;
-        }
-
-        // Overwrite generateNote with empty-field-skipping version
-        generateNote = function() {
-            const ontSN    = (document.getElementById('tr-ont-sn').value || '').trim();
-            const routerVal = trEquip.router === 'Other'
-                ? (document.getElementById('tr-router-other').value.trim() || 'Other')
-                : trEquip.router;
-            const routerSN = (document.getElementById('tr-router-sn').value || '').trim();
-            const ontLL    = (document.getElementById('tr-lightLevels-ont').value || '').trim();
-            const oltLL    = (document.getElementById('tr-lightLevels-olt').value || '').trim();
-
-            const allSteps = [...Array.from(selectedTroubleshooting), ...customTrSteps];
-
-            let equip = '';
-            if (ontSN)     equip += `  ONT SN: ${ontSN}\n`;
-            if (routerVal) equip += `  Router: ${routerVal}\n`;
-            if (routerSN)  equip += `  Router SN: ${routerSN}\n`;
-
-            let custDetails = '';
-            custDetails += line('Name',    document.getElementById('tr-name').value);
-            custDetails += line('Phone',   document.getElementById('tr-phone').value);
-            custDetails += line('Acct #',  document.getElementById('tr-acct').value);
-            custDetails += line('Address', document.getElementById('tr-address').value);
-            custDetails += line('Node',    document.getElementById('tr-node').value);
-
-            let netWifi = '';
-            netWifi += line('Alarm Code(s)', document.getElementById('tr-alarmCodes').value);
-            netWifi += line('Speed Test',    document.getElementById('tr-speedTest').value);
-            netWifi += lineYN('Devices Disconnecting?', trYesNo.tr_devicesDisconnecting);
-            netWifi += lineYN('Network Stable?',        trYesNo.tr_networkStable);
-            if (ontLL || oltLL) {
-                const llParts = [];
-                if (ontLL) llParts.push(`ONT: ${ontLL}`);
-                if (oltLL) llParts.push(`OLT: ${oltLL}`);
-                netWifi += `  Light Levels — ${llParts.join(' / ')}\n`;
-            }
-            netWifi += lineYN('WiFi Interference?',    trYesNo.tr_wifiInterference);
-            netWifi += lineYN('Construction in Area?', trYesNo.tr_constructionInArea);
-
-            let parts = [];
-            if (trProvider)                      parts.push(`Provider: ${trProvider}`);
-            const cr = (document.getElementById('tr-customerReporting').value || '').trim();
-            if (cr)                              parts.push(`Customer Reporting: ${cr}`);
-            if (equip.trim())                    parts.push(`Equipment\n${equip.trimEnd()}`);
-            if (custDetails.trim())              parts.push(`Customer Details\n${custDetails.trimEnd()}`);
-            if (netWifi.trim())                  parts.push(`Network & WiFi\n${netWifi.trimEnd()}`);
-            if (allSteps.length > 0)             parts.push(`Troubleshooting Steps:\n${allSteps.join('\n')}`);
-            const init = (document.getElementById('tr-agentInitials').value || '').trim();
-            if (init)                            parts.push(`Agent Initials: ${init}`);
-
-            document.getElementById('generatedNote').value = parts.join('\n\n');
-            document.getElementById('outputSection').classList.add('show');
-            document.getElementById('outputSection').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        };
-
-        // Overwrite generateHardDown with empty-field-skipping version
-        generateHardDown = function() {
-            const ontLL = (document.getElementById('hd-lightLevels-ont').value || '').trim();
-            const oltLL = (document.getElementById('hd-lightLevels-olt').value || '').trim();
-
-            let lines = 'HARD DOWN\n\n';
-            lines += lineFlat('Customer Is Reporting', document.getElementById('hd-customerReporting').value);
-            lines += lineFlat('Alarm Code(s)',          document.getElementById('hd-alarmCodes').value);
-            lines += lineFlat('Speed Test (Down/Up)',   document.getElementById('hd-speedTest').value);
-            lines += lineYNFlat('Are Devices Disconnecting', hdYesNoData.hd_devicesDisconnecting);
-            lines += lineYNFlat('Is Network Stable',         hdYesNoData.hd_networkStable);
-            if (ontLL || oltLL) {
-                const llParts = [];
-                if (ontLL) llParts.push(`ONT: ${ontLL}`);
-                if (oltLL) llParts.push(`OLT: ${oltLL}`);
-                lines += `Light Levels — ${llParts.join(' / ')}\n`;
-            }
-            lines += lineFlat('L2-User Aligned',    document.getElementById('hd-l2UserAligned').value);
-            lines += lineYNFlat('Verified Head End/Hub',           hdYesNoData.hd_verifiedHeadEnd);
-            lines += lineYNFlat('Is There Wi-Fi Channel Interference', hdYesNoData.hd_wifiInterference);
-            lines += lineYNFlat('Was Equipment Rebooted',          hdYesNoData.hd_equipmentRebooted);
-            lines += lineYNFlat('Are All Connections Verified',    hdYesNoData.hd_connectionsVerified);
-            lines += lineFlat('Timeframe When Issues Started',     document.getElementById('hd-timeframe').value);
-            lines += lineYNFlat('Was Basic Router Troubleshooting Done', hdYesNoData.hd_routerTroubleshooting);
-            lines += lineFlat('Troubleshooting Steps Taken',       document.getElementById('hd-troubleshootingSteps').value);
-            lines += lineYNFlat('Are Other Customers Affected',    hdYesNoData.hd_otherCustomers);
-
-            document.getElementById('hdGeneratedNote').value = lines.trimEnd();
-            document.getElementById('hdOutputSection').classList.add('show');
-            document.getElementById('hdOutputSection').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        };
-
-        // Overwrite generateDispatch with empty-field-skipping version
-        generateDispatch = function() {
-            let parts = [];
-            if (dispatchBrand) parts.push(dispatchBrand === 'Tachus' ? 'Tachus' : 'EzeeFiber');
-            let details = '';
-            details += lineFlat('Customer Name', document.getElementById('dp-customerName').value);
-            details += lineFlat('Address',       document.getElementById('dp-address').value);
-            details += lineFlat('Account #',     document.getElementById('dp-accountNumber').value);
-            details += lineFlat('WO #',          document.getElementById('dp-woNumber').value);
-            if (details.trim()) parts.push(details.trimEnd());
-            const cr = (document.getElementById('dp-customerReporting').value || '').trim();
-            if (cr) parts.push(`Customer Reporting: ${cr}`);
-            document.getElementById('dpGeneratedNote').value = parts.join('\n\n');
-            document.getElementById('dpOutputSection').classList.add('show');
-            document.getElementById('dpOutputSection').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        };
-
-        // Overwrite generateCecr with empty-field-skipping version
-        generateCecr = function() {
-            let lines = '';
-            lines += lineFlat('Phone',         document.getElementById('cecr-phone').value);
-            lines += lineFlat('Address',       document.getElementById('cecr-address').value);
-            lines += lineFlat('Ticket ID',     document.getElementById('cecr-ticketId').value);
-            lines += lineFlat('Customer Name', document.getElementById('cecr-customerName').value);
-            if (cecrPriority) lines += `Priority Level: Priority ${cecrPriority}\n`;
-            const cr = (document.getElementById('cecr-customerReport').value || '').trim();
-            if (cr) lines += `\nCustomer Report: ${cr}`;
-            document.getElementById('cecrGeneratedNote').value = lines.trimEnd();
-            document.getElementById('cecrOutputSection').classList.add('show');
-            document.getElementById('cecrOutputSection').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        };
 
     </script>
 
@@ -3212,3 +3181,5 @@ ${phone}`;
             </div>
         </div>
     </div>
+</body>
+</html>
