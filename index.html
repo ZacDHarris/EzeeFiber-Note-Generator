@@ -43,9 +43,7 @@
             letter-spacing: 0.5px;
         }
 
-        .tab-btn:hover {
-            color: #f9fafb;
-        }
+        .tab-btn:hover { color: #f9fafb; }
 
         .tab-btn.active {
             color: #FB612F;
@@ -213,6 +211,100 @@
             box-shadow: 0 2px 8px rgba(251, 97, 47, 0.3);
         }
 
+        /* ── CUSTOM TROUBLESHOOTING STEP ── */
+        .custom-step-wrapper {
+            margin-top: 0.5rem;
+            display: flex;
+            gap: 0.5rem;
+            align-items: stretch;
+        }
+
+        .custom-step-prefix {
+            background: #4b5563;
+            border: 2px solid #6b7280;
+            border-radius: 0.375rem 0 0 0.375rem;
+            padding: 0 0.75rem;
+            display: flex;
+            align-items: center;
+            font-size: 0.875rem;
+            color: #FB612F;
+            font-weight: 700;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .custom-step-input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 2px solid #6b7280;
+            border-left: none;
+            border-radius: 0 0.375rem 0.375rem 0;
+            font-size: 0.875rem;
+            background-color: #4b5563;
+            color: #f9fafb;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .custom-step-input:focus {
+            outline: none;
+            border-color: #FB612F;
+            box-shadow: 0 0 0 3px rgba(251, 97, 47, 0.2);
+        }
+
+        .custom-step-input::placeholder { color: #9ca3af; }
+
+        .custom-step-add-btn {
+            padding: 0.75rem 1.25rem;
+            background: #FB612F;
+            color: white;
+            border: none;
+            border-radius: 0.375rem;
+            font-weight: 700;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .custom-step-add-btn:hover {
+            background: #e5511a;
+            transform: translateY(-1px);
+        }
+
+        .custom-steps-list {
+            margin-top: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .custom-step-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #FB612F;
+            color: white;
+            padding: 0.4rem 0.75rem;
+            border-radius: 0.375rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            width: fit-content;
+        }
+
+        .custom-step-remove {
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.7);
+            cursor: pointer;
+            font-size: 1rem;
+            line-height: 1;
+            padding: 0;
+            transition: color 0.2s;
+        }
+
+        .custom-step-remove:hover { color: white; }
+
         .action-buttons {
             margin-top: 2rem;
             padding-top: 2rem;
@@ -336,6 +428,89 @@
         .note-sub-page { display: none; }
         .note-sub-page.active { display: block; }
 
+        /* ── SECTION DIVIDER ── */
+        .section-divider {
+            grid-column: 1 / -1;
+            border: none;
+            border-top: 1px solid #4b5563;
+            margin: 0.25rem 0;
+        }
+
+        .section-label {
+            grid-column: 1 / -1;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #FB612F;
+            padding-bottom: 0.25rem;
+            border-bottom: 1px solid rgba(251,97,47,0.3);
+        }
+
+        /* ── PROVIDER BUTTONS ── */
+        .provider-btn-group {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .provider-btn {
+            padding: 0.6rem 1.4rem;
+            border: 2px solid #6b7280;
+            border-radius: 0.375rem;
+            background: #4b5563;
+            color: #d1d5db;
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .provider-btn:hover { background: #6b7280; color: #f9fafb; }
+
+        .provider-btn.active-tachus {
+            background: #61bb46;
+            border-color: #61bb46;
+            color: white;
+            box-shadow: 0 2px 8px rgba(97, 187, 70, 0.4);
+        }
+
+        .provider-btn.active-ezee {
+            background: #FB612F;
+            border-color: #FB612F;
+            color: white;
+            box-shadow: 0 2px 8px rgba(251, 97, 47, 0.4);
+        }
+
+        /* ── EQUIPMENT BUTTONS ── */
+        .equip-btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .equip-btn {
+            padding: 0.4rem 0.9rem;
+            border: 2px solid #6b7280;
+            border-radius: 0.375rem;
+            background: #4b5563;
+            color: #d1d5db;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .equip-btn:hover { background: #6b7280; color: #f9fafb; }
+
+        .equip-btn.active {
+            background: #FB612F;
+            border-color: #FB612F;
+            color: white;
+            box-shadow: 0 2px 6px rgba(251,97,47,0.35);
+        }
+
         /* ── REFER A FRIEND ── */
         .raf-form .etf-output-wrap {
             display: flex;
@@ -350,13 +525,8 @@
             opacity: 0.85;
         }
 
-        .raf-img-preview:first-of-type {
-            margin-bottom: 0.5rem;
-        }
-
-        .raf-img-preview:last-of-type {
-            margin-top: 0.5rem;
-        }
+        .raf-img-preview:first-of-type { margin-bottom: 0.5rem; }
+        .raf-img-preview:last-of-type  { margin-top: 0.5rem; }
 
         /* ── UPS LABEL SECTION ── */
         .ups-label-section {
@@ -421,20 +591,6 @@
             background: #154360;
             transform: translateY(-1px);
             box-shadow: 0 3px 8px rgba(26,82,118,0.5);
-        }
-
-        /* ── RETURN LABEL NOTICE ── */
-        .return-label-notice {
-            margin-top: 0.75rem;
-            padding: 0.6rem 1rem;
-            background: #2d2d2d;
-            border: 2px dashed #FB612F;
-            border-radius: 0.5rem;
-            color: #FB612F;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 0.3px;
-            text-align: center;
         }
 
         /* ── ROUTER TYPE BUTTONS ── */
@@ -591,62 +747,6 @@
             letter-spacing: 3px;
             color: #6b7280;
         }
-        .accountnotes-page {
-            min-height: 80vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: #2d2d2d;
-            color: #9ca3af;
-            font-size: 1rem;
-            letter-spacing: 0.5px;
-        }
-
-        .accountnotes-page .brand-mark {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: #FB612F;
-            letter-spacing: 2px;
-            margin-bottom: 0.5rem;
-        }
-
-        .accountnotes-page .brand-sub {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: #6b7280;
-        }
-
-        /* ── EMAIL TEMPLATE FORM LAYOUT ── */
-        .email-template-form {
-            display: flex;
-            gap: 2rem;
-            padding: 1.5rem;
-            width: 100%;
-            max-width: 1000px;
-            margin: 0 auto;
-            flex-wrap: wrap;
-        }
-
-        .etf-fields {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            min-width: 220px;
-            flex: 0 0 240px;
-        }
-
-        .etf-generate-btn { margin-top: 0.5rem; }
-
-        .etf-output-wrap {
-            flex: 1;
-            min-width: 280px;
-        }
-
-        .etf-output-wrap .output-box textarea {
-            min-height: 220px;
-        }
 
         /* ── EMAIL TEMPLATE FORM LAYOUT ── */
         .email-template-form {
@@ -766,9 +866,7 @@
             letter-spacing: 0.4px;
         }
 
-        .email-sub-btn:hover {
-            color: #f9fafb;
-        }
+        .email-sub-btn:hover { color: #f9fafb; }
 
         .email-sub-btn.active-tachus {
             color: #61bb46;
@@ -784,7 +882,6 @@
         .email-sub-page { display: none; }
         .email-sub-page.active { display: flex; flex-direction: column; min-height: 70vh; }
 
-        /* ── TACHUS brand ── */
         .tachus-mark {
             font-size: 2.5rem;
             font-weight: 800;
@@ -793,7 +890,6 @@
             margin-bottom: 0.5rem;
         }
 
-        /* ── EZEEFIBER brand ── */
         .ezee-mark {
             font-size: 2.5rem;
             font-weight: 800;
@@ -809,7 +905,6 @@
             color: #6b7280;
         }
 
-        /* ── INDICATOR DOT ── */
         .sub-indicator {
             display: inline-block;
             width: 8px;
@@ -822,15 +917,6 @@
         .dot-tachus { background-color: #61bb46; }
         .dot-ezee   { background-color: #FB612F; }
 
-        @media (max-width: 768px) {
-            .header-container { flex-direction: column; gap: 1rem; }
-            .logo-container img { max-width: 200px; }
-            .header-title { font-size: 1.5rem; }
-            .header-subtitle { font-size: 0.875rem; }
-            .email-sub-btn { padding: 0.65rem 1rem; font-size: 0.8rem; }
-        }
-    </style>
-    <style>
         /* ── HOME PAGE ── */
         .home-page {
             min-height: 80vh;
@@ -924,8 +1010,6 @@
         .home-card.card-orange:hover { border-color: #FB612F; }
         .home-card.card-green { border-color: rgba(97,187,70,0.3); }
         .home-card.card-green:hover { border-color: #61bb46; }
-        .home-card.card-blue { border-color: rgba(59,130,246,0.3); }
-        .home-card.card-blue:hover { border-color: #3b82f6; }
 
         /* ── OUI LOOKUP ── */
         .oui-section {
@@ -1027,32 +1111,11 @@
             gap: 0.5rem;
         }
 
-        .oui-result.loading {
-            background: #1e293b;
-            border: 1px solid #475569;
-            color: #94a3b8;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
         .oui-mac-display {
             font-family: 'Courier New', monospace;
             font-size: 0.8rem;
             color: #6b7280;
             margin-top: 0.4rem;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        .oui-spinner {
-            width: 14px; height: 14px;
-            border: 2px solid #475569;
-            border-top-color: #94a3b8;
-            border-radius: 50%;
-            animation: spin 0.7s linear infinite;
-            flex-shrink: 0;
         }
 
         /* ── LOGIN PAGE ── */
@@ -1148,7 +1211,6 @@
             min-height: 1.2rem;
         }
 
-        /* shake animation on wrong password */
         @keyframes shake {
             0%,100% { transform: translateX(0); }
             20%      { transform: translateX(-8px); }
@@ -1158,7 +1220,6 @@
         }
         .login-card.shake { animation: shake 0.4s ease; }
 
-        /* sign out button */
         .signout-btn {
             position: fixed;
             top: 0.6rem;
@@ -1175,6 +1236,13 @@
             transition: all 0.2s;
         }
         .signout-btn:hover { border-color: #FB612F; color: #FB612F; }
+
+        @media (max-width: 768px) {
+            .header-container { flex-direction: column; gap: 1rem; }
+            .logo-container img { max-width: 200px; }
+            .header-title { font-size: 1.5rem; }
+            .email-sub-btn { padding: 0.65rem 1rem; font-size: 0.8rem; }
+        }
     </style>
 </head>
 <body>
@@ -1206,15 +1274,11 @@
     <!-- ── PAGE: HOME ── -->
     <div id="page-home" class="page active">
         <div class="home-page">
-
             <div class="home-header">
                 <h1>Ezee Fiber Internal Tools</h1>
                 <p>Select a tool below to get started</p>
             </div>
-
             <div class="home-grid">
-
-                <!-- Note Generator Card -->
                 <div class="home-card card-orange" onclick="goToTab('support')">
                     <span class="home-card-icon">📋</span>
                     <div class="home-card-title">Note Generator</div>
@@ -1227,8 +1291,6 @@
                         <span class="home-card-tag">CECR</span>
                     </div>
                 </div>
-
-                <!-- Email Templates Card -->
                 <div class="home-card card-green" onclick="goToTab('email')">
                     <span class="home-card-icon">📧</span>
                     <div class="home-card-title">Email Templates</div>
@@ -1240,10 +1302,7 @@
                         <span class="home-card-tag">Requesting Pics</span>
                     </div>
                 </div>
-
             </div>
-
-            <!-- OUI Lookup -->
             <div class="oui-section">
                 <div class="oui-title">🔍 MAC Address / OUI Lookup</div>
                 <div class="oui-subtitle">Enter a MAC address to identify the device manufacturer</div>
@@ -1255,7 +1314,6 @@
                 <div id="oui-result" class="oui-result"></div>
                 <div id="oui-mac-display" class="oui-mac-display"></div>
             </div>
-
         </div>
     </div>
 
@@ -1282,164 +1340,205 @@
             <button class="note-sub-btn" id="note-btn-cecr" onclick="switchNoteTab('cecr', this)">CECR</button>
         </nav>
 
-        <!-- ── NOTE SUB-PAGE: Truck Roll Approval ── -->
+        <!-- ══════════════════════════════════════════════
+             NOTE SUB-PAGE: Truck Roll Approval (NEW TEMPLATE)
+             ══════════════════════════════════════════════ -->
         <div id="note-sub-truckroll" class="note-sub-page active">
-        <div class="container">
-            <form id="supportForm">
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label for="agentInitials">Agent Initials</label>
-                        <input type="text" id="agentInitials" placeholder="Enter agent initials">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">Phone</label>
-                        <input type="text" id="phone" placeholder="Enter phone">
-                    </div>
+            <div class="container">
+                <form id="supportForm">
+                    <div class="form-grid">
 
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" placeholder="Enter name">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="address">Address</label>
-                        <input type="text" id="address" placeholder="Enter address">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="salesArea">Sales Area</label>
-                        <input type="text" id="salesArea" placeholder="Enter sales area">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="accountNumber">Account #</label>
-                        <input type="text" id="accountNumber" placeholder="Enter account #">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="package">Package</label>
-                        <input type="text" id="package" placeholder="Enter package">
-                    </div>
-
-                    <div class="form-group full-width">
-                        <label for="customerStatement">Customer Statement</label>
-                        <textarea id="customerStatement" placeholder="Enter customer statement"></textarea>
-                    </div>
-                    
-                    <div class="form-group full-width">
-                        <label for="agentStatement">Agent Statement</label>
-                        <textarea id="agentStatement" placeholder="Enter YOUR statement"></textarea>
-                    </div>
-
-                    <div class="form-group full-width">
-                        <label>Troubleshooting Steps (Optional - Click to Select)</label>
-                        <div class="troubleshooting-grid" id="troubleshootingGrid"></div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Are Devices Disconnecting</label>
-                        <div class="yes-no-buttons">
-                            <button type="button" onclick="setYesNo('devicesDisconnecting', true, event)">Yes</button>
-                            <button type="button" onclick="setYesNo('devicesDisconnecting', false, event)">No</button>
+                        <!-- PROVIDER -->
+                        <div class="form-group full-width">
+                            <div class="section-label">Provider</div>
                         </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Is Network Online?</label>
-                        <div class="yes-no-buttons">
-                            <button type="button" onclick="setYesNo('networkStable', true, event)">Yes</button>
-                            <button type="button" onclick="setYesNo('networkStable', false, event)">No</button>
+                        <div class="form-group full-width">
+                            <div class="provider-btn-group">
+                                <button type="button" class="provider-btn" id="tr-provider-tachus" onclick="setTrProvider('Tachus')">Tachus</button>
+                                <button type="button" class="provider-btn" id="tr-provider-ezee" onclick="setTrProvider('EzeeFiber')">EzeeFiber</button>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Is there Wi-Fi Channel Interference</label>
-                        <div class="yes-no-buttons">
-                            <button type="button" onclick="setYesNo('wifiInterference', true, event)">Yes</button>
-                            <button type="button" onclick="setYesNo('wifiInterference', false, event)">No</button>
+
+                        <hr class="section-divider">
+
+                        <!-- CUSTOMER REPORTING -->
+                        <div class="form-group full-width">
+                            <div class="section-label">Customer Reporting</div>
                         </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Was Equipment Rebooted</label>
-                        <div class="yes-no-buttons">
-                            <button type="button" onclick="setYesNo('equipmentRebooted', true, event)">Yes</button>
-                            <button type="button" onclick="setYesNo('equipmentRebooted', false, event)">No</button>
+                        <div class="form-group full-width">
+                            <textarea id="tr-customerReporting" placeholder="Enter customer report" style="min-height:90px;"></textarea>
                         </div>
-                    </div>
 
-                    <div class="form-group full-width">
-                        <label>Are All Connections Verified</label>
-                        <div class="yes-no-buttons">
-                            <button type="button" onclick="setYesNo('connectionsVerified', true, event)">Yes</button>
-                            <button type="button" onclick="setYesNo('connectionsVerified', false, event)">No</button>
+                        <hr class="section-divider">
+
+                        <!-- EQUIPMENT -->
+                        <div class="form-group full-width">
+                            <div class="section-label">Equipment</div>
                         </div>
-                    </div>
-                    
-                    <div class="form-group full-width">
-                        <label for="ont">ONT Stats</label>
-                        <textarea id="ont" placeholder="Enter ONT Stats: SN, Alarm codes, Light Levels, and Head End/Hub"></textarea>
-                    </div>
+                        <div class="form-group">
+                            <label>ONT</label>
+                            <div class="equip-btn-group" id="tr-ont-btns">
+                                <button type="button" class="equip-btn" onclick="setEquip('ont','Calix 803G',this)">Calix 803G</button>
+                                <button type="button" class="equip-btn" onclick="setEquip('ont','Calix 844E',this)">Calix 844E</button>
+                                <button type="button" class="equip-btn" onclick="setEquip('ont','Calix 844EX',this)">Calix 844EX</button>
+                                <button type="button" class="equip-btn" onclick="setEquip('ont','Nokia G-010G-Q',this)">Nokia G-010G-Q</button>
+                                <button type="button" class="equip-btn" onclick="setEquip('ont','Nokia G-010G-P',this)">Nokia G-010G-P</button>
+                                <button type="button" class="equip-btn" onclick="setEquip('ont','Other',this)">Other</button>
+                            </div>
+                            <input type="text" id="tr-ont-other" placeholder="ONT model (if Other)" style="margin-top:0.5rem; display:none;">
+                        </div>
+                        <div class="form-group">
+                            <label>Router</label>
+                            <div class="equip-btn-group" id="tr-router-btns">
+                                <button type="button" class="equip-btn" onclick="setEquip('router','EERO PRO6E',this)">EERO PRO6E</button>
+                                <button type="button" class="equip-btn" onclick="setEquip('router','EERO MAX7',this)">EERO MAX7</button>
+                                <button type="button" class="equip-btn" onclick="setEquip('router','EVO AP6700',this)">EVO AP6700</button>
+                                <button type="button" class="equip-btn" onclick="setEquip('router','TP-LINK P50',this)">TP-LINK P50</button>
+                                <button type="button" class="equip-btn" onclick="setEquip('router','TP-LINK PB70',this)">TP-LINK PB70</button>
+                                <button type="button" class="equip-btn" onclick="setEquip('router','TP-LINK P110',this)">TP-LINK P110</button>
+                                <button type="button" class="equip-btn" onclick="setEquip('router','Other',this)">Other</button>
+                            </div>
+                            <input type="text" id="tr-router-other" placeholder="Router model (if Other)" style="margin-top:0.5rem; display:none;">
+                        </div>
 
-                    <div class="form-group full-width">
-                        <label for="speedTest">Speed Test (Down/Up)</label>
-                        <input type="text" id="speedTest" placeholder="Enter speed test (Down/Up)">
-                    </div>
-                    
-                    <div class="form-group full-width">
-                        <label for="l2UserAligned">L2-User Aligned (if applicable)</label>
-                        <input type="text" id="l2UserAligned" placeholder="Enter L2-User aligned (if applicable)">
-                    </div>
+                        <hr class="section-divider">
 
-                    <div class="form-group full-width">
-                        <label for="timeframeIssues">Timeframe When Issues Started</label>
-                        <input type="text" id="timeframeIssues" placeholder="Enter timeframe when issues started">
+                        <!-- CUSTOMER DETAILS -->
+                        <div class="form-group full-width">
+                            <div class="section-label">Customer Details</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="tr-name">Name</label>
+                            <input type="text" id="tr-name" placeholder="Enter name">
+                        </div>
+                        <div class="form-group">
+                            <label for="tr-phone">Phone</label>
+                            <input type="text" id="tr-phone" placeholder="Enter phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="tr-acct">Acct #</label>
+                            <input type="text" id="tr-acct" placeholder="Enter account #">
+                        </div>
+                        <div class="form-group">
+                            <label for="tr-address">Address</label>
+                            <input type="text" id="tr-address" placeholder="Enter address">
+                        </div>
+                        <div class="form-group">
+                            <label for="tr-node">Node</label>
+                            <input type="text" id="tr-node" placeholder="Enter node">
+                        </div>
+
+                        <hr class="section-divider">
+
+                        <!-- NETWORK & WIFI -->
+                        <div class="form-group full-width">
+                            <div class="section-label">Network &amp; WiFi</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="tr-alarmCodes">Alarm Code(s)</label>
+                            <input type="text" id="tr-alarmCodes" placeholder="Enter alarm codes">
+                        </div>
+                        <div class="form-group">
+                            <label for="tr-speedTest">Speed Test (Down/Up)</label>
+                            <input type="text" id="tr-speedTest" placeholder="e.g. 850/900">
+                        </div>
+                        <div class="form-group">
+                            <label>Devices Disconnecting?</label>
+                            <div class="yes-no-buttons">
+                                <button type="button" onclick="setYesNo('tr_devicesDisconnecting', true, event)">Yes</button>
+                                <button type="button" onclick="setYesNo('tr_devicesDisconnecting', false, event)">No</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Network Stable?</label>
+                            <div class="yes-no-buttons">
+                                <button type="button" onclick="setYesNo('tr_networkStable', true, event)">Yes</button>
+                                <button type="button" onclick="setYesNo('tr_networkStable', false, event)">No</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="tr-lightLevels">Light Levels</label>
+                            <input type="text" id="tr-lightLevels" placeholder="Enter light levels">
+                        </div>
+                        <div class="form-group">
+                            <label>WiFi Interference?</label>
+                            <div class="yes-no-buttons">
+                                <button type="button" onclick="setYesNo('tr_wifiInterference', true, event)">Yes</button>
+                                <button type="button" onclick="setYesNo('tr_wifiInterference', false, event)">No</button>
+                            </div>
+                        </div>
+
+                        <hr class="section-divider">
+
+                        <!-- TROUBLESHOOTING STEPS -->
+                        <div class="form-group full-width">
+                            <div class="section-label">Troubleshooting Steps</div>
+                        </div>
+                        <div class="form-group full-width">
+                            <div class="troubleshooting-grid" id="troubleshootingGrid"></div>
+
+                            <!-- Custom Step Input -->
+                            <div style="margin-top:1rem;">
+                                <label style="margin-bottom:0.4rem; font-size:0.8rem; color:#9ca3af;">Add Custom Step</label>
+                                <div class="custom-step-wrapper">
+                                    <span class="custom-step-prefix">•</span>
+                                    <input class="custom-step-input" type="text" id="tr-custom-step-input" placeholder="Type a custom troubleshooting step..." onkeydown="if(event.key==='Enter'){event.preventDefault();addCustomStep();}">
+                                    <button type="button" class="custom-step-add-btn" onclick="addCustomStep()">+ Add</button>
+                                </div>
+                                <div class="custom-steps-list" id="tr-custom-steps-list"></div>
+                            </div>
+                        </div>
+
+                        <hr class="section-divider">
+
+                        <!-- AGENT INITIALS -->
+                        <div class="form-group full-width">
+                            <div class="section-label">Agent Initials</div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="tr-agentInitials" placeholder="Enter agent initials" style="max-width:220px;">
+                        </div>
+
                     </div>
+                </form>
+
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="generateNote()">Generate Note</button>
+                    <button class="btn btn-secondary" onclick="resetForm()">Reset Form</button>
                 </div>
-            </form>
 
-            <div class="action-buttons">
-                <button class="btn btn-primary" onclick="generateNote()">Generate Note</button>
-                <button class="btn btn-secondary" onclick="resetForm()">Reset Form</button>
-            </div>
-
-            <div id="outputSection" class="output-section">
-                <div class="output-header">
-                    <h3>Generated Note</h3>
-                    <button class="btn btn-success" onclick="copyToClipboard()">
-                        <span id="copyIcon">📋</span>
-                        <span id="copyText">Copy to Dashboard</span>
-                    </button>
-                </div>
-                <div class="output-box">
-                    <textarea id="generatedNote" spellcheck="false"></textarea>
+                <div id="outputSection" class="output-section">
+                    <div class="output-header">
+                        <h3>Generated Note</h3>
+                        <button class="btn btn-success" onclick="copyToClipboard()">
+                            <span id="copyIcon">📋</span>
+                            <span id="copyText">Copy to Dashboard</span>
+                        </button>
+                    </div>
+                    <div class="output-box">
+                        <textarea id="generatedNote" spellcheck="false"></textarea>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
         <!-- ── NOTE SUB-PAGE: Hard Down ── -->
         <div id="note-sub-harddown" class="note-sub-page">
             <div class="container">
                 <form id="hardDownForm">
                     <div class="form-grid">
-
                         <div class="form-group full-width">
                             <label for="hd-customerReporting">Customer Is Reporting</label>
                             <textarea id="hd-customerReporting" placeholder="Enter customer report"></textarea>
                         </div>
-
                         <div class="form-group">
                             <label for="hd-alarmCodes">Alarm Code(s)</label>
                             <input type="text" id="hd-alarmCodes" placeholder="Enter alarm code(s)">
                         </div>
-
                         <div class="form-group">
                             <label for="hd-speedTest">Speed Test (Down/Up)</label>
                             <input type="text" id="hd-speedTest" placeholder="Enter speed test">
                         </div>
-
                         <div class="form-group">
                             <label>Are Devices Disconnecting</label>
                             <div class="yes-no-buttons">
@@ -1447,7 +1546,6 @@
                                 <button type="button" onclick="setHdYesNo('hd_devicesDisconnecting', false, event)">No</button>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <label>Is Network Stable</label>
                             <div class="yes-no-buttons">
@@ -1455,17 +1553,14 @@
                                 <button type="button" onclick="setHdYesNo('hd_networkStable', false, event)">No</button>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <label for="hd-lightLevels">Light Levels (OLT/ONT)</label>
                             <input type="text" id="hd-lightLevels" placeholder="Enter light levels">
                         </div>
-
                         <div class="form-group">
                             <label for="hd-l2UserAligned">L2-User Aligned (if applicable)</label>
                             <input type="text" id="hd-l2UserAligned" placeholder="Enter L2-User aligned">
                         </div>
-
                         <div class="form-group">
                             <label>Verified Head End/Hub</label>
                             <div class="yes-no-buttons">
@@ -1473,7 +1568,6 @@
                                 <button type="button" onclick="setHdYesNo('hd_verifiedHeadEnd', false, event)">No</button>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <label>Is There Wi-Fi Channel Interference</label>
                             <div class="yes-no-buttons">
@@ -1481,7 +1575,6 @@
                                 <button type="button" onclick="setHdYesNo('hd_wifiInterference', false, event)">No</button>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <label>Was Equipment Rebooted</label>
                             <div class="yes-no-buttons">
@@ -1489,7 +1582,6 @@
                                 <button type="button" onclick="setHdYesNo('hd_equipmentRebooted', false, event)">No</button>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <label>Are All Connections Verified</label>
                             <div class="yes-no-buttons">
@@ -1497,12 +1589,10 @@
                                 <button type="button" onclick="setHdYesNo('hd_connectionsVerified', false, event)">No</button>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <label for="hd-timeframe">Timeframe When Issues Started</label>
                             <input type="text" id="hd-timeframe" placeholder="Enter timeframe">
                         </div>
-
                         <div class="form-group">
                             <label>Was Basic Router Troubleshooting Done</label>
                             <div class="yes-no-buttons">
@@ -1510,12 +1600,10 @@
                                 <button type="button" onclick="setHdYesNo('hd_routerTroubleshooting', false, event)">No</button>
                             </div>
                         </div>
-
                         <div class="form-group full-width">
                             <label for="hd-troubleshootingSteps">Troubleshooting Steps Taken</label>
                             <textarea id="hd-troubleshootingSteps" placeholder="Enter troubleshooting steps taken"></textarea>
                         </div>
-
                         <div class="form-group full-width">
                             <label>Are Other Customers Affected</label>
                             <div class="yes-no-buttons">
@@ -1523,15 +1611,12 @@
                                 <button type="button" onclick="setHdYesNo('hd_otherCustomers', false, event)">No</button>
                             </div>
                         </div>
-
                     </div>
                 </form>
-
                 <div class="action-buttons">
                     <button class="btn btn-primary" onclick="generateHardDown()">Generate Note</button>
                     <button class="btn btn-secondary" onclick="resetHardDown()">Reset Form</button>
                 </div>
-
                 <div id="hdOutputSection" class="output-section">
                     <div class="output-header">
                         <h3>Generated Note</h3>
@@ -1558,51 +1643,40 @@
         <!-- ── NOTE SUB-PAGE: Dispatch ── -->
         <div id="note-sub-dispatch" class="note-sub-page">
             <div class="container">
-
-                <!-- Brand selector -->
                 <div class="dispatch-brand-row">
                     <span class="dispatch-brand-label">Customer Type:</span>
                     <button type="button" class="dispatch-brand-btn" id="dispatch-btn-tachus" onclick="setDispatchBrand('Tachus')">Tachus</button>
                     <button type="button" class="dispatch-brand-btn" id="dispatch-btn-ezee" onclick="setDispatchBrand('Ezee')">EzeeFiber</button>
                     <span id="dispatch-brand-display" class="dispatch-brand-display"></span>
                 </div>
-
                 <form id="dispatchForm">
                     <div class="form-grid">
-
                         <div class="form-group">
                             <label for="dp-customerName">Customer Name</label>
                             <input type="text" id="dp-customerName" placeholder="Enter customer name">
                         </div>
-
                         <div class="form-group">
                             <label for="dp-address">Address</label>
                             <input type="text" id="dp-address" placeholder="Enter address">
                         </div>
-
                         <div class="form-group">
                             <label for="dp-accountNumber">Account #</label>
                             <input type="text" id="dp-accountNumber" placeholder="Enter account #" style="max-width: 220px;">
                         </div>
-
                         <div class="form-group">
                             <label for="dp-woNumber">WO #</label>
                             <input type="text" id="dp-woNumber" placeholder="Enter WO #" style="max-width: 220px;">
                         </div>
-
                         <div class="form-group full-width">
                             <label for="dp-customerReporting">Customer Reporting</label>
                             <textarea id="dp-customerReporting" placeholder="Enter customer report"></textarea>
                         </div>
-
                     </div>
                 </form>
-
                 <div class="action-buttons">
                     <button class="btn btn-primary" onclick="generateDispatch()">Generate Note</button>
                     <button class="btn btn-secondary" onclick="resetDispatch()">Reset Form</button>
                 </div>
-
                 <div id="dpOutputSection" class="output-section">
                     <div class="output-header">
                         <h3>Generated Note</h3>
@@ -1615,7 +1689,6 @@
                         <textarea id="dpGeneratedNote" spellcheck="false"></textarea>
                     </div>
                 </div>
-
             </div>
         </div>
 
@@ -1624,27 +1697,22 @@
             <div class="container">
                 <form id="cecrForm">
                     <div class="form-grid">
-
                         <div class="form-group">
                             <label for="cecr-phone">Phone</label>
                             <input type="text" id="cecr-phone" placeholder="Enter phone" style="max-width: 220px;">
                         </div>
-
                         <div class="form-group">
                             <label for="cecr-address">Address</label>
                             <input type="text" id="cecr-address" placeholder="Enter address">
                         </div>
-
                         <div class="form-group">
                             <label for="cecr-ticketId">Ticket ID</label>
                             <input type="text" id="cecr-ticketId" placeholder="Enter ticket ID">
                         </div>
-
                         <div class="form-group">
                             <label for="cecr-customerName">Customer Name</label>
                             <input type="text" id="cecr-customerName" placeholder="Enter customer name">
                         </div>
-
                         <div class="form-group full-width">
                             <label>Priority Level</label>
                             <div class="priority-row">
@@ -1655,20 +1723,16 @@
                                 <span id="cecr-priority-display" class="cecr-priority-display"></span>
                             </div>
                         </div>
-
                         <div class="form-group full-width">
                             <label for="cecr-customerReport">Customer Report</label>
                             <textarea id="cecr-customerReport" placeholder="Enter customer report" style="min-height: 140px;"></textarea>
                         </div>
-
                     </div>
                 </form>
-
                 <div class="action-buttons">
                     <button class="btn btn-primary" onclick="generateCecr()">Generate Note</button>
                     <button class="btn btn-secondary" onclick="resetCecr()">Reset Form</button>
                 </div>
-
                 <div id="cecrOutputSection" class="output-section">
                     <div class="output-header">
                         <h3>Generated Note</h3>
@@ -1681,18 +1745,13 @@
                         <textarea id="cecrGeneratedNote" spellcheck="false"></textarea>
                     </div>
                 </div>
-
             </div>
         </div>
-
     </div>
 
-    <!-- ── PAGE: Account Notes (BLANK) ── -->
     <!-- ── PAGE: EMAIL TEMPLATES ── -->
     <div id="page-email" class="page">
         <div class="email-page">
-
-            <!-- Email Brand Nav -->
             <nav class="email-sub-nav">
                 <button class="email-sub-btn active-tachus" id="sub-btn-tachus" onclick="switchEmailTab('tachus')">
                     <span class="sub-indicator dot-tachus"></span>Tachus Email Templates
@@ -1705,802 +1764,502 @@
             <!-- Tachus Sub-Page -->
             <div id="email-sub-tachus" class="email-sub-page active">
                 <nav class="email-mini-nav email-mini-nav-tachus">
-                <button class="email-mini-btn email-mini-btn-active" id="email-tachus-btn-cancellation" onclick="switchEmailMiniTab('tachus', 'cancellation', this)" style="--mini-accent:#61bb46">Equipment Return</button>
-                <button class="email-mini-btn" id="email-tachus-btn-raf" onclick="switchEmailMiniTab('tachus', 'raf', this)" style="--mini-accent:#61bb46">Refer a Friend</button>
-                <button class="email-mini-btn" id="email-tachus-btn-requesting-pictures" onclick="switchEmailMiniTab('tachus', 'requesting-pictures', this)" style="--mini-accent:#61bb46">Requesting Pictures</button>
-                <button class="email-mini-btn" id="email-tachus-btn-wifi-security-key" onclick="switchEmailMiniTab('tachus', 'wifi-security-key', this)" style="--mini-accent:#61bb46">WiFi Security Key</button>
-                                                <button class="email-mini-btn" id="email-tachus-btn-portal-password-reset" onclick="switchEmailMiniTab('tachus', 'portal-password-reset', this)" style="--mini-accent:#61bb46">Customer Portal Password Reset</button>
-                <button class="email-mini-btn" id="email-tachus-btn-lifetime-pricing" onclick="switchEmailMiniTab('tachus', 'lifetime-pricing', this)" style="--mini-accent:#61bb46">Lifetime Pricing Declaration</button>
-                <button class="email-mini-btn" id="email-tachus-btn-construction-case" onclick="switchEmailMiniTab('tachus', 'construction-case', this)" style="--mini-accent:#61bb46">Construction Case</button>
-                <button class="email-mini-btn" id="email-tachus-btn-outage" onclick="switchEmailMiniTab('tachus', 'outage', this)" style="--mini-accent:#61bb46">Outage</button>
+                    <button class="email-mini-btn email-mini-btn-active" id="email-tachus-btn-cancellation" onclick="switchEmailMiniTab('tachus', 'cancellation', this)">Equipment Return</button>
+                    <button class="email-mini-btn" id="email-tachus-btn-raf" onclick="switchEmailMiniTab('tachus', 'raf', this)">Refer a Friend</button>
+                    <button class="email-mini-btn" id="email-tachus-btn-requesting-pictures" onclick="switchEmailMiniTab('tachus', 'requesting-pictures', this)">Requesting Pictures</button>
+                    <button class="email-mini-btn" id="email-tachus-btn-wifi-security-key" onclick="switchEmailMiniTab('tachus', 'wifi-security-key', this)">WiFi Security Key</button>
+                    <button class="email-mini-btn" id="email-tachus-btn-portal-password-reset" onclick="switchEmailMiniTab('tachus', 'portal-password-reset', this)">Customer Portal Password Reset</button>
+                    <button class="email-mini-btn" id="email-tachus-btn-lifetime-pricing" onclick="switchEmailMiniTab('tachus', 'lifetime-pricing', this)">Lifetime Pricing Declaration</button>
+                    <button class="email-mini-btn" id="email-tachus-btn-construction-case" onclick="switchEmailMiniTab('tachus', 'construction-case', this)">Construction Case</button>
+                    <button class="email-mini-btn" id="email-tachus-btn-outage" onclick="switchEmailMiniTab('tachus', 'outage', this)">Outage</button>
                 </nav>
                 <div class="email-mini-content">
-                                <div id="email-tachus-cancellation" class="email-mini-page active">
-                    <div class="email-template-form">
-                        <div class="etf-fields">
-                            <div class="form-group">
-                                <label for="ter-t-name">Customer Name</label>
-                                <input type="text" id="ter-t-name" placeholder="Enter customer name">
-                            </div>
-                            <div class="form-group">
-                                <label for="ter-t-modem">Modem SN</label>
-                                <input type="text" id="ter-t-modem" placeholder="Enter modem serial number">
-                            </div>
-                            <div class="form-group">
-                                <label>Router Type</label>
-                                <div class="router-type-grid">
-                                    <button type="button" class="router-type-btn" id="ter-t-router-EERO-PRO6E" onclick="setRouterType('ter-t', 'EERO PRO6E', this)">EERO PRO6E</button>
-                                    <button type="button" class="router-type-btn" id="ter-t-router-EERO-MAX7" onclick="setRouterType('ter-t', 'EERO MAX7', this)">EERO MAX7</button>
-                                    <button type="button" class="router-type-btn" id="ter-t-router-EVO-AP6700" onclick="setRouterType('ter-t', 'EVO AP6700', this)">EVO AP6700</button>
-                                    <button type="button" class="router-type-btn" id="ter-t-router-TP-LINK-P50" onclick="setRouterType('ter-t', 'TP-LINK P50', this)">TP-LINK P50</button>
-                                    <button type="button" class="router-type-btn" id="ter-t-router-TP-LINK-PB70" onclick="setRouterType('ter-t', 'TP-LINK PB70', this)">TP-LINK PB70</button>
-                                    <button type="button" class="router-type-btn" id="ter-t-router-TP-LINK-P110" onclick="setRouterType('ter-t', 'TP-LINK P110', this)">TP-LINK P110</button>
+                    <div id="email-tachus-cancellation" class="email-mini-page active">
+                        <div class="email-template-form">
+                            <div class="etf-fields">
+                                <div class="form-group">
+                                    <label for="ter-t-name">Customer Name</label>
+                                    <input type="text" id="ter-t-name" placeholder="Enter customer name">
                                 </div>
-                                <span id="ter-t-router-display" class="router-type-display"></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="ter-t-router-sn">Router SN</label>
-                                <input type="text" id="ter-t-router-sn" placeholder="Enter router serial number">
-                            </div>
-                            <button class="btn btn-primary etf-generate-btn" onclick="generateEquipReturn('tachus')">Generate Email</button>
-                        </div>
-                        <div class="etf-output-wrap">
-                            <div class="output-header">
-                                <h3>Email Output</h3>
-                                <button class="btn btn-success" onclick="copyEquipReturn('tachus')">
-                                    <span id="ter-t-copy-icon">&#128203;</span>
-                                    <span id="ter-t-copy-text">Copy</span>
-                                </button>
-                                <button class="btn btn-secondary" onclick="resetEmailTemplate('ter-t-output', ['ter-t-name','ter-t-modem','ter-t-router-sn'], 'ter-t')" style="padding:0.5rem 1rem;font-size:0.85rem;">↺ Reset</button>
-                            </div>
-                            <div class="output-box">
-                                <textarea id="ter-t-output" spellcheck="false" placeholder="Fill in the fields and click Generate Email..."></textarea>
-                            </div>
-                            <div class="ups-label-section">
-                                <div class="ups-label-header">
-                                    <span class="ups-label-title">📦 UPS Return Label Generator</span>
+                                <div class="form-group">
+                                    <label for="ter-t-modem">Modem SN</label>
+                                    <input type="text" id="ter-t-modem" placeholder="Enter modem serial number">
                                 </div>
-                                <div class="ups-label-fields">
-                                    <div class="ups-field-group">
-                                        <label for="ter-t-acct">Customer Account Number</label>
-                                        <input type="text" id="ter-t-acct" placeholder="Enter account number">
+                                <div class="form-group">
+                                    <label>Router Type</label>
+                                    <div class="router-type-grid">
+                                        <button type="button" class="router-type-btn" id="ter-t-router-EERO-PRO6E" onclick="setRouterType('ter-t', 'EERO PRO6E', this)">EERO PRO6E</button>
+                                        <button type="button" class="router-type-btn" id="ter-t-router-EERO-MAX7" onclick="setRouterType('ter-t', 'EERO MAX7', this)">EERO MAX7</button>
+                                        <button type="button" class="router-type-btn" id="ter-t-router-EVO-AP6700" onclick="setRouterType('ter-t', 'EVO AP6700', this)">EVO AP6700</button>
+                                        <button type="button" class="router-type-btn" id="ter-t-router-TP-LINK-P50" onclick="setRouterType('ter-t', 'TP-LINK P50', this)">TP-LINK P50</button>
+                                        <button type="button" class="router-type-btn" id="ter-t-router-TP-LINK-PB70" onclick="setRouterType('ter-t', 'TP-LINK PB70', this)">TP-LINK PB70</button>
+                                        <button type="button" class="router-type-btn" id="ter-t-router-TP-LINK-P110" onclick="setRouterType('ter-t', 'TP-LINK P110', this)">TP-LINK P110</button>
                                     </div>
-                                    <div class="ups-field-group">
-                                        <label for="ter-t-wo">Work Order Number</label>
-                                        <input type="text" id="ter-t-wo" placeholder="Enter work order number">
+                                    <span id="ter-t-router-display" class="router-type-display"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ter-t-router-sn">Router SN</label>
+                                    <input type="text" id="ter-t-router-sn" placeholder="Enter router serial number">
+                                </div>
+                                <button class="btn btn-primary etf-generate-btn" onclick="generateEquipReturn('tachus')">Generate Email</button>
+                            </div>
+                            <div class="etf-output-wrap">
+                                <div class="output-header">
+                                    <h3>Email Output</h3>
+                                    <button class="btn btn-success" onclick="copyEquipReturn('tachus')">
+                                        <span id="ter-t-copy-icon">&#128203;</span>
+                                        <span id="ter-t-copy-text">Copy</span>
+                                    </button>
+                                    <button class="btn btn-secondary" onclick="resetEmailTemplate('ter-t-output', ['ter-t-name','ter-t-modem','ter-t-router-sn'], 'ter-t')" style="padding:0.5rem 1rem;font-size:0.85rem;">↺ Reset</button>
+                                </div>
+                                <div class="output-box">
+                                    <textarea id="ter-t-output" spellcheck="false" placeholder="Fill in the fields and click Generate Email..."></textarea>
+                                </div>
+                                <div class="ups-label-section">
+                                    <div class="ups-label-header">
+                                        <span class="ups-label-title">📦 UPS Return Label Generator</span>
                                     </div>
-                                    <button class="btn ups-download-btn" onclick="downloadFilledPDF('tachus')">⬇️ Download Filled Return Label PDF</button>
+                                    <div class="ups-label-fields">
+                                        <div class="ups-field-group">
+                                            <label for="ter-t-acct">Customer Account Number</label>
+                                            <input type="text" id="ter-t-acct" placeholder="Enter account number">
+                                        </div>
+                                        <div class="ups-field-group">
+                                            <label for="ter-t-wo">Work Order Number</label>
+                                            <input type="text" id="ter-t-wo" placeholder="Enter work order number">
+                                        </div>
+                                        <button class="btn ups-download-btn" onclick="downloadFilledPDF('tachus')">⬇️ Download Filled Return Label PDF</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                                <div id="email-tachus-raf" class="email-mini-page">
-                    <div class="email-template-form raf-form">
-                        <div class="etf-fields">
-                            <div class="form-group">
-                                <label for="traf-name">Customer Name</label>
-                                <input type="text" id="traf-name" placeholder="Enter customer name">
+                    <div id="email-tachus-raf" class="email-mini-page">
+                        <div class="email-template-form raf-form">
+                            <div class="etf-fields">
+                                <div class="form-group">
+                                    <label for="traf-name">Customer Name</label>
+                                    <input type="text" id="traf-name" placeholder="Enter customer name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="traf-link">RAF Link</label>
+                                    <input type="text" id="traf-link" placeholder="Enter referral link" style="width:100%;">
+                                </div>
+                                <button class="btn btn-primary etf-generate-btn" style="background:#61bb46;" onclick="generateRAF('tachus')">Generate Email</button>
                             </div>
-                            <div class="form-group">
-                                <label for="traf-link">RAF Link</label>
-                                <input type="text" id="traf-link" placeholder="Enter referral link" style="width:100%;">
-                            </div>
-                            <button class="btn btn-primary etf-generate-btn" style="background:#61bb46;" onclick="generateRAF('tachus')">Generate Email</button>
-                        </div>
-                        <div class="etf-output-wrap">
-                            <div class="output-header">
-                                <h3>Email Output</h3>
-                                <button class="btn btn-success" onclick="copyRAF('tachus')">
-                                    <span id="traf-copy-icon">&#128203;</span>
-                                    <span id="traf-copy-text">Copy</span>
-                                </button>
-                                <button class="btn btn-secondary" onclick="resetEmailTemplate('traf-output', ['traf-name','traf-link'], null)" style="padding:0.5rem 1rem;font-size:0.85rem;">↺ Reset</button>
-                            </div>
-                            <img src="RAF1.png" class="raf-img-preview" alt="Refer a Friend header">
-                            <div class="output-box">
-                                <textarea id="traf-output" spellcheck="false" placeholder="Fill in the fields and click Generate Email..."></textarea>
-                            </div>
-                            <img src="RAF2.png" class="raf-img-preview" alt="Refer a Friend footer">
-                        </div>
-                    </div>
-                </div>
-                <div id="email-tachus-requesting-pictures" class="email-mini-page">
-                    <div class="email-template-form">
-                        <div class="etf-fields">
-                            <div class="form-group">
-                                <label for="trp-name">Customer Name</label>
-                                <input type="text" id="trp-name" placeholder="Enter customer name">
-                            </div>
-                            <div class="form-group">
-                                <label for="trp-ticket">Ticket ID</label>
-                                <input type="text" id="trp-ticket" placeholder="Enter ticket ID">
-                            </div>
-                            <button class="btn btn-primary etf-generate-btn" onclick="generateReqPic('tachus')">Generate Email</button>
-                        </div>
-                        <div class="etf-output-wrap">
-                            <div class="output-header">
-                                <h3>Email Output</h3>
-                                <button class="btn btn-success" onclick="copyReqPic('tachus')">
-                                    <span id="trp-copy-icon">&#128203;</span>
-                                    <span id="trp-copy-text">Copy</span>
-                                </button>
-                                <button class="btn btn-secondary" onclick="resetEmailTemplate('trp-output', ['trp-name','trp-ticket'], null)" style="padding:0.5rem 1rem;font-size:0.85rem;">↺ Reset</button>
-                            </div>
-                            <div class="output-box">
-                                <textarea id="trp-output" spellcheck="false" placeholder="Fill in the fields and click Generate Email..."></textarea>
+                            <div class="etf-output-wrap">
+                                <div class="output-header">
+                                    <h3>Email Output</h3>
+                                    <button class="btn btn-success" onclick="copyRAF('tachus')">
+                                        <span id="traf-copy-icon">&#128203;</span>
+                                        <span id="traf-copy-text">Copy</span>
+                                    </button>
+                                    <button class="btn btn-secondary" onclick="resetEmailTemplate('traf-output', ['traf-name','traf-link'], null)" style="padding:0.5rem 1rem;font-size:0.85rem;">↺ Reset</button>
+                                </div>
+                                <img src="RAF1.png" class="raf-img-preview" alt="Refer a Friend header">
+                                <div class="output-box">
+                                    <textarea id="traf-output" spellcheck="false" placeholder="Fill in the fields and click Generate Email..."></textarea>
+                                </div>
+                                <img src="RAF2.png" class="raf-img-preview" alt="Refer a Friend footer">
                             </div>
                         </div>
                     </div>
-                </div>
-                <div id="email-tachus-wifi-security-key" class="email-mini-page">
-                    <div class="email-template-form">
-                        <div class="etf-fields">
-                            <div class="form-group">
-                                <label for="twsk-name">Customer First Name</label>
-                                <input type="text" id="twsk-name" placeholder="Enter first name">
+                    <div id="email-tachus-requesting-pictures" class="email-mini-page">
+                        <div class="email-template-form">
+                            <div class="etf-fields">
+                                <div class="form-group">
+                                    <label for="trp-name">Customer Name</label>
+                                    <input type="text" id="trp-name" placeholder="Enter customer name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="trp-ticket">Ticket ID</label>
+                                    <input type="text" id="trp-ticket" placeholder="Enter ticket ID">
+                                </div>
+                                <button class="btn btn-primary etf-generate-btn" onclick="generateReqPic('tachus')">Generate Email</button>
                             </div>
-                            <button class="btn btn-primary etf-generate-btn" onclick="generateWifiKey('tachus')">Generate Email</button>
-                        </div>
-                        <div class="etf-output-wrap">
-                            <div class="output-header">
-                                <h3>Email Output</h3>
-                                <button class="btn btn-success" onclick="copyWifiKey('tachus')">
-                                    <span id="twsk-copy-icon">&#128203;</span>
-                                    <span id="twsk-copy-text">Copy</span>
-                                </button>
-                                <button class="btn btn-secondary" onclick="resetEmailTemplate('twsk-output', ['twsk-name'], null)" style="padding:0.5rem 1rem;font-size:0.85rem;">↺ Reset</button>
+                            <div class="etf-output-wrap">
+                                <div class="output-header">
+                                    <h3>Email Output</h3>
+                                    <button class="btn btn-success" onclick="copyReqPic('tachus')">
+                                        <span id="trp-copy-icon">&#128203;</span>
+                                        <span id="trp-copy-text">Copy</span>
+                                    </button>
+                                    <button class="btn btn-secondary" onclick="resetEmailTemplate('trp-output', ['trp-name','trp-ticket'], null)" style="padding:0.5rem 1rem;font-size:0.85rem;">↺ Reset</button>
+                                </div>
+                                <div class="output-box">
+                                    <textarea id="trp-output" spellcheck="false" placeholder="Fill in the fields and click Generate Email..."></textarea>
+                                </div>
                             </div>
-                            <div class="output-box">
-                                <textarea id="twsk-output" spellcheck="false" placeholder="Fill in the fields and click Generate Email..."></textarea>
+                        </div>
+                    </div>
+                    <div id="email-tachus-wifi-security-key" class="email-mini-page">
+                        <div class="email-template-form">
+                            <div class="etf-fields">
+                                <div class="form-group">
+                                    <label for="twsk-name">Customer First Name</label>
+                                    <input type="text" id="twsk-name" placeholder="Enter first name">
+                                </div>
+                                <button class="btn btn-primary etf-generate-btn" onclick="generateWifiKey('tachus')">Generate Email</button>
+                            </div>
+                            <div class="etf-output-wrap">
+                                <div class="output-header">
+                                    <h3>Email Output</h3>
+                                    <button class="btn btn-success" onclick="copyWifiKey('tachus')">
+                                        <span id="twsk-copy-icon">&#128203;</span>
+                                        <span id="twsk-copy-text">Copy</span>
+                                    </button>
+                                    <button class="btn btn-secondary" onclick="resetEmailTemplate('twsk-output', ['twsk-name'], null)" style="padding:0.5rem 1rem;font-size:0.85rem;">↺ Reset</button>
+                                </div>
+                                <div class="output-box">
+                                    <textarea id="twsk-output" spellcheck="false" placeholder="Fill in the fields and click Generate Email..."></textarea>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div id="email-tachus-portal-password-reset" class="email-mini-page">
-                    <div class="email-template-placeholder">
-                        <div class="coming-soon-placeholder">
-                            <div class="placeholder-mark" style="color:#61bb46;">Customer Portal Password Reset</div>
-                            <div class="placeholder-sub">Coming Soon</div>
+                    <div id="email-tachus-portal-password-reset" class="email-mini-page">
+                        <div class="email-template-placeholder">
+                            <div class="coming-soon-placeholder">
+                                <div class="placeholder-mark" style="color:#61bb46;">Customer Portal Password Reset</div>
+                                <div class="placeholder-sub">Coming Soon</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div id="email-tachus-lifetime-pricing" class="email-mini-page">
-                    <div class="email-template-placeholder">
-                        <div class="coming-soon-placeholder">
-                            <div class="placeholder-mark" style="color:#61bb46;">Lifetime Pricing Declaration</div>
-                            <div class="placeholder-sub">Coming Soon</div>
+                    <div id="email-tachus-lifetime-pricing" class="email-mini-page">
+                        <div class="email-template-placeholder">
+                            <div class="coming-soon-placeholder">
+                                <div class="placeholder-mark" style="color:#61bb46;">Lifetime Pricing Declaration</div>
+                                <div class="placeholder-sub">Coming Soon</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div id="email-tachus-construction-case" class="email-mini-page">
-                    <div class="email-template-placeholder">
-                        <div class="coming-soon-placeholder">
-                            <div class="placeholder-mark" style="color:#61bb46;">Construction Case</div>
-                            <div class="placeholder-sub">Coming Soon</div>
+                    <div id="email-tachus-construction-case" class="email-mini-page">
+                        <div class="email-template-placeholder">
+                            <div class="coming-soon-placeholder">
+                                <div class="placeholder-mark" style="color:#61bb46;">Construction Case</div>
+                                <div class="placeholder-sub">Coming Soon</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div id="email-tachus-outage" class="email-mini-page">
-                    <div class="email-template-placeholder">
-                        <div class="coming-soon-placeholder">
-                            <div class="placeholder-mark" style="color:#61bb46;">Outage</div>
-                            <div class="placeholder-sub">Coming Soon</div>
+                    <div id="email-tachus-outage" class="email-mini-page">
+                        <div class="email-template-placeholder">
+                            <div class="coming-soon-placeholder">
+                                <div class="placeholder-mark" style="color:#61bb46;">Outage</div>
+                                <div class="placeholder-sub">Coming Soon</div>
+                            </div>
                         </div>
                     </div>
-                </div>
                 </div>
             </div>
 
             <!-- EzeeFiber Sub-Page -->
             <div id="email-sub-ezee" class="email-sub-page">
                 <nav class="email-mini-nav email-mini-nav-ezee">
-                <button class="email-mini-btn email-mini-btn-active" id="email-ezee-btn-cancellation" onclick="switchEmailMiniTab('ezee', 'cancellation', this)" style="--mini-accent:#FB612F">Equipment Return</button>
-                <button class="email-mini-btn" id="email-ezee-btn-raf" onclick="switchEmailMiniTab('ezee', 'raf', this)" style="--mini-accent:#FB612F">Refer a Friend</button>
-                <button class="email-mini-btn" id="email-ezee-btn-requesting-pictures" onclick="switchEmailMiniTab('ezee', 'requesting-pictures', this)" style="--mini-accent:#FB612F">Requesting Pictures</button>
-                <button class="email-mini-btn" id="email-ezee-btn-wifi-security-key" onclick="switchEmailMiniTab('ezee', 'wifi-security-key', this)" style="--mini-accent:#FB612F">WiFi Security Key</button>
-                                                <button class="email-mini-btn" id="email-ezee-btn-portal-password-reset" onclick="switchEmailMiniTab('ezee', 'portal-password-reset', this)" style="--mini-accent:#FB612F">Customer Portal Password Reset</button>
-                <button class="email-mini-btn" id="email-ezee-btn-lifetime-pricing" onclick="switchEmailMiniTab('ezee', 'lifetime-pricing', this)" style="--mini-accent:#FB612F">Lifetime Pricing Declaration</button>
-                <button class="email-mini-btn" id="email-ezee-btn-construction-case" onclick="switchEmailMiniTab('ezee', 'construction-case', this)" style="--mini-accent:#FB612F">Construction Case</button>
-                <button class="email-mini-btn" id="email-ezee-btn-outage" onclick="switchEmailMiniTab('ezee', 'outage', this)" style="--mini-accent:#FB612F">Outage</button>
+                    <button class="email-mini-btn email-mini-btn-active" id="email-ezee-btn-cancellation" onclick="switchEmailMiniTab('ezee', 'cancellation', this)">Equipment Return</button>
+                    <button class="email-mini-btn" id="email-ezee-btn-raf" onclick="switchEmailMiniTab('ezee', 'raf', this)">Refer a Friend</button>
+                    <button class="email-mini-btn" id="email-ezee-btn-requesting-pictures" onclick="switchEmailMiniTab('ezee', 'requesting-pictures', this)">Requesting Pictures</button>
+                    <button class="email-mini-btn" id="email-ezee-btn-wifi-security-key" onclick="switchEmailMiniTab('ezee', 'wifi-security-key', this)">WiFi Security Key</button>
+                    <button class="email-mini-btn" id="email-ezee-btn-portal-password-reset" onclick="switchEmailMiniTab('ezee', 'portal-password-reset', this)">Customer Portal Password Reset</button>
+                    <button class="email-mini-btn" id="email-ezee-btn-lifetime-pricing" onclick="switchEmailMiniTab('ezee', 'lifetime-pricing', this)">Lifetime Pricing Declaration</button>
+                    <button class="email-mini-btn" id="email-ezee-btn-construction-case" onclick="switchEmailMiniTab('ezee', 'construction-case', this)">Construction Case</button>
+                    <button class="email-mini-btn" id="email-ezee-btn-outage" onclick="switchEmailMiniTab('ezee', 'outage', this)">Outage</button>
                 </nav>
                 <div class="email-mini-content">
-                                <div id="email-ezee-cancellation" class="email-mini-page active">
-                    <div class="email-template-form">
-                        <div class="etf-fields">
-                            <div class="form-group">
-                                <label for="ter-e-name">Customer Name</label>
-                                <input type="text" id="ter-e-name" placeholder="Enter customer name">
-                            </div>
-                            <div class="form-group">
-                                <label for="ter-e-modem">Modem SN</label>
-                                <input type="text" id="ter-e-modem" placeholder="Enter modem serial number">
-                            </div>
-                            <div class="form-group">
-                                <label>Router Type</label>
-                                <div class="router-type-grid">
-                                    <button type="button" class="router-type-btn" id="ter-e-router-EERO-PRO6E" onclick="setRouterType('ter-e', 'EERO PRO6E', this)">EERO PRO6E</button>
-                                    <button type="button" class="router-type-btn" id="ter-e-router-EERO-MAX7" onclick="setRouterType('ter-e', 'EERO MAX7', this)">EERO MAX7</button>
-                                    <button type="button" class="router-type-btn" id="ter-e-router-EVO-AP6700" onclick="setRouterType('ter-e', 'EVO AP6700', this)">EVO AP6700</button>
-                                    <button type="button" class="router-type-btn" id="ter-e-router-TP-LINK-P50" onclick="setRouterType('ter-e', 'TP-LINK P50', this)">TP-LINK P50</button>
-                                    <button type="button" class="router-type-btn" id="ter-e-router-TP-LINK-PB70" onclick="setRouterType('ter-e', 'TP-LINK PB70', this)">TP-LINK PB70</button>
-                                    <button type="button" class="router-type-btn" id="ter-e-router-TP-LINK-P110" onclick="setRouterType('ter-e', 'TP-LINK P110', this)">TP-LINK P110</button>
+                    <div id="email-ezee-cancellation" class="email-mini-page active">
+                        <div class="email-template-form">
+                            <div class="etf-fields">
+                                <div class="form-group">
+                                    <label for="ter-e-name">Customer Name</label>
+                                    <input type="text" id="ter-e-name" placeholder="Enter customer name">
                                 </div>
-                                <span id="ter-e-router-display" class="router-type-display"></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="ter-e-router-sn">Router SN</label>
-                                <input type="text" id="ter-e-router-sn" placeholder="Enter router serial number">
-                            </div>
-                            <button class="btn btn-primary etf-generate-btn" style="background:#FB612F;" onclick="generateEquipReturn('ezee')">Generate Email</button>
-                        </div>
-                        <div class="etf-output-wrap">
-                            <div class="output-header">
-                                <h3>Email Output</h3>
-                                <button class="btn btn-success" onclick="copyEquipReturn('ezee')">
-                                    <span id="ter-e-copy-icon">&#128203;</span>
-                                    <span id="ter-e-copy-text">Copy</span>
-                                </button>
-                                <button class="btn btn-secondary" onclick="resetEmailTemplate('ter-e-output', ['ter-e-name','ter-e-modem','ter-e-router-sn'], 'ter-e')" style="padding:0.5rem 1rem;font-size:0.85rem;">↺ Reset</button>
-                            </div>
-                            <div class="output-box">
-                                <textarea id="ter-e-output" spellcheck="false" placeholder="Fill in the fields and click Generate Email..."></textarea>
-                            </div>
-                            <div class="ups-label-section">
-                                <div class="ups-label-header">
-                                    <span class="ups-label-title">📦 UPS Return Label Generator</span>
+                                <div class="form-group">
+                                    <label for="ter-e-modem">Modem SN</label>
+                                    <input type="text" id="ter-e-modem" placeholder="Enter modem serial number">
                                 </div>
-                                <div class="ups-label-fields">
-                                    <div class="ups-field-group">
-                                        <label for="ter-e-acct">Customer Account Number</label>
-                                        <input type="text" id="ter-e-acct" placeholder="Enter account number">
+                                <div class="form-group">
+                                    <label>Router Type</label>
+                                    <div class="router-type-grid">
+                                        <button type="button" class="router-type-btn" id="ter-e-router-EERO-PRO6E" onclick="setRouterType('ter-e', 'EERO PRO6E', this)">EERO PRO6E</button>
+                                        <button type="button" class="router-type-btn" id="ter-e-router-EERO-MAX7" onclick="setRouterType('ter-e', 'EERO MAX7', this)">EERO MAX7</button>
+                                        <button type="button" class="router-type-btn" id="ter-e-router-EVO-AP6700" onclick="setRouterType('ter-e', 'EVO AP6700', this)">EVO AP6700</button>
+                                        <button type="button" class="router-type-btn" id="ter-e-router-TP-LINK-P50" onclick="setRouterType('ter-e', 'TP-LINK P50', this)">TP-LINK P50</button>
+                                        <button type="button" class="router-type-btn" id="ter-e-router-TP-LINK-PB70" onclick="setRouterType('ter-e', 'TP-LINK PB70', this)">TP-LINK PB70</button>
+                                        <button type="button" class="router-type-btn" id="ter-e-router-TP-LINK-P110" onclick="setRouterType('ter-e', 'TP-LINK P110', this)">TP-LINK P110</button>
                                     </div>
-                                    <div class="ups-field-group">
-                                        <label for="ter-e-wo">Work Order Number</label>
-                                        <input type="text" id="ter-e-wo" placeholder="Enter work order number">
+                                    <span id="ter-e-router-display" class="router-type-display"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ter-e-router-sn">Router SN</label>
+                                    <input type="text" id="ter-e-router-sn" placeholder="Enter router serial number">
+                                </div>
+                                <button class="btn btn-primary etf-generate-btn" style="background:#FB612F;" onclick="generateEquipReturn('ezee')">Generate Email</button>
+                            </div>
+                            <div class="etf-output-wrap">
+                                <div class="output-header">
+                                    <h3>Email Output</h3>
+                                    <button class="btn btn-success" onclick="copyEquipReturn('ezee')">
+                                        <span id="ter-e-copy-icon">&#128203;</span>
+                                        <span id="ter-e-copy-text">Copy</span>
+                                    </button>
+                                    <button class="btn btn-secondary" onclick="resetEmailTemplate('ter-e-output', ['ter-e-name','ter-e-modem','ter-e-router-sn'], 'ter-e')" style="padding:0.5rem 1rem;font-size:0.85rem;">↺ Reset</button>
+                                </div>
+                                <div class="output-box">
+                                    <textarea id="ter-e-output" spellcheck="false" placeholder="Fill in the fields and click Generate Email..."></textarea>
+                                </div>
+                                <div class="ups-label-section">
+                                    <div class="ups-label-header">
+                                        <span class="ups-label-title">📦 UPS Return Label Generator</span>
                                     </div>
-                                    <button class="btn ups-download-btn" onclick="downloadFilledPDF('ezee')">⬇️ Download Filled Return Label PDF</button>
+                                    <div class="ups-label-fields">
+                                        <div class="ups-field-group">
+                                            <label for="ter-e-acct">Customer Account Number</label>
+                                            <input type="text" id="ter-e-acct" placeholder="Enter account number">
+                                        </div>
+                                        <div class="ups-field-group">
+                                            <label for="ter-e-wo">Work Order Number</label>
+                                            <input type="text" id="ter-e-wo" placeholder="Enter work order number">
+                                        </div>
+                                        <button class="btn ups-download-btn" onclick="downloadFilledPDF('ezee')">⬇️ Download Filled Return Label PDF</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                                <div id="email-ezee-raf" class="email-mini-page">
-                    <div class="email-template-form raf-form">
-                        <div class="etf-fields">
-                            <div class="form-group">
-                                <label for="eraf-name">Customer Name</label>
-                                <input type="text" id="eraf-name" placeholder="Enter customer name">
+                    <div id="email-ezee-raf" class="email-mini-page">
+                        <div class="email-template-form raf-form">
+                            <div class="etf-fields">
+                                <div class="form-group">
+                                    <label for="eraf-name">Customer Name</label>
+                                    <input type="text" id="eraf-name" placeholder="Enter customer name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="eraf-link">RAF Link</label>
+                                    <input type="text" id="eraf-link" placeholder="Enter referral link" style="width:100%;">
+                                </div>
+                                <button class="btn btn-primary etf-generate-btn" style="background:#FB612F;" onclick="generateRAF('ezee')">Generate Email</button>
                             </div>
-                            <div class="form-group">
-                                <label for="eraf-link">RAF Link</label>
-                                <input type="text" id="eraf-link" placeholder="Enter referral link" style="width:100%;">
-                            </div>
-                            <button class="btn btn-primary etf-generate-btn" style="background:#FB612F;" onclick="generateRAF('ezee')">Generate Email</button>
-                        </div>
-                        <div class="etf-output-wrap">
-                            <div class="output-header">
-                                <h3>Email Output</h3>
-                                <button class="btn btn-success" onclick="copyRAF('ezee')">
-                                    <span id="eraf-copy-icon">&#128203;</span>
-                                    <span id="eraf-copy-text">Copy</span>
-                                </button>
-                                <button class="btn btn-secondary" onclick="resetEmailTemplate('eraf-output', ['eraf-name','eraf-link'], null)" style="padding:0.5rem 1rem;font-size:0.85rem;">↺ Reset</button>
-                            </div>
-                            <img src="RAF1.png" class="raf-img-preview" alt="Refer a Friend header">
-                            <div class="output-box">
-                                <textarea id="eraf-output" spellcheck="false" placeholder="Fill in the fields and click Generate Email..."></textarea>
-                            </div>
-                            <img src="RAF2.png" class="raf-img-preview" alt="Refer a Friend footer">
-                        </div>
-                    </div>
-                </div>
-                <div id="email-ezee-requesting-pictures" class="email-mini-page">
-                    <div class="email-template-form">
-                        <div class="etf-fields">
-                            <div class="form-group">
-                                <label for="erp-name">Customer Name</label>
-                                <input type="text" id="erp-name" placeholder="Enter customer name">
-                            </div>
-                            <div class="form-group">
-                                <label for="erp-ticket">Ticket ID</label>
-                                <input type="text" id="erp-ticket" placeholder="Enter ticket ID">
-                            </div>
-                            <button class="btn btn-primary etf-generate-btn" style="background:#FB612F;" onclick="generateReqPic('ezee')">Generate Email</button>
-                        </div>
-                        <div class="etf-output-wrap">
-                            <div class="output-header">
-                                <h3>Email Output</h3>
-                                <button class="btn btn-success" onclick="copyReqPic('ezee')">
-                                    <span id="erp-copy-icon">&#128203;</span>
-                                    <span id="erp-copy-text">Copy</span>
-                                </button>
-                                <button class="btn btn-secondary" onclick="resetEmailTemplate('erp-output', ['erp-name','erp-ticket'], null)" style="padding:0.5rem 1rem;font-size:0.85rem;">↺ Reset</button>
-                            </div>
-                            <div class="output-box">
-                                <textarea id="erp-output" spellcheck="false" placeholder="Fill in the fields and click Generate Email..."></textarea>
+                            <div class="etf-output-wrap">
+                                <div class="output-header">
+                                    <h3>Email Output</h3>
+                                    <button class="btn btn-success" onclick="copyRAF('ezee')">
+                                        <span id="eraf-copy-icon">&#128203;</span>
+                                        <span id="eraf-copy-text">Copy</span>
+                                    </button>
+                                    <button class="btn btn-secondary" onclick="resetEmailTemplate('eraf-output', ['eraf-name','eraf-link'], null)" style="padding:0.5rem 1rem;font-size:0.85rem;">↺ Reset</button>
+                                </div>
+                                <img src="RAF1.png" class="raf-img-preview" alt="Refer a Friend header">
+                                <div class="output-box">
+                                    <textarea id="eraf-output" spellcheck="false" placeholder="Fill in the fields and click Generate Email..."></textarea>
+                                </div>
+                                <img src="RAF2.png" class="raf-img-preview" alt="Refer a Friend footer">
                             </div>
                         </div>
                     </div>
-                </div>
-                <div id="email-ezee-wifi-security-key" class="email-mini-page">
-                    <div class="email-template-form">
-                        <div class="etf-fields">
-                            <div class="form-group">
-                                <label for="ewsk-name">Customer First Name</label>
-                                <input type="text" id="ewsk-name" placeholder="Enter first name">
+                    <div id="email-ezee-requesting-pictures" class="email-mini-page">
+                        <div class="email-template-form">
+                            <div class="etf-fields">
+                                <div class="form-group">
+                                    <label for="erp-name">Customer Name</label>
+                                    <input type="text" id="erp-name" placeholder="Enter customer name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="erp-ticket">Ticket ID</label>
+                                    <input type="text" id="erp-ticket" placeholder="Enter ticket ID">
+                                </div>
+                                <button class="btn btn-primary etf-generate-btn" style="background:#FB612F;" onclick="generateReqPic('ezee')">Generate Email</button>
                             </div>
-                            <button class="btn btn-primary etf-generate-btn" style="background:#FB612F;" onclick="generateWifiKey('ezee')">Generate Email</button>
-                        </div>
-                        <div class="etf-output-wrap">
-                            <div class="output-header">
-                                <h3>Email Output</h3>
-                                <button class="btn btn-success" onclick="copyWifiKey('ezee')">
-                                    <span id="ewsk-copy-icon">&#128203;</span>
-                                    <span id="ewsk-copy-text">Copy</span>
-                                </button>
-                                <button class="btn btn-secondary" onclick="resetEmailTemplate('ewsk-output', ['ewsk-name'], null)" style="padding:0.5rem 1rem;font-size:0.85rem;">↺ Reset</button>
+                            <div class="etf-output-wrap">
+                                <div class="output-header">
+                                    <h3>Email Output</h3>
+                                    <button class="btn btn-success" onclick="copyReqPic('ezee')">
+                                        <span id="erp-copy-icon">&#128203;</span>
+                                        <span id="erp-copy-text">Copy</span>
+                                    </button>
+                                    <button class="btn btn-secondary" onclick="resetEmailTemplate('erp-output', ['erp-name','erp-ticket'], null)" style="padding:0.5rem 1rem;font-size:0.85rem;">↺ Reset</button>
+                                </div>
+                                <div class="output-box">
+                                    <textarea id="erp-output" spellcheck="false" placeholder="Fill in the fields and click Generate Email..."></textarea>
+                                </div>
                             </div>
-                            <div class="output-box">
-                                <textarea id="ewsk-output" spellcheck="false" placeholder="Fill in the fields and click Generate Email..."></textarea>
+                        </div>
+                    </div>
+                    <div id="email-ezee-wifi-security-key" class="email-mini-page">
+                        <div class="email-template-form">
+                            <div class="etf-fields">
+                                <div class="form-group">
+                                    <label for="ewsk-name">Customer First Name</label>
+                                    <input type="text" id="ewsk-name" placeholder="Enter first name">
+                                </div>
+                                <button class="btn btn-primary etf-generate-btn" style="background:#FB612F;" onclick="generateWifiKey('ezee')">Generate Email</button>
+                            </div>
+                            <div class="etf-output-wrap">
+                                <div class="output-header">
+                                    <h3>Email Output</h3>
+                                    <button class="btn btn-success" onclick="copyWifiKey('ezee')">
+                                        <span id="ewsk-copy-icon">&#128203;</span>
+                                        <span id="ewsk-copy-text">Copy</span>
+                                    </button>
+                                    <button class="btn btn-secondary" onclick="resetEmailTemplate('ewsk-output', ['ewsk-name'], null)" style="padding:0.5rem 1rem;font-size:0.85rem;">↺ Reset</button>
+                                </div>
+                                <div class="output-box">
+                                    <textarea id="ewsk-output" spellcheck="false" placeholder="Fill in the fields and click Generate Email..."></textarea>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div id="email-ezee-portal-password-reset" class="email-mini-page">
-                    <div class="email-template-placeholder">
-                        <div class="coming-soon-placeholder">
-                            <div class="placeholder-mark" style="color:#FB612F;">Customer Portal Password Reset</div>
-                            <div class="placeholder-sub">Coming Soon</div>
+                    <div id="email-ezee-portal-password-reset" class="email-mini-page">
+                        <div class="email-template-placeholder">
+                            <div class="coming-soon-placeholder">
+                                <div class="placeholder-mark" style="color:#FB612F;">Customer Portal Password Reset</div>
+                                <div class="placeholder-sub">Coming Soon</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div id="email-ezee-lifetime-pricing" class="email-mini-page">
-                    <div class="email-template-placeholder">
-                        <div class="coming-soon-placeholder">
-                            <div class="placeholder-mark" style="color:#FB612F;">Lifetime Pricing Declaration</div>
-                            <div class="placeholder-sub">Coming Soon</div>
+                    <div id="email-ezee-lifetime-pricing" class="email-mini-page">
+                        <div class="email-template-placeholder">
+                            <div class="coming-soon-placeholder">
+                                <div class="placeholder-mark" style="color:#FB612F;">Lifetime Pricing Declaration</div>
+                                <div class="placeholder-sub">Coming Soon</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div id="email-ezee-construction-case" class="email-mini-page">
-                    <div class="email-template-placeholder">
-                        <div class="coming-soon-placeholder">
-                            <div class="placeholder-mark" style="color:#FB612F;">Construction Case</div>
-                            <div class="placeholder-sub">Coming Soon</div>
+                    <div id="email-ezee-construction-case" class="email-mini-page">
+                        <div class="email-template-placeholder">
+                            <div class="coming-soon-placeholder">
+                                <div class="placeholder-mark" style="color:#FB612F;">Construction Case</div>
+                                <div class="placeholder-sub">Coming Soon</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div id="email-ezee-outage" class="email-mini-page">
-                    <div class="email-template-placeholder">
-                        <div class="coming-soon-placeholder">
-                            <div class="placeholder-mark" style="color:#FB612F;">Outage</div>
-                            <div class="placeholder-sub">Coming Soon</div>
+                    <div id="email-ezee-outage" class="email-mini-page">
+                        <div class="email-template-placeholder">
+                            <div class="coming-soon-placeholder">
+                                <div class="placeholder-mark" style="color:#FB612F;">Outage</div>
+                                <div class="placeholder-sub">Coming Soon</div>
+                            </div>
                         </div>
                     </div>
-                </div>
                 </div>
             </div>
-
         </div>
     </div>
 
     <script>
-        // ── OUI DATABASE (local, no API needed) ──
+        // ── OUI DATABASE ──
         const OUI_DB = {
-  "001451": "Apple Inc.",
-  "0050E4": "Apple Inc.",
-  "3C0754": "Apple Inc.",
-  "A4C361": "Apple Inc.",
-  "F0B479": "Apple Inc.",
-  "D83062": "Apple Inc.",
-  "000A27": "Apple Inc.",
-  "001124": "Motorola Solutions",
-  "001F5B": "Sony Corporation",
-  "001FF3": "Apple Inc.",
-  "002312": "Apple Inc.",
-  "002500": "Apple Inc.",
-  "0026B9": "ASUSTek Computer",
-  "0030A8": "Apple Inc.",
-  "A45E60": "Apple Inc.",
-  "7C6D62": "Apple Inc.",
-  "38F9D3": "Apple Inc.",
-  "8866A5": "Apple Inc.",
-  "001599": "Samsung Electronics",
-  "002454": "Samsung Electronics",
-  "002339": "Samsung Electronics",
-  "0024E9": "Samsung Electronics",
-  "002566": "Samsung Electronics",
-  "0026E2": "LG Electronics",
-  "F4428F": "Samsung Electronics",
-  "CC07AB": "Samsung Electronics",
-  "8C771D": "Samsung Electronics",
-  "000142": "Cisco Systems",
-  "0001C7": "Cisco Systems",
-  "000216": "Cisco Systems",
-  "000268": "Cisco Systems",
-  "0002B9": "Cisco Systems",
-  "001201": "Cisco Systems",
-  "001A2B": "Cisco Systems",
-  "001B54": "Cisco Systems",
-  "001CA3": "Cisco Systems",
-  "001D45": "Cisco Systems",
-  "001E13": "Cisco Systems",
-  "001E7A": "Cisco Systems",
-  "001F27": "Cisco Systems",
-  "001F9E": "Cisco Systems",
-  "002022": "Cisco Systems",
-  "0021A0": "Cisco Systems",
-  "0022BD": "Cisco Systems",
-  "002390": "Cisco Systems",
-  "0024C4": "Cisco Systems",
-  "0025B4": "Cisco Systems",
-  "0026CB": "Cisco Systems",
-  "5C5015": "Cisco Systems",
-  "E09D31": "Cisco Systems",
-  "002722": "Ubiquiti Networks",
-  "0418D6": "Ubiquiti Networks",
-  "24A43C": "Ubiquiti Networks",
-  "44D9E7": "Ubiquiti Networks",
-  "68727B": "Ubiquiti Networks",
-  "788A20": "Ubiquiti Networks",
-  "80AI15": "Ubiquiti Networks",
-  "B4FBE4": "Ubiquiti Networks",
-  "DC9FDB": "Ubiquiti Networks",
-  "F09FC2": "Ubiquiti Networks",
-  "FCECDA": "Ubiquiti Networks",
-  "FCECDA": "Ubiquiti Networks",
-  "0014BF": "Linksys (Belkin)",
-  "001B2F": "NETGEAR",
-  "001E2A": "NETGEAR",
-  "001F33": "NETGEAR",
-  "002096": "NETGEAR",
-  "00224B": "NETGEAR",
-  "0023F8": "NETGEAR",
-  "0024B2": "Linksys (Belkin)",
-  "0026F2": "NETGEAR",
-  "200BC7": "NETGEAR",
-  "30469A": "NETGEAR",
-  "4CEDFB": "NETGEAR",
-  "6CB0CE": "NETGEAR",
-  "A021B7": "NETGEAR",
-  "C03F0E": "NETGEAR",
-  "00253C": "TP-LINK Technologies",
-  "001427": "TP-LINK Technologies",
-  "14CC20": "TP-LINK Technologies",
-  "1C3BF3": "TP-LINK Technologies",
-  "1C61B4": "TP-LINK Technologies",
-  "2008ED": "TP-LINK Technologies",
-  "3C4671": "TP-LINK Technologies",
-  "50BD5F": "TP-LINK Technologies",
-  "54E6FC": "TP-LINK Technologies",
-  "5C89AD": "TP-LINK Technologies",
-  "60E327": "TP-LINK Technologies",
-  "64701A": "TP-LINK Technologies",
-  "6C5C14": "TP-LINK Technologies",
-  "708BCD": "TP-LINK Technologies",
-  "74DADA": "TP-LINK Technologies",
-  "A0F3C1": "TP-LINK Technologies",
-  "B0487A": "TP-LINK Technologies",
-  "C025E9": "TP-LINK Technologies",
-  "D8EB97": "TP-LINK Technologies",
-  "E8DE27": "TP-LINK Technologies",
-  "F4F26D": "TP-LINK Technologies",
-  "EC086B": "TP-LINK Technologies",
-  "F81A67": "eero Inc. (Amazon)",
-  "E89F80": "eero Inc. (Amazon)",
-  "3C22FB": "eero Inc. (Amazon)",
-  "A4ED43": "eero Inc. (Amazon)",
-  "B44FBC": "eero Inc. (Amazon)",
-  "001799": "ARRIS / CommScope",
-  "001E46": "ARRIS / CommScope",
-  "002268": "ARRIS / CommScope",
-  "0024A0": "ARRIS / CommScope",
-  "001A5B": "ARRIS / CommScope",
-  "001CF0": "D-Link Corporation",
-  "744D28": "ARRIS / CommScope",
-  "BC1401": "ARRIS / CommScope",
-  "CC3A61": "ARRIS / CommScope",
-  "000E0E": "Calix Networks",
-  "001A11": "Calix Networks",
-  "0026B8": "Calix Networks",
-  "001CDD": "Calix Networks",
-  "002191": "Calix Networks",
-  "00242B": "Calix Networks",
-  "6C3B6B": "MikroTik",
-  "7C4CAD": "Calix Networks",
-  "D49A20": "Calix Networks",
-  "001BEA": "Nokia",
-  "002165": "Nokia",
-  "002760": "Alcatel-Lucent",
-  "000F1F": "Alcatel-Lucent",
-  "001372": "Alcatel-Lucent",
-  "741547": "Nokia",
-  "887556": "Nokia",
-  "001E10": "Huawei Technologies",
-  "0021CC": "Huawei Technologies",
-  "002278": "Huawei Technologies",
-  "00259E": "Huawei Technologies",
-  "0026C6": "Huawei Technologies",
-  "286ED4": "Huawei Technologies",
-  "2C9D65": "Huawei Technologies",
-  "34DB7B": "Huawei Technologies",
-  "3C47C9": "Huawei Technologies",
-  "48AD08": "Huawei Technologies",
-  "507B9D": "Huawei Technologies",
-  "54895A": "Huawei Technologies",
-  "58605F": "Huawei Technologies",
-  "5C4CA9": "Huawei Technologies",
-  "606BAD": "Huawei Technologies",
-  "70A8E3": "Huawei Technologies",
-  "788F69": "Huawei Technologies",
-  "7CAE57": "Huawei Technologies",
-  "84742A": "Huawei Technologies",
-  "8C34FD": "Huawei Technologies",
-  "90E7C4": "Huawei Technologies",
-  "98F5A3": "Huawei Technologies",
-  "9CBEA8": "Huawei Technologies",
-  "A01872": "Huawei Technologies",
-  "A0F479": "Huawei Technologies",
-  "AC853D": "Huawei Technologies",
-  "B80800": "Huawei Technologies",
-  "BC3EA7": "Huawei Technologies",
-  "C4072F": "Huawei Technologies",
-  "C4F081": "Huawei Technologies",
-  "C86195": "Huawei Technologies",
-  "CC53B5": "Huawei Technologies",
-  "D065CA": "Huawei Technologies",
-  "D4F9A1": "Huawei Technologies",
-  "D8490B": "Huawei Technologies",
-  "E82979": "Huawei Technologies",
-  "EC233D": "Huawei Technologies",
-  "F04347": "Huawei Technologies",
-  "F48E92": "Huawei Technologies",
-  "F8BF09": "Huawei Technologies",
-  "FCE33C": "Huawei Technologies",
-  "001E73": "ZTE Corporation",
-  "001F8D": "ZTE Corporation",
-  "002293": "ZTE Corporation",
-  "0024E8": "ZTE Corporation",
-  "0026ED": "ZTE Corporation",
-  "3090AB": "ZTE Corporation",
-  "3448ED": "ZTE Corporation",
-  "54A51B": "ZTE Corporation",
-  "6476BA": "ZTE Corporation",
-  "74A78E": "ZTE Corporation",
-  "844FCA": "ZTE Corporation",
-  "8CE081": "ZTE Corporation",
-  "981333": "ZTE Corporation",
-  "C864C7": "ZTE Corporation",
-  "E89A8F": "ZTE Corporation",
-  "F46BE8": "ZTE Corporation",
-  "001A92": "ASUSTek Computer",
-  "001D60": "ASUSTek Computer",
-  "001E8C": "Linksys (Belkin)",
-  "002215": "ASUSTek Computer",
-  "00237C": "ASUSTek Computer",
-  "0024EE": "ASUSTek Computer",
-  "10BF48": "ASUSTek Computer",
-  "1C87F4": "ASUSTek Computer",
-  "2C4D54": "ASUSTek Computer",
-  "30B49E": "ASUSTek Computer",
-  "40167E": "ASUSTek Computer",
-  "50465D": "ASUSTek Computer",
-  "5404A6": "ASUSTek Computer",
-  "60A44C": "ASUSTek Computer",
-  "74D02B": "ASUSTek Computer",
-  "AC220B": "ASUSTek Computer",
-  "BC9746": "ASUSTek Computer",
-  "D850E6": "ASUSTek Computer",
-  "E03F49": "ASUSTek Computer",
-  "F832E4": "ASUSTek Computer",
-  "0005CD": "D-Link Corporation",
-  "000D88": "D-Link Corporation",
-  "0011C5": "D-Link Corporation",
-  "0013E8": "D-Link Corporation",
-  "0015E9": "D-Link Corporation",
-  "001740": "D-Link Corporation",
-  "001849": "D-Link Corporation",
-  "001E58": "D-Link Corporation",
-  "00215D": "D-Link Corporation",
-  "0022B0": "D-Link Corporation",
-  "002401": "D-Link Corporation",
-  "00265A": "D-Link Corporation",
-  "1C7EE5": "D-Link Corporation",
-  "28107B": "D-Link Corporation",
-  "34088A": "D-Link Corporation",
-  "3C1E04": "D-Link Corporation",
-  "5CD998": "D-Link Corporation",
-  "744401": "D-Link Corporation",
-  "78542E": "LG Electronics",
-  "90F652": "D-Link Corporation",
-  "A0AB1B": "D-Link Corporation",
-  "B0C554": "D-Link Corporation",
-  "BC0F9A": "D-Link Corporation",
-  "C4A81D": "D-Link Corporation",
-  "CCB255": "D-Link Corporation",
-  "3C5A37": "Google Inc.",
-  "6C5AB0": "Google Inc.",
-  "A47733": "Google Inc.",
-  "D83C69": "Google Inc.",
-  "F88FCA": "Google Inc.",
-  "000F60": "Google Inc.",
-  "18B430": "Google Inc. (Nest)",
-  "64169D": "Google Inc. (Nest)",
-  "B8AD3E": "Google Inc. (Nest)",
-  "001111": "Intel Corporate",
-  "001320": "Intel Corporate",
-  "0015E0": "Intel Corporate",
-  "001706": "Intel Corporate",
-  "001BEE": "Intel Corporate",
-  "001CC0": "Intel Corporate",
-  "001E64": "Intel Corporate",
-  "001E65": "Intel Corporate",
-  "001E67": "Intel Corporate",
-  "002132": "Intel Corporate",
-  "0022FA": "Intel Corporate",
-  "00248D": "Intel Corporate",
-  "002618": "Sony Corporation",
-  "34E6D7": "Intel Corporate",
-  "4060EB": "Intel Corporate",
-  "60F677": "Intel Corporate",
-  "648016": "Intel Corporate",
-  "7085C2": "Intel Corporate",
-  "7C7A91": "Intel Corporate",
-  "8C8D28": "Intel Corporate",
-  "9CB1D3": "Intel Corporate",
-  "A4C3F0": "Intel Corporate",
-  "B0A4E1": "Intel Corporate",
-  "D0508B": "Intel Corporate",
-  "000AF2": "Motorola Solutions",
-  "000CE5": "Motorola Solutions",
-  "001006": "Motorola Solutions",
-  "00107A": "Motorola Solutions",
-  "00147F": "Motorola Solutions",
-  "001560": "Motorola Solutions",
-  "0016AA": "Motorola Solutions",
-  "0021FC": "Motorola Solutions",
-  "00242C": "Motorola Solutions",
-  "0026B5": "Motorola Solutions",
-  "001101": "Linksys (Belkin)",
-  "001310": "Linksys (Belkin)",
-  "001601": "Linksys (Belkin)",
-  "00166F": "Linksys (Belkin)",
-  "0018F8": "Linksys (Belkin)",
-  "001A70": "Linksys (Belkin)",
-  "001C10": "Linksys (Belkin)",
-  "001D7E": "Linksys (Belkin)",
-  "0021B2": "Linksys (Belkin)",
-  "002369": "Linksys (Belkin)",
-  "EC1A59": "Linksys (Belkin)",
-  "0C9D92": "Amazon Technologies",
-  "10AE60": "Amazon Technologies",
-  "34D270": "Amazon Technologies",
-  "40B4CD": "Amazon Technologies",
-  "44650D": "Amazon Technologies",
-  "6CF373": "Amazon Technologies",
-  "74C246": "Amazon Technologies",
-  "8871E5": "Amazon Technologies",
-  "A002DC": "Amazon Technologies",
-  "AC63BE": "Amazon Technologies",
-  "B47C9C": "Amazon Technologies",
-  "F0272D": "Amazon Technologies",
-  "F0D2F1": "Amazon Technologies",
-  "FC65DE": "Amazon Technologies",
-  "086286": "Roku Inc.",
-  "0C6CBD": "Roku Inc.",
-  "205124": "Roku Inc.",
-  "4C3486": "Roku Inc.",
-  "6C9B02": "Roku Inc.",
-  "8C227B": "Roku Inc.",
-  "AC3A7A": "Roku Inc.",
-  "B09E0A": "Roku Inc.",
-  "C83A35": "Roku Inc.",
-  "D00A1F": "Roku Inc.",
-  "DC3A5E": "Roku Inc.",
-  "B827EB": "Raspberry Pi Foundation",
-  "DCA632": "Raspberry Pi Foundation",
-  "E45F01": "Raspberry Pi Foundation",
-  "004E08": "MikroTik",
-  "18FD74": "MikroTik",
-  "2CC8D2": "MikroTik",
-  "484B7B": "MikroTik",
-  "4C5E0C": "MikroTik",
-  "74EC35": "MikroTik",
-  "8C4AEF": "MikroTik",
-  "B8069F": "MikroTik",
-  "C4AD34": "MikroTik",
-  "CC2DE0": "MikroTik",
-  "D4CA6D": "MikroTik",
-  "DC2C6E": "MikroTik",
-  "E4CE8F": "MikroTik",
-  "0019E2": "Juniper Networks",
-  "001C0E": "Juniper Networks",
-  "0021F7": "Juniper Networks",
-  "0024DC": "Juniper Networks",
-  "28C002": "Juniper Networks",
-  "2CAA0E": "Juniper Networks",
-  "44F477": "Juniper Networks",
-  "5C5EAB": "Juniper Networks",
-  "5879B8": "Juniper Networks",
-  "001C62": "LG Electronics",
-  "001E75": "LG Electronics",
-  "001FA7": "LG Electronics",
-  "002111": "LG Electronics",
-  "0022A9": "LG Electronics",
-  "002483": "LG Electronics",
-  "0025E5": "LG Electronics",
-  "1418C3": "LG Electronics",
-  "34CE00": "LG Electronics",
-  "4C32AC": "LG Electronics",
-  "64995D": "LG Electronics",
-  "84A466": "LG Electronics",
-  "A82B8D": "LG Electronics",
-  "CC2D8C": "LG Electronics",
-  "F8A9D0": "LG Electronics",
-  "0013A9": "Sony Corporation",
-  "001EE2": "Sony Corporation",
-  "0024BE": "Sony Corporation",
-  "0025E7": "Sony Corporation",
-  "00261E": "Sony Corporation",
-  "28A195": "Sony Corporation",
-  "3C0771": "Sony Corporation",
-  "40B076": "Sony Corporation",
-  "7038EE": "Sony Corporation",
-  "8CAABD": "Sony Corporation",
-  "A0E453": "Sony Corporation",
-  "BC6087": "Sony Corporation",
-  "0050F2": "Microsoft Corporation",
-  "001DD8": "Microsoft Corporation",
-  "002248": "Microsoft Corporation",
-  "0025AE": "Microsoft Corporation",
-  "002BD0": "Microsoft Corporation",
-  "00FF17": "Microsoft Corporation",
-  "28EF01": "Microsoft Corporation",
-  "3C83A2": "Microsoft Corporation",
-  "485073": "Microsoft Corporation",
-  "50E549": "Microsoft Corporation",
-  "601C13": "Microsoft Corporation",
-  "9C8D7C": "Microsoft Corporation",
-  "BC8385": "Microsoft Corporation",
-  "C871FE": "Microsoft Corporation",
-  "F4153B": "Microsoft Corporation"
-};
+  "001451": "Apple Inc.", "0050E4": "Apple Inc.", "3C0754": "Apple Inc.", "A4C361": "Apple Inc.",
+  "F0B479": "Apple Inc.", "D83062": "Apple Inc.", "000A27": "Apple Inc.", "001124": "Motorola Solutions",
+  "001F5B": "Sony Corporation", "001FF3": "Apple Inc.", "002312": "Apple Inc.", "002500": "Apple Inc.",
+  "0026B9": "ASUSTek Computer", "0030A8": "Apple Inc.", "A45E60": "Apple Inc.", "7C6D62": "Apple Inc.",
+  "38F9D3": "Apple Inc.", "8866A5": "Apple Inc.", "001599": "Samsung Electronics",
+  "002454": "Samsung Electronics", "002339": "Samsung Electronics", "0024E9": "Samsung Electronics",
+  "002566": "Samsung Electronics", "0026E2": "LG Electronics", "F4428F": "Samsung Electronics",
+  "CC07AB": "Samsung Electronics", "8C771D": "Samsung Electronics", "000142": "Cisco Systems",
+  "0001C7": "Cisco Systems", "000216": "Cisco Systems", "000268": "Cisco Systems",
+  "0002B9": "Cisco Systems", "001201": "Cisco Systems", "001A2B": "Cisco Systems",
+  "001B54": "Cisco Systems", "001CA3": "Cisco Systems", "001D45": "Cisco Systems",
+  "001E13": "Cisco Systems", "001E7A": "Cisco Systems", "001F27": "Cisco Systems",
+  "001F9E": "Cisco Systems", "002022": "Cisco Systems", "0021A0": "Cisco Systems",
+  "0022BD": "Cisco Systems", "002390": "Cisco Systems", "0024C4": "Cisco Systems",
+  "0025B4": "Cisco Systems", "0026CB": "Cisco Systems", "5C5015": "Cisco Systems",
+  "E09D31": "Cisco Systems", "002722": "Ubiquiti Networks", "0418D6": "Ubiquiti Networks",
+  "24A43C": "Ubiquiti Networks", "44D9E7": "Ubiquiti Networks", "68727B": "Ubiquiti Networks",
+  "788A20": "Ubiquiti Networks", "B4FBE4": "Ubiquiti Networks", "DC9FDB": "Ubiquiti Networks",
+  "F09FC2": "Ubiquiti Networks", "FCECDA": "Ubiquiti Networks", "0014BF": "Linksys (Belkin)",
+  "001B2F": "NETGEAR", "001E2A": "NETGEAR", "001F33": "NETGEAR", "002096": "NETGEAR",
+  "00224B": "NETGEAR", "0023F8": "NETGEAR", "0024B2": "Linksys (Belkin)", "0026F2": "NETGEAR",
+  "200BC7": "NETGEAR", "30469A": "NETGEAR", "4CEDFB": "NETGEAR", "6CB0CE": "NETGEAR",
+  "A021B7": "NETGEAR", "C03F0E": "NETGEAR", "00253C": "TP-LINK Technologies",
+  "001427": "TP-LINK Technologies", "14CC20": "TP-LINK Technologies", "1C3BF3": "TP-LINK Technologies",
+  "1C61B4": "TP-LINK Technologies", "2008ED": "TP-LINK Technologies", "3C4671": "TP-LINK Technologies",
+  "50BD5F": "TP-LINK Technologies", "54E6FC": "TP-LINK Technologies", "5C89AD": "TP-LINK Technologies",
+  "60E327": "TP-LINK Technologies", "64701A": "TP-LINK Technologies", "6C5C14": "TP-LINK Technologies",
+  "708BCD": "TP-LINK Technologies", "74DADA": "TP-LINK Technologies", "A0F3C1": "TP-LINK Technologies",
+  "B0487A": "TP-LINK Technologies", "C025E9": "TP-LINK Technologies", "D8EB97": "TP-LINK Technologies",
+  "E8DE27": "TP-LINK Technologies", "F4F26D": "TP-LINK Technologies", "EC086B": "TP-LINK Technologies",
+  "F81A67": "eero Inc. (Amazon)", "8CDD0B": "eero Inc. (Amazon)", "E89F80": "eero Inc. (Amazon)",
+  "AC393D": "eero Inc. (Amazon)", "3C22FB": "eero Inc. (Amazon)", "A499A8": "eero Inc. (Amazon)",
+  "A4ED43": "eero Inc. (Amazon)", "B44FBC": "eero Inc. (Amazon)", "001799": "ARRIS / CommScope",
+  "001E46": "ARRIS / CommScope", "002268": "ARRIS / CommScope", "0024A0": "ARRIS / CommScope",
+  "001A5B": "ARRIS / CommScope", "001CF0": "D-Link Corporation", "744D28": "ARRIS / CommScope",
+  "BC1401": "ARRIS / CommScope", "CC3A61": "ARRIS / CommScope", "000E0E": "Calix Networks",
+  "001A11": "Calix Networks", "0026B8": "Calix Networks", "001CDD": "Calix Networks",
+  "002191": "Calix Networks", "00242B": "Calix Networks", "6C3B6B": "MikroTik",
+  "7C4CAD": "Calix Networks", "D49A20": "Calix Networks", "001BEA": "Nokia", "002165": "Nokia",
+  "002760": "Alcatel-Lucent", "000F1F": "Alcatel-Lucent", "001372": "Alcatel-Lucent",
+  "741547": "Nokia", "887556": "Nokia", "001E10": "Huawei Technologies",
+  "0021CC": "Huawei Technologies", "002278": "Huawei Technologies", "00259E": "Huawei Technologies",
+  "0026C6": "Huawei Technologies", "286ED4": "Huawei Technologies", "2C9D65": "Huawei Technologies",
+  "34DB7B": "Huawei Technologies", "3C47C9": "Huawei Technologies", "48AD08": "Huawei Technologies",
+  "507B9D": "Huawei Technologies", "54895A": "Huawei Technologies", "58605F": "Huawei Technologies",
+  "5C4CA9": "Huawei Technologies", "606BAD": "Huawei Technologies", "70A8E3": "Huawei Technologies",
+  "788F69": "Huawei Technologies", "7CAE57": "Huawei Technologies", "84742A": "Huawei Technologies",
+  "8C34FD": "Huawei Technologies", "90E7C4": "Huawei Technologies", "98F5A3": "Huawei Technologies",
+  "9CBEA8": "Huawei Technologies", "A01872": "Huawei Technologies", "A0F479": "Huawei Technologies",
+  "AC853D": "Huawei Technologies", "B80800": "Huawei Technologies", "BC3EA7": "Huawei Technologies",
+  "C4072F": "Huawei Technologies", "C4F081": "Huawei Technologies", "C86195": "Huawei Technologies",
+  "CC53B5": "Huawei Technologies", "D065CA": "Huawei Technologies", "D4F9A1": "Huawei Technologies",
+  "D8490B": "Huawei Technologies", "E82979": "Huawei Technologies", "EC233D": "Huawei Technologies",
+  "F04347": "Huawei Technologies", "F48E92": "Huawei Technologies", "F8BF09": "Huawei Technologies",
+  "FCE33C": "Huawei Technologies", "001E73": "ZTE Corporation", "001F8D": "ZTE Corporation",
+  "002293": "ZTE Corporation", "0024E8": "ZTE Corporation", "0026ED": "ZTE Corporation",
+  "3090AB": "ZTE Corporation", "3448ED": "ZTE Corporation", "54A51B": "ZTE Corporation",
+  "6476BA": "ZTE Corporation", "74A78E": "ZTE Corporation", "844FCA": "ZTE Corporation",
+  "8CE081": "ZTE Corporation", "981333": "ZTE Corporation", "C864C7": "ZTE Corporation",
+  "E89A8F": "ZTE Corporation", "F46BE8": "ZTE Corporation", "001A92": "ASUSTek Computer",
+  "001D60": "ASUSTek Computer", "001E8C": "Linksys (Belkin)", "002215": "ASUSTek Computer",
+  "00237C": "ASUSTek Computer", "0024EE": "ASUSTek Computer", "10BF48": "ASUSTek Computer",
+  "1C87F4": "ASUSTek Computer", "2C4D54": "ASUSTek Computer", "30B49E": "ASUSTek Computer",
+  "40167E": "ASUSTek Computer", "50465D": "ASUSTek Computer", "5404A6": "ASUSTek Computer",
+  "60A44C": "ASUSTek Computer", "74D02B": "ASUSTek Computer", "AC220B": "ASUSTek Computer",
+  "BC9746": "ASUSTek Computer", "D850E6": "ASUSTek Computer", "E03F49": "ASUSTek Computer",
+  "F832E4": "ASUSTek Computer", "0005CD": "D-Link Corporation", "000D88": "D-Link Corporation",
+  "0011C5": "D-Link Corporation", "0013E8": "D-Link Corporation", "0015E9": "D-Link Corporation",
+  "001740": "D-Link Corporation", "001849": "D-Link Corporation", "001E58": "D-Link Corporation",
+  "00215D": "D-Link Corporation", "0022B0": "D-Link Corporation", "002401": "D-Link Corporation",
+  "00265A": "D-Link Corporation", "1C7EE5": "D-Link Corporation", "28107B": "D-Link Corporation",
+  "34088A": "D-Link Corporation", "3C1E04": "D-Link Corporation", "5CD998": "D-Link Corporation",
+  "744401": "D-Link Corporation", "78542E": "LG Electronics", "90F652": "D-Link Corporation",
+  "A0AB1B": "D-Link Corporation", "B0C554": "D-Link Corporation", "BC0F9A": "D-Link Corporation",
+  "C4A81D": "D-Link Corporation", "CCB255": "D-Link Corporation", "3C5A37": "Google Inc.",
+  "6C5AB0": "Google Inc.", "A47733": "Google Inc.", "D83C69": "Google Inc.", "F88FCA": "Google Inc.",
+  "000F60": "Google Inc.", "18B430": "Google Inc. (Nest)", "64169D": "Google Inc. (Nest)",
+  "B8AD3E": "Google Inc. (Nest)", "0C9D92": "Amazon Technologies", "10AE60": "Amazon Technologies",
+  "34D270": "Amazon Technologies", "40B4CD": "Amazon Technologies", "44650D": "Amazon Technologies",
+  "6CF373": "Amazon Technologies", "74C246": "Amazon Technologies", "8871E5": "Amazon Technologies",
+  "A002DC": "Amazon Technologies", "AC63BE": "Amazon Technologies", "B47C9C": "Amazon Technologies",
+  "F0272D": "Amazon Technologies", "F0D2F1": "Amazon Technologies", "FC65DE": "Amazon Technologies",
+  "086286": "Roku Inc.", "0C6CBD": "Roku Inc.", "205124": "Roku Inc.", "4C3486": "Roku Inc.",
+  "6C9B02": "Roku Inc.", "8C227B": "Roku Inc.", "AC3A7A": "Roku Inc.", "B09E0A": "Roku Inc.",
+  "C83A35": "Roku Inc.", "D00A1F": "Roku Inc.", "DC3A5E": "Roku Inc.",
+  "B827EB": "Raspberry Pi Foundation", "DCA632": "Raspberry Pi Foundation",
+  "E45F01": "Raspberry Pi Foundation", "004E08": "MikroTik", "18FD74": "MikroTik",
+  "2CC8D2": "MikroTik", "484B7B": "MikroTik", "4C5E0C": "MikroTik", "74EC35": "MikroTik",
+  "8C4AEF": "MikroTik", "B8069F": "MikroTik", "C4AD34": "MikroTik", "CC2DE0": "MikroTik",
+  "D4CA6D": "MikroTik", "DC2C6E": "MikroTik", "E4CE8F": "MikroTik"
+        };
 
         function lookupOUI() {
-            const raw     = document.getElementById('oui-input').value.trim();
-            const result  = document.getElementById('oui-result');
+            const raw = document.getElementById('oui-input').value.trim();
+            const result = document.getElementById('oui-result');
             const macDisp = document.getElementById('oui-mac-display');
-
             if (!raw) return;
-
-            // Strip separators, uppercase
             const clean = raw.replace(/[^a-fA-F0-9]/g, '').toUpperCase();
             if (clean.length < 6) {
                 result.className = 'oui-result error';
-                result.innerHTML = '⚠️ Please enter at least 6 hex characters of a MAC address.';
+                result.innerHTML = '⚠️ Please enter at least 6 hex characters.';
                 macDisp.textContent = '';
                 return;
             }
-
-            const oui       = clean.substring(0, 6);
+            const oui = clean.substring(0, 6);
             const formatted = oui.match(/.{1,2}/g).join(':');
-
-            if (typeof OUI_DB === 'undefined') {
-                result.className = 'oui-result error';
-                result.innerHTML = '⚠️ OUI database not loaded. Make sure oui.js is in the same folder.';
-                return;
-            }
-
             const vendor = OUI_DB[oui] || null;
-
             if (vendor) {
                 result.className = 'oui-result success';
                 result.innerHTML = '✅ <span><strong>Manufacturer:</strong> ' + vendor + '</span>';
                 macDisp.textContent = 'MAC OUI: ' + formatted;
             } else {
                 result.className = 'oui-result error';
-                result.innerHTML = '❌ No match found for OUI: ' + formatted + '. Unknown or private manufacturer.';
+                result.innerHTML = '❌ No match found for OUI: ' + formatted;
                 macDisp.textContent = 'MAC OUI: ' + formatted;
             }
         }
@@ -2516,7 +2275,6 @@
         // ── LOGIN ──
         const SITE_PASSWORD = 'Ezeefiber#1';
 
-        // ── HOME CARD NAVIGATION ──
         function goToTab(tabId) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -2530,7 +2288,7 @@
 
         function checkLogin() {
             const input = document.getElementById('login-password').value;
-            const card  = document.getElementById('login-card');
+            const card = document.getElementById('login-card');
             if (input === SITE_PASSWORD) {
                 sessionStorage.setItem('ef_auth', '1');
                 document.getElementById('login-overlay').style.display = 'none';
@@ -2539,7 +2297,7 @@
             } else {
                 document.getElementById('login-error').textContent = 'Incorrect password. Please try again.';
                 card.classList.remove('shake');
-                void card.offsetWidth; // reflow to restart animation
+                void card.offsetWidth;
                 card.classList.add('shake');
                 document.getElementById('login-password').value = '';
                 setTimeout(() => card.classList.remove('shake'), 400);
@@ -2554,89 +2312,52 @@
             document.getElementById('login-error').textContent = '';
         }
 
-        // Check if already authenticated this session
         if (sessionStorage.getItem('ef_auth') === '1') {
             document.getElementById('login-overlay').style.display = 'none';
             document.getElementById('signout-btn').style.display = 'block';
         }
 
-        // ── UPS RETURN LABEL PRINT ──
-        // ── UPS FILLED PDF DOWNLOAD (pdf-lib) ──
+        // ── UPS PDF DOWNLOAD ──
         async function downloadFilledPDF(brand) {
             const isTachus = brand === 'tachus';
             const acct = document.getElementById(isTachus ? 'ter-t-acct' : 'ter-e-acct').value.trim();
             const wo   = document.getElementById(isTachus ? 'ter-t-wo'   : 'ter-e-wo').value.trim();
-
             if (!acct && !wo) {
-                alert('Please enter at least the Customer Account Number or Work Order Number before downloading.');
+                alert('Please enter at least the Customer Account Number or Work Order Number.');
                 return;
             }
-
             try {
-                // Load pdf-lib from CDN
                 if (!window.PDFLib) {
                     await new Promise((resolve, reject) => {
                         const s = document.createElement('script');
                         s.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js';
-                        s.onload = resolve;
-                        s.onerror = reject;
+                        s.onload = resolve; s.onerror = reject;
                         document.head.appendChild(s);
                     });
                 }
-
-                // Fetch the original PDF
                 const response = await fetch('EzeeFiber_UPS_Label.pdf');
                 if (!response.ok) throw new Error('Could not load EzeeFiber_UPS_Label.pdf');
                 const existingPdfBytes = await response.arrayBuffer();
-
-                // Load with pdf-lib
                 const { PDFDocument, rgb, StandardFonts } = window.PDFLib;
                 const pdfDoc = await PDFDocument.load(existingPdfBytes);
-                const page   = pdfDoc.getPages()[0];
-                const font   = await pdfDoc.embedFont(StandardFonts.Helvetica);
-
+                const page = pdfDoc.getPages()[0];
+                const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
                 const fontSize = 11;
                 const textColor = rgb(0, 0, 0);
-
-                // Account Number box: x=68.7, y=178.5
-                if (acct) {
-                    page.drawText(acct, {
-                        x: 68.7,
-                        y: 178.5,
-                        size: fontSize,
-                        font,
-                        color: textColor,
-                    });
-                }
-
-                // Work Order Number box: x=390.4, y=178.5
-                if (wo) {
-                    page.drawText(wo, {
-                        x: 390.4,
-                        y: 178.5,
-                        size: fontSize,
-                        font,
-                        color: textColor,
-                    });
-                }
-
-                // Save and trigger download
+                if (acct) page.drawText(acct, { x: 68.7, y: 178.5, size: fontSize, font, color: textColor });
+                if (wo)   page.drawText(wo,   { x: 390.4, y: 178.5, size: fontSize, font, color: textColor });
                 const pdfBytes = await pdfDoc.save();
                 const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-                const url  = URL.createObjectURL(blob);
-                const a    = document.createElement('a');
-                a.href     = url;
-                a.download = 'EzeeFiber_Return_Label.pdf';
-                a.click();
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url; a.download = 'EzeeFiber_Return_Label.pdf'; a.click();
                 setTimeout(() => URL.revokeObjectURL(url), 5000);
-
             } catch (err) {
-                console.error(err);
-                alert('Could not generate PDF: ' + err.message + '\n\nMake sure EzeeFiber_UPS_Label.pdf is in the same folder as index.html.');
+                alert('Could not generate PDF: ' + err.message);
             }
         }
 
-                // ── NOTE SUB-TAB SWITCHING ──
+        // ── TAB SWITCHING ──
         function switchNoteTab(tab, btnEl) {
             document.querySelectorAll('.note-sub-page').forEach(p => p.classList.remove('active'));
             document.querySelectorAll('.note-sub-btn').forEach(b => b.classList.remove('active'));
@@ -2644,7 +2365,6 @@
             btnEl.classList.add('active');
         }
 
-        // ── MAIN TAB SWITCHING ──
         function switchTab(tab, btnEl) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -2652,7 +2372,6 @@
             btnEl.classList.add('active');
         }
 
-        // ── EMAIL SUB-TAB SWITCHING ──
         function switchEmailTab(tab) {
             document.querySelectorAll('.email-sub-page').forEach(p => p.classList.remove('active'));
             document.getElementById('sub-btn-tachus').classList.remove('active-tachus');
@@ -2660,7 +2379,6 @@
             document.getElementById('email-sub-' + tab).classList.add('active');
             if (tab === 'tachus') {
                 document.getElementById('sub-btn-tachus').classList.add('active-tachus');
-                // Default to cancellation tab
                 switchEmailMiniTab('tachus', 'cancellation', document.getElementById('email-tachus-btn-cancellation'));
             } else {
                 document.getElementById('sub-btn-ezee').classList.add('active-ezee');
@@ -2668,25 +2386,46 @@
             }
         }
 
-        // ── EMAIL MINI TAB SWITCHING ──
         function switchEmailMiniTab(brand, slug, btnEl) {
-            // hide all mini pages for this brand
             document.querySelectorAll(`#email-sub-${brand} .email-mini-page`).forEach(p => p.classList.remove('active'));
-            // deactivate all mini buttons for this brand
             document.querySelectorAll(`#email-sub-${brand} .email-mini-btn`).forEach(b => b.classList.remove('email-mini-btn-active'));
-            // activate selected
             document.getElementById(`email-${brand}-${slug}`).classList.add('active');
             btnEl.classList.add('email-mini-btn-active');
         }
 
-        // ── YES/NO ──
-        const yesNoData = {
-            devicesDisconnecting: null,
-            networkStable: null,
-            wifiInterference: null,
-            equipmentRebooted: null,
-            connectionsVerified: null
+        // ══════════════════════════════════════════════
+        //  TRUCK ROLL STATE
+        // ══════════════════════════════════════════════
+        let trProvider = '';
+        const trEquip = { ont: '', router: '' };
+        const trYesNo = {
+            tr_devicesDisconnecting: null,
+            tr_networkStable: null,
+            tr_wifiInterference: null
         };
+        const selectedTroubleshooting = new Set();
+        const customTrSteps = [];
+
+        function setTrProvider(val) {
+            trProvider = val;
+            document.getElementById('tr-provider-tachus').classList.remove('active-tachus','active-ezee');
+            document.getElementById('tr-provider-ezee').classList.remove('active-tachus','active-ezee');
+            if (val === 'Tachus') {
+                document.getElementById('tr-provider-tachus').classList.add('active-tachus');
+            } else {
+                document.getElementById('tr-provider-ezee').classList.add('active-ezee');
+            }
+        }
+
+        function setEquip(type, val, btnEl) {
+            trEquip[type] = val;
+            const groupId = type === 'ont' ? 'tr-ont-btns' : 'tr-router-btns';
+            document.getElementById(groupId).querySelectorAll('.equip-btn').forEach(b => b.classList.remove('active'));
+            btnEl.classList.add('active');
+            const otherId = type === 'ont' ? 'tr-ont-other' : 'tr-router-other';
+            document.getElementById(otherId).style.display = val === 'Other' ? 'block' : 'none';
+            if (val !== 'Other') document.getElementById(otherId).value = '';
+        }
 
         const troubleshootingOptions = [
             "•Power Cycled Modem","•Defaulted Modem","•Reprovisioned Modem","•Reboot Modem",
@@ -2695,10 +2434,8 @@
             "•No Construction Confirmed","•Construction Confirmed","•Factory Reset Modem",
             "•Cleared Counters","•Checked Cx Power","•Power Cycled Router","•Firmware Update",
             "•Swapped gateway router","•Temporarily Disable 5GHz","•Enabled Guest SSID",
-            "•Disabled IPv6","•Factory Reset Routers","•Optimization on Network", "•Changed DNS Server to:"
+            "•Disabled IPv6","•Factory Reset Routers","•Optimization on Network","•Changed DNS Server to:"
         ];
-
-        const selectedTroubleshooting = new Set();
 
         function initTroubleshootingGrid() {
             const grid = document.getElementById('troubleshootingGrid');
@@ -2721,63 +2458,79 @@
             }
         }
 
+        function addCustomStep() {
+            const input = document.getElementById('tr-custom-step-input');
+            const text = input.value.trim();
+            if (!text) return;
+            const step = '•' + text;
+            customTrSteps.push(step);
+            renderCustomSteps();
+            input.value = '';
+            input.focus();
+        }
+
+        function removeCustomStep(idx) {
+            customTrSteps.splice(idx, 1);
+            renderCustomSteps();
+        }
+
+        function renderCustomSteps() {
+            const list = document.getElementById('tr-custom-steps-list');
+            list.innerHTML = '';
+            customTrSteps.forEach((step, idx) => {
+                const tag = document.createElement('div');
+                tag.className = 'custom-step-tag';
+                tag.innerHTML = `<span>${step}</span><button class="custom-step-remove" onclick="removeCustomStep(${idx})" title="Remove">×</button>`;
+                list.appendChild(tag);
+            });
+        }
+
         function setYesNo(field, value, e) {
-            yesNoData[field] = value;
+            trYesNo[field] = value;
             const buttons = e.target.parentElement.querySelectorAll('button');
             buttons.forEach(btn => btn.classList.remove('active-yes', 'active-no'));
             e.target.classList.add(value ? 'active-yes' : 'active-no');
         }
 
+        function yn(val) { return val === null ? '' : val ? 'Yes' : 'No'; }
+
         function generateNote() {
-            const formData = {
-                agentInitials: document.getElementById('agentInitials').value,
-                accountNumber: document.getElementById('accountNumber').value,
-                name: document.getElementById('name').value,
-                phone: document.getElementById('phone').value,
-                address: document.getElementById('address').value,
-                salesArea: document.getElementById('salesArea').value,
-                package: document.getElementById('package').value,
-                customerStatement: document.getElementById('customerStatement').value,
-                agentStatement: document.getElementById('agentStatement').value,
-                ont: document.getElementById('ont').value,
-                speedTest: document.getElementById('speedTest').value,
-                l2UserAligned: document.getElementById('l2UserAligned').value,
-                timeframeIssues: document.getElementById('timeframeIssues').value
-            };
+            // Resolve ONT / Router values (use "Other" text if applicable)
+            const ontVal    = trEquip.ont === 'Other'    ? (document.getElementById('tr-ont-other').value.trim()    || 'Other') : trEquip.ont;
+            const routerVal = trEquip.router === 'Other' ? (document.getElementById('tr-router-other').value.trim() || 'Other') : trEquip.router;
 
-            let troubleshootingSection = '';
-            if (selectedTroubleshooting.size > 0) {
-                troubleshootingSection = '\nTroubleshooting Steps:\n' + Array.from(selectedTroubleshooting).join('\n');
-            }
+            // Combine preset + custom troubleshooting steps
+            const allSteps = [...Array.from(selectedTroubleshooting), ...customTrSteps];
+            const stepsSection = allSteps.length > 0 ? allSteps.join('\n') : '';
 
-            const yesNoSection = `
-Phone: ${formData.phone}
-Account #: ${formData.accountNumber}
-Name: ${formData.name}
-Address: ${formData.address}
-Sales Area: ${formData.salesArea}
-Package: ${formData.package}
+            const note =
+`Provider: ${trProvider}
 
-Customer Statement: ${formData.customerStatement}
+Customer Reporting: ${document.getElementById('tr-customerReporting').value}
 
-Agent Statement: ${formData.agentStatement}
+Equipment
+  ONT: ${ontVal}
+  Router: ${routerVal}
 
-Device Connectivity Issues: ${yesNoData.devicesDisconnecting === null ? '' : yesNoData.devicesDisconnecting ? 'Yes' : 'No'}
-Is Network Online: ${yesNoData.networkStable === null ? '' : yesNoData.networkStable ? 'Yes' : 'No'}
-Is there Wi-Fi Channel Interference: ${yesNoData.wifiInterference === null ? '' : yesNoData.wifiInterference ? 'Yes' : 'No'}
-Was Equipment Rebooted: ${yesNoData.equipmentRebooted === null ? '' : yesNoData.equipmentRebooted ? 'Yes' : 'No'}
-Are All Connections Verified: ${yesNoData.connectionsVerified === null ? '' : yesNoData.connectionsVerified ? 'Yes' : 'No'}`;
+Customer Details
+  Name: ${document.getElementById('tr-name').value}
+  Phone: ${document.getElementById('tr-phone').value}
+  Acct #: ${document.getElementById('tr-acct').value}
+  Address: ${document.getElementById('tr-address').value}
+  Node: ${document.getElementById('tr-node').value}
 
-            const note = `${yesNoSection}
+Network & WiFi
+  Alarm Code(s): ${document.getElementById('tr-alarmCodes').value}
+  Speed Test: ${document.getElementById('tr-speedTest').value}
+  Devices Disconnecting?: ${yn(trYesNo.tr_devicesDisconnecting)}
+  Network Stable?: ${yn(trYesNo.tr_networkStable)}
+  Light Levels: ${document.getElementById('tr-lightLevels').value}
+  WiFi Interference?: ${yn(trYesNo.tr_wifiInterference)}
 
-${troubleshootingSection}
+Troubleshooting Steps:
+${stepsSection}
 
-ONT Stats: ${formData.ont}
-
-Speed Test (Down/Up): ${formData.speedTest}
-L2-User Aligned (if applicable): ${formData.l2UserAligned}
-Timeframe When Issues Started: ${formData.timeframeIssues}
-Agent Initials: ${formData.agentInitials}`;
+Agent Initials: ${document.getElementById('tr-agentInitials').value}`;
 
             document.getElementById('generatedNote').value = note;
             document.getElementById('outputSection').classList.add('show');
@@ -2785,8 +2538,7 @@ Agent Initials: ${formData.agentInitials}`;
         }
 
         function copyToClipboard() {
-            const noteText = document.getElementById('generatedNote').value;
-            navigator.clipboard.writeText(noteText).then(() => {
+            navigator.clipboard.writeText(document.getElementById('generatedNote').value).then(() => {
                 document.getElementById('copyIcon').textContent = '✓';
                 document.getElementById('copyText').textContent = 'Copied!';
                 setTimeout(() => {
@@ -2797,39 +2549,51 @@ Agent Initials: ${formData.agentInitials}`;
         }
 
         function resetForm() {
-            document.getElementById('supportForm').reset();
-            Object.keys(yesNoData).forEach(key => { yesNoData[key] = null; });
-            document.querySelectorAll('.yes-no-buttons button').forEach(btn => {
-                btn.classList.remove('active-yes', 'active-no');
+            // Provider
+            trProvider = '';
+            document.getElementById('tr-provider-tachus').classList.remove('active-tachus','active-ezee');
+            document.getElementById('tr-provider-ezee').classList.remove('active-tachus','active-ezee');
+            // Equipment
+            trEquip.ont = ''; trEquip.router = '';
+            document.querySelectorAll('#tr-ont-btns .equip-btn, #tr-router-btns .equip-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('tr-ont-other').style.display = 'none';
+            document.getElementById('tr-ont-other').value = '';
+            document.getElementById('tr-router-other').style.display = 'none';
+            document.getElementById('tr-router-other').value = '';
+            // Text fields
+            ['tr-customerReporting','tr-name','tr-phone','tr-acct','tr-address','tr-node',
+             'tr-alarmCodes','tr-speedTest','tr-lightLevels','tr-agentInitials'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.value = '';
             });
+            // Yes/No
+            Object.keys(trYesNo).forEach(k => { trYesNo[k] = null; });
+            document.querySelectorAll('#note-sub-truckroll .yes-no-buttons button').forEach(btn => {
+                btn.classList.remove('active-yes','active-no');
+            });
+            // Troubleshooting
             selectedTroubleshooting.clear();
-            document.querySelectorAll('.troubleshooting-item').forEach(item => {
-                item.classList.remove('selected');
-            });
+            document.querySelectorAll('.troubleshooting-item').forEach(item => item.classList.remove('selected'));
+            customTrSteps.length = 0;
+            renderCustomSteps();
+            document.getElementById('tr-custom-step-input').value = '';
+            // Output
             document.getElementById('outputSection').classList.remove('show');
         }
 
-        // ── HARD DOWN YES/NO ──
+        // ── HARD DOWN ──
         const hdYesNoData = {
-            hd_devicesDisconnecting: null,
-            hd_networkStable: null,
-            hd_verifiedHeadEnd: null,
-            hd_wifiInterference: null,
-            hd_equipmentRebooted: null,
-            hd_connectionsVerified: null,
-            hd_routerTroubleshooting: null,
-            hd_otherCustomers: null
+            hd_devicesDisconnecting: null, hd_networkStable: null,
+            hd_verifiedHeadEnd: null, hd_wifiInterference: null,
+            hd_equipmentRebooted: null, hd_connectionsVerified: null,
+            hd_routerTroubleshooting: null, hd_otherCustomers: null
         };
 
         function setHdYesNo(field, value, e) {
             hdYesNoData[field] = value;
             const buttons = e.target.parentElement.querySelectorAll('button');
-            buttons.forEach(btn => btn.classList.remove('active-yes', 'active-no'));
+            buttons.forEach(btn => btn.classList.remove('active-yes','active-no'));
             e.target.classList.add(value ? 'active-yes' : 'active-no');
-        }
-
-        function yn(val) {
-            return val === null ? '' : val ? 'Yes' : 'No';
         }
 
         function generateHardDown() {
@@ -2872,7 +2636,7 @@ Are Other Customers Affected: ${yn(hdYesNoData.hd_otherCustomers)}`;
             document.getElementById('hardDownForm').reset();
             Object.keys(hdYesNoData).forEach(k => { hdYesNoData[k] = null; });
             document.querySelectorAll('#note-sub-harddown .yes-no-buttons button').forEach(btn => {
-                btn.classList.remove('active-yes', 'active-no');
+                btn.classList.remove('active-yes','active-no');
             });
             document.getElementById('hdOutputSection').classList.remove('show');
         }
@@ -2885,8 +2649,7 @@ Are Other Customers Affected: ${yn(hdYesNoData.hd_otherCustomers)}`;
             const display = document.getElementById('dispatch-brand-display');
             const tBtn = document.getElementById('dispatch-btn-tachus');
             const eBtn = document.getElementById('dispatch-btn-ezee');
-            tBtn.classList.remove('active-tachus');
-            eBtn.classList.remove('active-ezee');
+            tBtn.classList.remove('active-tachus'); eBtn.classList.remove('active-ezee');
             if (brand === 'Tachus') {
                 tBtn.classList.add('active-tachus');
                 display.textContent = 'Tachus';
@@ -2932,8 +2695,7 @@ Customer Reporting: ${document.getElementById('dp-customerReporting').value}`;
             document.getElementById('dispatch-btn-tachus').classList.remove('active-tachus');
             document.getElementById('dispatch-btn-ezee').classList.remove('active-ezee');
             const display = document.getElementById('dispatch-brand-display');
-            display.textContent = '';
-            display.className = 'dispatch-brand-display';
+            display.textContent = ''; display.className = 'dispatch-brand-display';
             document.getElementById('dpOutputSection').classList.remove('show');
         }
 
@@ -2981,15 +2743,11 @@ Customer Report: ${document.getElementById('cecr-customerReport').value}`;
             document.getElementById('cecrOutputSection').classList.remove('show');
         }
 
-        // ── EMAIL TEMPLATE RESET ──
+        // ── EMAIL TEMPLATES ──
         function resetEmailTemplate(outputId, fieldIds, routerPrefix) {
             document.getElementById(outputId).value = '';
-            fieldIds.forEach(id => {
-                const el = document.getElementById(id);
-                if (el) el.value = '';
-            });
+            fieldIds.forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
             if (routerPrefix) {
-                // Clear router type buttons
                 document.querySelectorAll(`#${routerPrefix}-router-display`).forEach(el => el.textContent = '');
                 document.querySelectorAll('.router-type-btn').forEach(btn => btn.classList.remove('active'));
                 if (routerPrefix === 'ter-t') routerTypeSelected['tachus'] = '';
@@ -2997,12 +2755,10 @@ Customer Report: ${document.getElementById('cecr-customerReport').value}`;
             }
         }
 
-        // ── REFER A FRIEND ──
         function generateRAF(brand) {
-            const p      = brand === 'tachus' ? 'traf' : 'eraf';
-            const name   = document.getElementById(`${p}-name`).value || '[Customer Name]';
-            const link   = document.getElementById(`${p}-link`).value || '[RAF Link]';
-
+            const p    = brand === 'tachus' ? 'traf' : 'eraf';
+            const name = document.getElementById(`${p}-name`).value || '[Customer Name]';
+            const link = document.getElementById(`${p}-link`).value || '[RAF Link]';
             document.getElementById(`${p}-output`).value =
 `Greetings, ${name}
 
@@ -3048,16 +2804,14 @@ A few things to know
             });
         }
 
-        // ── EQUIPMENT RETURN ──
         const routerTypeSelected = { tachus: '', ezee: '' };
 
         function setRouterType(prefix, value, btnEl) {
             const brand = prefix.includes('-t') ? 'tachus' : 'ezee';
             routerTypeSelected[brand] = value;
-            // deactivate all router buttons in this form
             btnEl.closest('.router-type-grid').querySelectorAll('.router-type-btn').forEach(b => b.classList.remove('active'));
             btnEl.classList.add('active');
-            const dispId = prefix.replace('ter-t', 'ter-t').replace('ter-e', 'ter-e') + '-router-display';
+            const dispId = prefix + '-router-display';
             document.getElementById(dispId).textContent = value;
         }
 
@@ -3107,47 +2861,6 @@ Thank you for choosing Ezee Fiber. We appreciate your business and look forward 
             });
         }
 
-        // ── CANCELLATION (renamed functions kept for JS compat) ──
-        function generateCancellation(brand) {
-            const isTachus = brand === 'tachus';
-            const nameId   = isTachus ? 'tcan-name'   : 'ecan-name';
-            const ticketId = isTachus ? 'tcan-ticket'  : 'ecan-ticket';
-            const outputId = isTachus ? 'tcan-output'  : 'ecan-output';
-            const phone    = isTachus ? '832.791.1100' : '833-920-5400';
-            const support  = isTachus ? 'Tachus Customer Support' : 'EzeeFiber Customer Support';
-            const name     = document.getElementById(nameId).value || '[Customer Name]';
-            const ticket   = document.getElementById(ticketId).value || '[Ticket ID]';
-
-            document.getElementById(outputId).value =
-`Hello ${name},
-
-Your cancellation request (Ticket ${ticket}) has been received and is being processed.
-
-If you have any questions or would like to discuss your options, please don't hesitate to reach out to us at ${phone}.
-
-Thank you for being a valued customer. We hope to have the opportunity to serve you again in the future.
-
- 
-Best regards,
-${support}
- ${phone}`;
-        }
-
-        function copyCancellation(brand) {
-            const outputId = brand === 'tachus' ? 'tcan-output'    : 'ecan-output';
-            const iconId   = brand === 'tachus' ? 'tcan-copy-icon' : 'ecan-copy-icon';
-            const textId   = brand === 'tachus' ? 'tcan-copy-text' : 'ecan-copy-text';
-            navigator.clipboard.writeText(document.getElementById(outputId).value).then(() => {
-                document.getElementById(iconId).textContent = '✓';
-                document.getElementById(textId).textContent = 'Copied!';
-                setTimeout(() => {
-                    document.getElementById(iconId).textContent = '📋';
-                    document.getElementById(textId).textContent = 'Copy';
-                }, 2000);
-            });
-        }
-
-        // ── REQUESTING PICTURES ──
         function generateReqPic(brand) {
             if (brand === 'tachus') {
                 const name   = document.getElementById('trp-name').value || '[Customer Name]';
@@ -3177,9 +2890,9 @@ EzeeFiber Customer Support
         }
 
         function copyReqPic(brand) {
-            const outputId  = brand === 'tachus' ? 'trp-output'    : 'erp-output';
-            const iconId    = brand === 'tachus' ? 'trp-copy-icon' : 'erp-copy-icon';
-            const textId    = brand === 'tachus' ? 'trp-copy-text' : 'erp-copy-text';
+            const outputId = brand === 'tachus' ? 'trp-output'    : 'erp-output';
+            const iconId   = brand === 'tachus' ? 'trp-copy-icon' : 'erp-copy-icon';
+            const textId   = brand === 'tachus' ? 'trp-copy-text' : 'erp-copy-text';
             navigator.clipboard.writeText(document.getElementById(outputId).value).then(() => {
                 document.getElementById(iconId).textContent = '✓';
                 document.getElementById(textId).textContent = 'Copied!';
@@ -3190,7 +2903,6 @@ EzeeFiber Customer Support
             });
         }
 
-        // ── WIFI SECURITY KEY ──
         function generateWifiKey(brand) {
             const isTachus = brand === 'tachus';
             const nameId   = isTachus ? 'twsk-name'   : 'ewsk-name';
