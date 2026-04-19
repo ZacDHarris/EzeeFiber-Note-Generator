@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/jpg" href="EzeeIcon.jpg">
+    <script src="oui.js"></script>
     <title>Ezee Fiber Technical Support Note Generator</title>
     <style>
         * {
@@ -2473,27 +2474,34 @@
 
             if (!raw) return;
 
-            // Strip all separators, uppercase
+            // Strip separators, uppercase
             const clean = raw.replace(/[^a-fA-F0-9]/g, '').toUpperCase();
             if (clean.length < 6) {
                 result.className = 'oui-result error';
-                result.innerHTML = '⚠️ Please enter at least the first 6 characters of a MAC address.';
+                result.innerHTML = '⚠️ Please enter at least 6 hex characters of a MAC address.';
                 macDisp.textContent = '';
                 return;
             }
 
             const oui       = clean.substring(0, 6);
             const formatted = oui.match(/.{1,2}/g).join(':');
-            const vendor    = OUI_DB[oui] || null;
+
+            if (typeof OUI_DB === 'undefined') {
+                result.className = 'oui-result error';
+                result.innerHTML = '⚠️ OUI database not loaded. Make sure oui.js is in the same folder.';
+                return;
+            }
+
+            const vendor = OUI_DB[oui] || null;
 
             if (vendor) {
                 result.className = 'oui-result success';
-                result.innerHTML = `✅ <span><strong>Manufacturer:</strong> ${vendor}</span>`;
-                macDisp.textContent = `MAC OUI: ${formatted}`;
+                result.innerHTML = '✅ <span><strong>Manufacturer:</strong> ' + vendor + '</span>';
+                macDisp.textContent = 'MAC OUI: ' + formatted;
             } else {
                 result.className = 'oui-result error';
-                result.innerHTML = `❌ No match found for OUI: ${formatted}. This may be a less common manufacturer.`;
-                macDisp.textContent = `MAC OUI: ${formatted}`;
+                result.innerHTML = '❌ No match found for OUI: ' + formatted + '. Unknown or private manufacturer.';
+                macDisp.textContent = 'MAC OUI: ' + formatted;
             }
         }
 
