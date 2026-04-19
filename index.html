@@ -1376,16 +1376,8 @@
                             <div class="section-label">Equipment</div>
                         </div>
                         <div class="form-group">
-                            <label>ONT</label>
-                            <div class="equip-btn-group" id="tr-ont-btns">
-                                <button type="button" class="equip-btn" onclick="setEquip('ont','Calix 803G',this)">Calix 803G</button>
-                                <button type="button" class="equip-btn" onclick="setEquip('ont','Calix 844E',this)">Calix 844E</button>
-                                <button type="button" class="equip-btn" onclick="setEquip('ont','Calix 844EX',this)">Calix 844EX</button>
-                                <button type="button" class="equip-btn" onclick="setEquip('ont','Nokia G-010G-Q',this)">Nokia G-010G-Q</button>
-                                <button type="button" class="equip-btn" onclick="setEquip('ont','Nokia G-010G-P',this)">Nokia G-010G-P</button>
-                                <button type="button" class="equip-btn" onclick="setEquip('ont','Other',this)">Other</button>
-                            </div>
-                            <input type="text" id="tr-ont-other" placeholder="ONT model (if Other)" style="margin-top:0.5rem; display:none;">
+                            <label for="tr-ont-sn">ONT SN</label>
+                            <input type="text" id="tr-ont-sn" placeholder="Enter ONT serial number">
                         </div>
                         <div class="form-group">
                             <label>Router</label>
@@ -1399,6 +1391,10 @@
                                 <button type="button" class="equip-btn" onclick="setEquip('router','Other',this)">Other</button>
                             </div>
                             <input type="text" id="tr-router-other" placeholder="Router model (if Other)" style="margin-top:0.5rem; display:none;">
+                        </div>
+                        <div class="form-group">
+                            <label for="tr-router-sn">Router SN</label>
+                            <input type="text" id="tr-router-sn" placeholder="Enter router serial number">
                         </div>
 
                         <hr class="section-divider">
@@ -2495,9 +2491,10 @@
         function yn(val) { return val === null ? '' : val ? 'Yes' : 'No'; }
 
         function generateNote() {
-            // Resolve ONT / Router values (use "Other" text if applicable)
-            const ontVal    = trEquip.ont === 'Other'    ? (document.getElementById('tr-ont-other').value.trim()    || 'Other') : trEquip.ont;
+            // Resolve Router value (use "Other" text if applicable)
+            const ontVal    = document.getElementById('tr-ont-sn').value;
             const routerVal = trEquip.router === 'Other' ? (document.getElementById('tr-router-other').value.trim() || 'Other') : trEquip.router;
+            const routerSnVal = document.getElementById('tr-router-sn').value;
 
             // Combine preset + custom troubleshooting steps
             const allSteps = [...Array.from(selectedTroubleshooting), ...customTrSteps];
@@ -2509,8 +2506,9 @@
 Customer Reporting: ${document.getElementById('tr-customerReporting').value}
 
 Equipment
-  ONT: ${ontVal}
+  ONT SN: ${ontVal}
   Router: ${routerVal}
+  Router SN: ${routerSnVal}
 
 Customer Details
   Name: ${document.getElementById('tr-name').value}
@@ -2555,14 +2553,15 @@ Agent Initials: ${document.getElementById('tr-agentInitials').value}`;
             document.getElementById('tr-provider-ezee').classList.remove('active-tachus','active-ezee');
             // Equipment
             trEquip.ont = ''; trEquip.router = '';
-            document.querySelectorAll('#tr-ont-btns .equip-btn, #tr-router-btns .equip-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById('tr-ont-other').style.display = 'none';
-            document.getElementById('tr-ont-other').value = '';
+            document.querySelectorAll('#tr-router-btns .equip-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('tr-ont-sn').value = '';
+            document.getElementById('tr-router-sn').value = '';
             document.getElementById('tr-router-other').style.display = 'none';
             document.getElementById('tr-router-other').value = '';
             // Text fields
             ['tr-customerReporting','tr-name','tr-phone','tr-acct','tr-address','tr-node',
-             'tr-alarmCodes','tr-speedTest','tr-lightLevels','tr-agentInitials'].forEach(id => {
+             'tr-alarmCodes','tr-speedTest','tr-lightLevels','tr-agentInitials',
+             'tr-ont-sn','tr-router-sn'].forEach(id => {
                 const el = document.getElementById(id);
                 if (el) el.value = '';
             });
